@@ -227,12 +227,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Original CMED algorithm research
 - OpenCV community for computer vision tools
 - Contributors and testers
+- Special thanks to **Chen Xingqiang** for the cross-platform implementation and optimization
 
 ## 📞 Support
 
 - **Issues**: [GitHub Issues](https://github.com/chenxingqiang/ellipse-detector-cmed/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/chenxingqiang/ellipse-detector-cmed/discussions)
-- **Email**: lianbosong@foxmail.com
+- **Email**: chenxingqiang@foxmail.com
 
 ## 🔮 Roadmap
 
