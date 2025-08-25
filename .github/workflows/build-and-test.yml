@@ -47,7 +47,8 @@ jobs:
           ~/.cache
           ~/vcpkg
           /usr/local
-        key: ${{ runner.os }}-deps-${{ hashFiles('**/Makefile', '**/CMakeLists.txt') }}
+          vcpkg
+        key: ${{ runner.os }}-deps-${{ hashFiles('**/Makefile', '**/CMakeLists.txt') }}-vcpkg-v2
 
     - name: Install dependencies
       run: ${{ matrix.install_deps }}
@@ -55,17 +56,36 @@ jobs:
     - name: Setup vcpkg (Windows)
       if: matrix.os == 'windows-latest'
       run: |
-        git clone https://github.com/Microsoft/vcpkg.git
+        if (-not (Test-Path "vcpkg")) {
+          echo "Cloning vcpkg..."
+          git clone https://github.com/Microsoft/vcpkg.git
+        } else {
+          echo "vcpkg already exists (from cache)"
+        }
         cd vcpkg
-        .\bootstrap-vcpkg.bat
+        if (-not (Test-Path "vcpkg.exe")) {
+          echo "Bootstrapping vcpkg..."
+          .\bootstrap-vcpkg.bat
+        } else {
+          echo "vcpkg.exe already exists"
+        }
         echo "VCPKG_ROOT=${{ github.workspace }}\vcpkg" >> $env:GITHUB_ENV
         echo "${{ github.workspace }}\vcpkg" >> $env:GITHUB_PATH
+        echo "CMAKE_TOOLCHAIN_FILE=${{ github.workspace }}\vcpkg\scripts\buildsystems\vcpkg.cmake" >> $env:GITHUB_ENV
 
     - name: Install OpenCV with vcpkg (Windows)
       if: matrix.os == 'windows-latest'
       run: |
         cd vcpkg
-        .\vcpkg.exe install opencv4:x64-windows
+        echo "Checking if OpenCV4 is already installed..."
+        if (.\vcpkg.exe list | Select-String "opencv4:x64-windows") {
+          echo "✅ OpenCV4 already installed"
+        } else {
+          echo "Installing OpenCV4 with vcpkg..."
+          .\vcpkg.exe install opencv4:x64-windows --feature-flags=versions
+        }
+        echo "Integrating vcpkg with CMake..."
+        .\vcpkg.exe integrate install
         echo "Checking vcpkg installation..."
         .\vcpkg.exe list
         echo "Checking OpenCV installation..."
@@ -73,8 +93,21 @@ jobs:
           echo "✅ OpenCV headers found"
           dir "installed\x64-windows\include\opencv2" | Select-Object -First 5
         } else {
-          echo "❌ OpenCV headers not found"
-          dir "installed" -Recurse -Name "*opencv*" | Select-Object -First 10
+          echo "❌ OpenCV headers not found in expected location"
+          echo "Searching for OpenCV files..."
+          if (Test-Path "installed") {
+            dir "installed" -Recurse -Name "*opencv*" | Select-Object -First 15
+          }
+        }
+        echo "Checking for OpenCV CMake files..."
+        if (Test-Path "installed\x64-windows\share\opencv4") {
+          echo "✅ OpenCV CMake config found"
+          dir "installed\x64-windows\share\opencv4"
+        } else {
+          echo "❌ OpenCV CMake config not found"
+          if (Test-Path "installed\x64-windows\share") {
+            dir "installed\x64-windows\share" | Where-Object {$_.Name -like "*opencv*"}
+          }
         }
 
     - name: Configure CMake (Windows)
@@ -82,7 +115,16 @@ jobs:
       run: |
         echo "Setting up CMake with vcpkg toolchain..."
         echo "VCPKG_ROOT: $env:VCPKG_ROOT"
-        cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_TOOLCHAIN_FILE="vcpkg/scripts/buildsystems/vcpkg.cmake" -DVCPKG_TOOLCHAIN=ON
+        echo "CMAKE_TOOLCHAIN_FILE: $env:CMAKE_TOOLCHAIN_FILE"
+        echo "Working directory: $(Get-Location)"
+        echo "Checking vcpkg toolchain file..."
+        if (Test-Path "$env:CMAKE_TOOLCHAIN_FILE") {
+          echo "✅ Toolchain file found"
+        } else {
+          echo "❌ Toolchain file not found at $env:CMAKE_TOOLCHAIN_FILE"
+          exit 1
+        }
+        cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_TOOLCHAIN_FILE="$env:CMAKE_TOOLCHAIN_FILE" -DVCPKG_TOOLCHAIN=ON -DCMAKE_PREFIX_PATH="$env:VCPKG_ROOT\installed\x64-windows" -DOpenCV_DIR="$env:VCPKG_ROOT\installed\x64-windows\share\opencv4"
 
     - name: Build with Make (Linux/macOS)
       if: matrix.os != 'windows-latest'

@@ -1,19 +1,4 @@
-/* CNED�������� */
 
-/*
-This code is intended for academic use only.
-You are free to use and modify the code, at your own risk.
-
-If you use this code, or find it useful, please refer to the paper:
-
-
-The comments in the code refer to the abovementioned paper.
-If you need further details about the code or the algorithm, please contact me at:
-
-lianbosong@tguringai.cc
-
-last update: 
-*/
 
 #include "CNEllipseDetector.h"
 
