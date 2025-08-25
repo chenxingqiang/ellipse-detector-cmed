@@ -233,7 +233,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - **Issues**: [GitHub Issues](https://github.com/chenxingqiang/ellipse-detector-cmed/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/chenxingqiang/ellipse-detector-cmed/discussions)
-- **Email**: chenxingqiang@foxmail.com
+- **Email**: chenxingqiang@tguringai.cc
 
 ## 🔮 Roadmap
 

@@ -8,7 +8,7 @@ If you use this code, or find it useful, please refer to the paper:
 The comments in the code refer to the abovementioned paper.
 If you need further details about the code or the algorithm, please contact me at:
 
-lianbosong@foxmail.com
+lianbosong@tguringai.cc
 
 last update: 
 */
@@ -36,7 +36,7 @@ bool LoadTest(vector<Ellipse>& ellipses, const string& sTestFileName, vector<dou
 bool TestOverlap(const Mat1b& gt, const Mat1b& test, float th);
 int Count(const vector<bool> v);
 float Evaluate(const vector<Ellipse>& ellGT, const vector<Ellipse>& ellTest, const float th_score, const Mat3b& img);
-// ÁíÒ»ÖÖÆÀ¼Û·½·¨(Lu's)£º½«tp¡°È«²¿°´ÐÐÍ³¼Æ¡±¸ÄÎª¡°·Ö±ð°´ÐÐ¡¢°´ÁÐÍ³¼Æ¡±£¬²¢ÔÚºóÃæµÄ²½Öè½«Ã¿¸öÍ¼µÄtp£¬fnºÍfpÀÛ¼Óºó£¬ÔÙ¼ÆËãPre+Re+FÖµ¡£
+// ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Û·ï¿½ï¿½ï¿½(Lu's)ï¿½ï¿½ï¿½ï¿½tpï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í³ï¿½Æ¡ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½Ö±ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½Í³ï¿½Æ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úºï¿½ï¿½ï¿½Ä²ï¿½ï¿½è½«Ã¿ï¿½ï¿½Í¼ï¿½ï¿½tpï¿½ï¿½fnï¿½ï¿½fpï¿½Û¼Óºï¿½ï¿½Ù¼ï¿½ï¿½ï¿½Pre+Re+FÖµï¿½ï¿½
 vector<double> Evaluate_Lu(const vector<Ellipse>& ellGT, const vector<Ellipse>& ellTest, const float th_score, const Mat3b& img);
 // end 14pr
 
@@ -45,13 +45,13 @@ void salt(cv::Mat& image, int n);
 //salt
 
 
-//»æÖÆÑ¡³öµÄ»¡¶Î
+//ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½
 /**
-ÊäÈë£ºÒ»¸öÏóÏÞµÄ»¡¶ÎÈÝÆ÷
-Êä³ö£ºÏÔÊ¾»¡¶Î£¬Ò»¸öÏóÏÞµÄÒ»¸öÑÕÉ«¡£ÑÕÉ«Ëæ»ú
+ï¿½ï¿½ï¿½ë£ºÒ»ï¿½ï¿½ï¿½ï¿½ï¿½ÞµÄ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Î£ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Þµï¿½Ò»ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½
 */
 void showEdge(vector<vector<Point>> points_,Mat& picture);
-//»æÖÆÑ¡³öµÄ»¡¶Î
+//ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½
 
 //file operation
 int writeFile(string fileName_cpp,vector<string> vsContent);
@@ -59,14 +59,14 @@ int readFile(string fileName_cpp);
 int readFileByChar(string fileName_split);
 void Trim(string &str);
 
-/******·ÖÀëÌØ¶¨¸ñÊ½µÄÊý¾Ý******/
-//C++ÖÐÃ»ÓÐSplit()Õâ¸ö·½·¨£¬ÐèÒª×Ô¶¨Òåº¯Êý·ÖÀëÊý¾Ý£¬¶øC#ºÍJavaÖÐÓÐÕâ¸ö·½·¨
+/******ï¿½ï¿½ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½******/
+//C++ï¿½ï¿½Ã»ï¿½ï¿½Split()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½Ô¶ï¿½ï¿½åº¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½C#ï¿½ï¿½Javaï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 vector<string> getStr(string str);
-/******·ÖÀëÌØ¶¨¸ñÊ½µÄÊý¾Ý******/
+/******ï¿½ï¿½ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½******/
 /**
 * path:Ä¿Â¼
-* files£ºÓÃÓÚ±£´æÎÄ¼þÃûµÄvector
-* r£ºÊÇ·ñÐèÒª±éÀú×ÓÄ¿Â¼
+* filesï¿½ï¿½ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½vector
+* rï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Â¼
 */
 void listDir(string real_dir,vector<string>& files,bool r = false);
 //file operation

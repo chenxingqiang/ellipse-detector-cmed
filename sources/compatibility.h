@@ -36,3 +36,10 @@
 
 // IplImage compatibility (if needed)
 // Note: Modern OpenCV code should use cv::Mat instead of IplImage
+
+// Handle missing videoio module on Windows
+#ifdef _WIN32
+    #ifndef HAVE_OPENCV_VIDEOIO
+        #define HAVE_OPENCV_VIDEOIO 0
+    #endif
+#endif

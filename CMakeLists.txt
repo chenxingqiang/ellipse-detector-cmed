@@ -19,7 +19,7 @@ else()
 endif()
 
 # Find OpenCV
-find_package(OpenCV REQUIRED COMPONENTS core imgproc highgui features2d imgcodecs videoio)
+find_package(OpenCV REQUIRED COMPONENTS core imgproc highgui features2d imgcodecs)
 
 # Include directories
 include_directories(${OpenCV_INCLUDE_DIRS})
