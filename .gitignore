@@ -70,6 +70,14 @@ Thumbs.db
 result/
 output/
 
+# Keep test images but ignore large datasets
+images/*.jpg
+images/*.png
+!images/algorithm_diagram.png
+!images/moon_test.jpg
+!images/multiple_ellipses.jpg
+!images/realistic_ellipses.jpg
+
 # Dataset directories (usually large)
 EllipseDataset*/
 dataset/
