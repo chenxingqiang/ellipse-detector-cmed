@@ -26,7 +26,7 @@ jobs:
           - os: windows-latest
             name: Windows
             install_deps: |
-              vcpkg install opencv[core,imgproc,highgui,features2d,imgcodecs]:x64-windows
+              vcpkg install opencv4:x64-windows
             executable: ellipse_detector.exe
             artifact_name: ellipse-detector-windows-x64
           - os: macos-latest
@@ -173,12 +173,22 @@ jobs:
         echo "✅ All basic tests completed"
 
   release:
-    if: github.event_name == 'release'
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     needs: [build, test]
     runs-on: ubuntu-latest
     name: Create Release
 
     steps:
+    - uses: actions/checkout@v4
+    
+    - name: Generate version number
+      id: version
+      run: |
+        # Generate version based on date and commit
+        VERSION=$(date +'%Y.%m.%d')-$(git rev-parse --short HEAD)
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
+        echo "Generated version: $VERSION"
+    
     - name: Download all artifacts
       uses: actions/download-artifact@v4
 
@@ -188,20 +198,51 @@ jobs:
           if [ -d "$dir" ]; then
             cd "$dir"
             if [[ "$dir" == *"windows"* ]]; then
-              zip -r "../${dir}.zip" .
+              zip -r "../${dir}-${{ steps.version.outputs.version }}.zip" .
             else
-              tar -czf "../${dir}.tar.gz" .
+              tar -czf "../${dir}-${{ steps.version.outputs.version }}.tar.gz" .
             fi
             cd ..
           fi
         done
 
-    - name: Upload release assets
+    - name: Create Release
       uses: softprops/action-gh-release@v1
       with:
+        tag_name: v${{ steps.version.outputs.version }}
+        name: "Ellipse Detector CMED v${{ steps.version.outputs.version }}"
+        body: |
+          ## 🚀 Auto Release v${{ steps.version.outputs.version }}
+          
+          ### ✨ What's Included
+          - **Windows x64**: `ellipse-detector-windows-x64-${{ steps.version.outputs.version }}.zip`
+          - **Linux x64**: `ellipse-detector-linux-x64-${{ steps.version.outputs.version }}.tar.gz`  
+          - **macOS x64**: `ellipse-detector-macos-x64-${{ steps.version.outputs.version }}.tar.gz`
+          
+          ### 🔧 Recent Changes
+          - Fixed Windows compilation with vcpkg and OpenCV4
+          - Improved ellipse detection parameter tuning
+          - Enhanced cross-platform compatibility
+          - Resolved segmentation fault issues
+          
+          ### 💻 Usage
+          ```bash
+          # Extract and run
+          ./ellipse_detector images/your_image.jpg
+          ```
+          
+          ### 📊 Build Status
+          - ✅ **Windows**: Built with CMake + MSVC + vcpkg
+          - ✅ **Linux**: Built with Make + GCC  
+          - ✅ **macOS**: Built with Make + Clang
+          
+          ---
+          *Auto-generated from commit ${{ github.sha }}*
         files: |
-          ellipse-detector-linux-x64.tar.gz
-          ellipse-detector-windows-x64.zip
-          ellipse-detector-macos-x64.tar.gz
+          ellipse-detector-linux-x64-${{ steps.version.outputs.version }}.tar.gz
+          ellipse-detector-windows-x64-${{ steps.version.outputs.version }}.zip
+          ellipse-detector-macos-x64-${{ steps.version.outputs.version }}.tar.gz
+        draft: false
+        prerelease: false
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
