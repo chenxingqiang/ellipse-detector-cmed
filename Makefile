@@ -11,15 +11,15 @@ ifeq ($(UNAME_S),Darwin)
     # macOS with Homebrew
     INCLUDES = -I/opt/homebrew/include/opencv4 -I/usr/local/include/opencv4
     LIBDIRS = -L/opt/homebrew/lib -L/usr/local/lib
-    LIBS = $(LIBDIRS) -lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_features2d -lopencv_imgcodecs
+    LIBS = $(LIBDIRS) -lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_features2d -lopencv_imgcodecs -lopencv_videoio
 else ifeq ($(UNAME_S),Linux)
     # Linux (Ubuntu/Debian/CentOS/etc.)
     INCLUDES = -I/usr/local/include/opencv4 -I/usr/include/opencv4 -I/usr/local/include/opencv -I/usr/include/opencv
-    LIBS = -lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_features2d -lopencv_imgcodecs
+    LIBS = -lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_features2d -lopencv_imgcodecs -lopencv_videoio
 else
     # Default (assume Linux-like)
     INCLUDES = -I/usr/local/include/opencv4 -I/usr/include/opencv4
-    LIBS = -lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_features2d -lopencv_imgcodecs
+    LIBS = -lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_features2d -lopencv_imgcodecs -lopencv_videoio
 endif
 
 # Source files

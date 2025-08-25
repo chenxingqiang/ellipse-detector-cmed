@@ -1,9 +1,4 @@
-/* Ԥ����ͷ�ļ������û������������Լӿ�����ٶȡ� */
 
-// stdafx.h : ��׼ϵͳ�����ļ��İ����ļ���
-// ���Ǿ���ʹ�õ��������ĵ�
-// �ض�����Ŀ�İ����ļ�
-//
 #pragma once
 #include "compatibility.h"
 #include <opencv2/opencv.hpp>

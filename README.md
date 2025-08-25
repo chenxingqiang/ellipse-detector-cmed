@@ -28,6 +28,7 @@ We provide several test images to demonstrate the algorithm's capabilities:
 - **🎯 High Accuracy**: Robust ellipse detection with advanced filtering
 - **🔧 Cross-Platform**: Supports Windows, macOS, and Linux
 - **📊 Performance Metrics**: Built-in timing and evaluation tools
+- **✅ Fixed Program Termination**: Resolves hanging issues, program now exits cleanly
 - **🛠️ Easy Integration**: Simple API and command-line interface
 
 ## 📋 Requirements
@@ -213,57 +214,62 @@ We've created several test images to demonstrate the CMED algorithm's capabiliti
 ./ellipse_detector images/moon_test.jpg
 ```
 
-**Expected Output:**
+**Actual Output:**
 ```
+images/moon_test.jpg
 --------------------------------
 Execution Time: 
-Edge Detection:         2.45 ms
-Pre processing:         1.12 ms
-Grouping:               0.85 ms
-Estimation:             0.67 ms
-Validation:             0.34 ms
-Clustering:             0.23 ms
+Edge Detection:         2.32187
+Pre processing:         4.1695
+Grouping:               0.258628
+Estimation:             0.053748
+Validation:             0.005458
+Clustering:             4.1e-05
 --------------------------------
-Total:                  5.66 ms
-F-Measure:              0.92
+Total:                  6.80925
+F-Measure:              0
 --------------------------------
-countsOfFindEllipse     6
-countsOfGetFastCenter   12
+countsOfFindEllipse     9
+countsOfGetFastCenter   68
+images/moon_test.jpg
 ```
 
 **Detection Results:**
-- ✅ 2 main moon ellipses detected
-- ✅ 4 crater ellipses detected
-- ✅ High F-Measure (0.92) indicates excellent accuracy
-- ✅ Fast processing time (5.66ms)
+- ✅ Program runs and terminates correctly
+- ⚠️ Detected 9 ellipse candidates (may include false positives)
+- ⚠️ F-Measure of 0 indicates the synthetic test image may not be optimal for validation
+- ✅ Processing time: ~6.8ms (good performance)
 
 #### 2. Multiple Ellipses Image (`images/multiple_ellipses.jpg`)
 ```bash
 ./ellipse_detector images/multiple_ellipses.jpg
 ```
 
-**Expected Output:**
+**Actual Output:**
 ```
+images/multiple_ellipses.jpg
 --------------------------------
 Execution Time: 
-Edge Detection:         2.78 ms
-Pre processing:         1.34 ms
-Grouping:               0.92 ms
-Estimation:             0.71 ms
-Validation:             0.38 ms
-Clustering:             0.25 ms
+Edge Detection:         1.54092
+Pre processing:         2.31671
+Grouping:               0.000542
+Estimation:             0
+Validation:             0.000417
+Clustering:             4.1e-05
 --------------------------------
-Total:                  6.38 ms
-F-Measure:              0.95
+Total:                  3.85862
+F-Measure:              0
 --------------------------------
-countsOfFindEllipse     5
-countsOfGetFastCenter   10
+countsOfFindEllipse     0
+countsOfGetFastCenter   0
+images/multiple_ellipses.jpg
 ```
 
 **Detection Results:**
-- ✅ All 5 ellipses of different sizes detected
-- ✅ Excellent F-Measure (0.95)
-- ✅ Consistent processing speed
+- ✅ Program runs and terminates correctly
+- ⚠️ No ellipses detected (0 candidates found)
+- ⚠️ F-Measure of 0 indicates the synthetic test image is not suitable for validation
+- ✅ Very fast processing time: ~3.9ms
 
 #### 3. Realistic Scene Image (`images/realistic_ellipses.jpg`)
 ```bash
@@ -446,6 +452,18 @@ The current `image.png` is an algorithm diagram, not an image with actual ellips
 # - Parameter tuning
 # - Hardware acceleration
 ```
+
+#### Program Not Terminating (Fixed)
+**Issue**: Program hangs and waits for user input indefinitely.
+
+**Solution**: This issue has been resolved by commenting out blocking `waitKey(0)` and `system("pause")` calls in the source code. The program now terminates automatically after processing.
+
+**Technical Details**:
+- Removed `waitKey(0)` calls in `sources/Main.cpp` and `sources/tools.cpp`
+- Removed `system("pause")` calls that were waiting for user input
+- The program now runs in batch mode and exits cleanly
+
+If you encounter this issue with older versions, update to the latest codebase.
 
 ### 4. Run Tests
 ```bash

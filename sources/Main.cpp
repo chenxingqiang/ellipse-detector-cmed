@@ -34,12 +34,12 @@ int MethodId = 2;
 //float	fThScoreScore = 0.7f;	//0.8
 //float	fMinReliability	= 0.5f;	// Const parameters to discard bad ellipses 0.4
 //float	fTaoCenters = 0.05f;//0.05 	
-float	fThScoreScore = 0.61f;	//0.8
-float	fMinReliability	= 0.4f;	// Const parameters to discard bad ellipses 0.4
-float	fTaoCenters = 0.05f;//0.05 	
+float	fThScoreScore = 0.2f;	//0.8 - Very relaxed for testing
+float	fMinReliability	= 0.1f;	// Const parameters to discard bad ellipses 0.4 - Very relaxed
+float	fTaoCenters = 0.15f;//0.05 - Much increased for center clustering	
 
-int		ThLength=16;//16
-float	MinOrientedRectSide=3.0f;
+int		ThLength=8;//16 - Much reduced for shorter arcs
+float	MinOrientedRectSide=1.0f;//3.0f - Much reduced for smaller ellipses
 float	scale=1;
 
 /* 函数声明：(每一步)消耗时间展示、？、？、？、？、设置参数集、读取参数 */
@@ -1008,22 +1008,39 @@ int main(int argc, char** argv)
 
 #if 1
 	//tCNC=0.2f;
-	fThScoreScore = 0.6f;	//0.8
-	fMinReliability	= 0.4f;	// Const parameters to discard bad ellipses 0.4
-	fTaoCenters = 0.04f;//0.05 	
-	ThLength=16;//16
-	MinOrientedRectSide=3.0f;
+	fThScoreScore = 0.2f;	//0.8 - Very relaxed for testing
+	fMinReliability	= 0.1f;	// Const parameters to discard bad ellipses 0.4 - Very relaxed
+	fTaoCenters = 0.15f;//0.05 - Much increased for center clustering	
+	ThLength=8;//16 - Much reduced for shorter arcs
+	MinOrientedRectSide=1.0f;
 	if(argc==2){
 		string filename= argv[1];
 		if(NULL!=strstr(filename.c_str(),".jpg")||NULL!=strstr(filename.c_str(),".bmp")
 			||NULL!=strstr(filename.c_str(),".JPG")||NULL!=strstr(filename.c_str(),".png")){	
 			cout<<filename<<endl;
-			vector<double> results=OnImage(filename,fThScoreScore,fMinReliability, fTaoCenters, true);
+			// Parse filename to separate working directory and image name
+			size_t lastSlash = filename.find_last_of('/');
+			string sWorkingDir, imagename;
+			if(lastSlash != string::npos) {
+				string pathPart = filename.substr(0, lastSlash);
+				imagename = filename.substr(lastSlash + 1);
+				// Check if path ends with "images" (the OnImage function will add "/images/" automatically)
+				if(pathPart == "images" || (pathPart.length() > 7 && pathPart.substr(pathPart.length() - 7) == "/images")) {
+					sWorkingDir = ".";
+				} else {
+					sWorkingDir = pathPart;
+				}
+			} else {
+				sWorkingDir = ".";
+				imagename = filename;
+			}
+
+			vector<double> results=OnImage(sWorkingDir, imagename, fThScoreScore, fMinReliability, fTaoCenters, true);
 			if(!results.empty()){
 				showTime(results);//显示运行信息
-				waitKey(0);	cvDestroyWindow("Cned");
+				// waitKey(0);	cvDestroyWindow("Cned");  // Commented out to avoid waiting for user input
 				MethodId=0;
-				system("pause");
+				// system("pause");  // Commented out to avoid waiting for user input
 			}
 		}
 	}
@@ -1064,7 +1081,7 @@ int main(int argc, char** argv)
 		}break;
 	default: break;
 	}
-	system("pause");
+	// system("pause");  // Commented out to avoid waiting for user input
 	//main_normalDB(argc, argv);//论文中三个数据库，不同参数的实验
 	//OnVideo();//摄像头
 	return 0;
