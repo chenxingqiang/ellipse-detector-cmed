@@ -1,0 +1,109 @@
+# Build directories
+build/
+dist/
+*.dSYM/
+
+# Compiled Object files
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Compiled Dynamic libraries
+*.so.*
+*.dylib
+
+# Compiled Static libraries
+*.a
+*.lib
+
+# Executables
+ellipse_detector
+ellipse_detector.exe
+
+# IDE files
+.vscode/
+.vs/
+*.vcxproj*
+*.sln
+*.user
+*.suo
+*.opensdf
+*.sdf
+*.VC.db
+*.VC.opendb
+
+# Xcode
+*.xcodeproj/
+*.xcworkspace/
+DerivedData/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CPackConfig.cmake
+CPackSourceConfig.cmake
+install_manifest.txt
+
+# Test outputs
+test_output.log
+test_results/
+
+# Temporary files
+*.tmp
+*.temp
+*~
+.DS_Store
+Thumbs.db
+
+# Package files
+*.tar.gz
+*.zip
+*.deb
+*.rpm
+*.dmg
+
+# Results and output directories
+result/
+output/
+
+# Dataset directories (usually large)
+EllipseDataset*/
+dataset/
+datasets/
+
+# Generated documentation
+docs/_build/
+html/
+latex/
+
+# Python cache (if any Python tools are added)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Node modules (if any JS tools are added)
+node_modules/
+
+# Coverage reports
+coverage/
+*.gcov
+*.gcda
+*.gcno
+
+# Profiling
+gmon.out
+perf.data*
+
+# Editor backups
+*.swp
+*.swo
+*~
+
+# Local configuration
+config.local
+.env.local

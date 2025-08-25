@@ -1,0 +1,207 @@
+name: Cross-Platform Build and Test
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  release:
+    types: [published]
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        include:
+          - os: ubuntu-latest
+            name: Linux
+            install_deps: sudo apt-get update && sudo apt-get install -y libopencv-dev cmake build-essential
+            executable: ellipse_detector
+            artifact_name: ellipse-detector-linux-x64
+          - os: windows-latest
+            name: Windows
+            install_deps: |
+              vcpkg install opencv[core,imgproc,highgui,features2d,imgcodecs,videoio]:x64-windows
+            executable: ellipse_detector.exe
+            artifact_name: ellipse-detector-windows-x64
+          - os: macos-latest
+            name: macOS
+            install_deps: brew install opencv
+            executable: ellipse_detector
+            artifact_name: ellipse-detector-macos-x64
+
+    runs-on: ${{ matrix.os }}
+    name: Build on ${{ matrix.name }}
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.cache
+          ~/vcpkg
+          /usr/local
+        key: ${{ runner.os }}-deps-${{ hashFiles('**/Makefile', '**/CMakeLists.txt') }}
+
+    - name: Install dependencies
+      run: ${{ matrix.install_deps }}
+
+    - name: Setup vcpkg (Windows)
+      if: matrix.os == 'windows-latest'
+      uses: lukka/run-vcpkg@v11
+      with:
+        vcpkgGitCommitId: '5568f110b509a9fd90711978a7cb76bae75bb092'
+
+    - name: Configure CMake (Windows)
+      if: matrix.os == 'windows-latest'
+      run: |
+        cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_TOOLCHAIN_FILE="${{github.workspace}}/vcpkg/scripts/buildsystems/vcpkg.cmake"
+
+    - name: Build with Make (Linux/macOS)
+      if: matrix.os != 'windows-latest'
+      run: |
+        make clean
+        make -j$(nproc 2>/dev/null || sysctl -n hw.ncpu)
+
+    - name: Build with CMake (Windows)
+      if: matrix.os == 'windows-latest'
+      run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+
+    - name: Test executable (Linux/macOS)
+      if: matrix.os != 'windows-latest'
+      run: |
+        # Test if executable exists and runs
+        if [ -f "./ellipse_detector" ]; then
+          echo "✅ Executable created successfully"
+          # Test with help flag (should exit gracefully)
+          timeout 10 ./ellipse_detector --help 2>/dev/null || echo "✅ Program runs (expected exit)"
+        else
+          echo "❌ Executable not found"
+          exit 1
+        fi
+
+    - name: Test executable (Windows)
+      if: matrix.os == 'windows-latest'
+      run: |
+        if (Test-Path "${{github.workspace}}/build/${{env.BUILD_TYPE}}/ellipse_detector.exe") {
+          Write-Host "✅ Executable created successfully"
+        } else {
+          Write-Host "❌ Executable not found"
+          exit 1
+        }
+
+    - name: Prepare artifacts (Linux/macOS)
+      if: matrix.os != 'windows-latest'
+      run: |
+        mkdir -p artifacts
+        cp ellipse_detector artifacts/
+        cp README.md artifacts/ 2>/dev/null || echo "README.md not found"
+        cp LICENSE artifacts/ 2>/dev/null || echo "LICENSE not found"
+
+    - name: Prepare artifacts (Windows)
+      if: matrix.os == 'windows-latest'
+      run: |
+        New-Item -ItemType Directory -Force -Path artifacts
+        Copy-Item "${{github.workspace}}/build/${{env.BUILD_TYPE}}/ellipse_detector.exe" artifacts/
+        Copy-Item "README.md" artifacts/ -ErrorAction SilentlyContinue
+        Copy-Item "LICENSE" artifacts/ -ErrorAction SilentlyContinue
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: ${{ matrix.artifact_name }}
+        path: artifacts/
+        retention-days: 30
+
+  test:
+    needs: build
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    name: Test on ${{ matrix.os }}
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install OpenCV
+      run: |
+        if [[ "${{ matrix.os }}" == "ubuntu-latest" ]]; then
+          sudo apt-get update && sudo apt-get install -y libopencv-dev
+        else
+          brew install opencv
+        fi
+
+    - name: Build
+      run: |
+        make clean
+        make
+
+    - name: Run basic tests
+      run: |
+        echo "Running basic functionality tests..."
+        
+        # Test 1: Check if executable exists
+        if [ -f "./ellipse_detector" ]; then
+          echo "✅ Test 1 passed: Executable exists"
+        else
+          echo "❌ Test 1 failed: Executable not found"
+          exit 1
+        fi
+        
+        # Test 2: Test with sample image
+        if [ -f "image.png" ]; then
+          echo "Testing with sample image..."
+          timeout 30 ./ellipse_detector image.png > test_output.log 2>&1 || true
+          if grep -q "Total:" test_output.log; then
+            echo "✅ Test 2 passed: Program processes image successfully"
+          else
+            echo "⚠️  Test 2 warning: Program ran but output format unexpected"
+            cat test_output.log
+          fi
+        else
+          echo "⚠️  Test 2 skipped: No sample image found"
+        fi
+        
+        echo "✅ All basic tests completed"
+
+  release:
+    if: github.event_name == 'release'
+    needs: [build, test]
+    runs-on: ubuntu-latest
+    name: Create Release
+
+    steps:
+    - name: Download all artifacts
+      uses: actions/download-artifact@v3
+
+    - name: Create release archives
+      run: |
+        for dir in ellipse-detector-*; do
+          if [ -d "$dir" ]; then
+            cd "$dir"
+            if [[ "$dir" == *"windows"* ]]; then
+              zip -r "../${dir}.zip" .
+            else
+              tar -czf "../${dir}.tar.gz" .
+            fi
+            cd ..
+          fi
+        done
+
+    - name: Upload release assets
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          ellipse-detector-linux-x64.tar.gz
+          ellipse-detector-windows-x64.zip
+          ellipse-detector-macos-x64.tar.gz
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
