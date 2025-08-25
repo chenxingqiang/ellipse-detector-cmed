@@ -54,24 +54,35 @@ jobs:
 
     - name: Setup vcpkg (Windows)
       if: matrix.os == 'windows-latest'
-      uses: lukka/run-vcpkg@v11
-      with:
-        vcpkgGitCommitId: '5568f110b509a9fd90711978a7cb76bae75bb092'
+      run: |
+        git clone https://github.com/Microsoft/vcpkg.git
+        cd vcpkg
+        .\bootstrap-vcpkg.bat
+        echo "VCPKG_ROOT=${{ github.workspace }}\vcpkg" >> $env:GITHUB_ENV
+        echo "${{ github.workspace }}\vcpkg" >> $env:GITHUB_PATH
 
     - name: Install OpenCV with vcpkg (Windows)
       if: matrix.os == 'windows-latest'
       run: |
-        vcpkg install opencv4:x64-windows
+        cd vcpkg
+        .\vcpkg.exe install opencv4:x64-windows
         echo "Checking vcpkg installation..."
-        vcpkg list | grep opencv
-        echo "Listing installed files..."
-        dir "vcpkg/installed/x64-windows/include" /s | findstr opencv || echo "OpenCV headers not found in expected location"
+        .\vcpkg.exe list
+        echo "Checking OpenCV installation..."
+        if (Test-Path "installed\x64-windows\include\opencv2") {
+          echo "✅ OpenCV headers found"
+          dir "installed\x64-windows\include\opencv2" | Select-Object -First 5
+        } else {
+          echo "❌ OpenCV headers not found"
+          dir "installed" -Recurse -Name "*opencv*" | Select-Object -First 10
+        }
 
     - name: Configure CMake (Windows)
       if: matrix.os == 'windows-latest'
       run: |
         echo "Setting up CMake with vcpkg toolchain..."
-        cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_TOOLCHAIN_FILE="${{github.workspace}}/vcpkg/scripts/buildsystems/vcpkg.cmake" -DVCPKG_TOOLCHAIN=ON
+        echo "VCPKG_ROOT: $env:VCPKG_ROOT"
+        cmake -B build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_TOOLCHAIN_FILE="vcpkg/scripts/buildsystems/vcpkg.cmake" -DVCPKG_TOOLCHAIN=ON
 
     - name: Build with Make (Linux/macOS)
       if: matrix.os != 'windows-latest'
@@ -81,7 +92,7 @@ jobs:
 
     - name: Build with CMake (Windows)
       if: matrix.os == 'windows-latest'
-      run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+      run: cmake --build build --config ${{env.BUILD_TYPE}}
 
     - name: Test executable (Linux/macOS)
       if: matrix.os != 'windows-latest'
@@ -99,10 +110,13 @@ jobs:
     - name: Test executable (Windows)
       if: matrix.os == 'windows-latest'
       run: |
-        if (Test-Path "${{github.workspace}}/build/${{env.BUILD_TYPE}}/ellipse_detector.exe") {
+        if (Test-Path "build/${{env.BUILD_TYPE}}/ellipse_detector.exe") {
           Write-Host "✅ Executable created successfully"
+          Write-Host "File size: $((Get-Item build/${{env.BUILD_TYPE}}/ellipse_detector.exe).Length) bytes"
         } else {
           Write-Host "❌ Executable not found"
+          Write-Host "Build directory contents:"
+          dir build -Recurse
           exit 1
         }
 
@@ -118,7 +132,7 @@ jobs:
       if: matrix.os == 'windows-latest'
       run: |
         New-Item -ItemType Directory -Force -Path artifacts
-        Copy-Item "${{github.workspace}}/build/${{env.BUILD_TYPE}}/ellipse_detector.exe" artifacts/
+        Copy-Item "build/${{env.BUILD_TYPE}}/ellipse_detector.exe" artifacts/
         Copy-Item "README.md" artifacts/ -ErrorAction SilentlyContinue
         Copy-Item "LICENSE" artifacts/ -ErrorAction SilentlyContinue
 
