@@ -25,8 +25,8 @@ jobs:
             artifact_name: ellipse-detector-linux-x64
           - os: windows-latest
             name: Windows
-                install_deps: |
-      vcpkg install opencv[core,imgproc,highgui,features2d,imgcodecs]:x64-windows
+            install_deps: |
+              vcpkg install opencv[core,imgproc,highgui,features2d,imgcodecs]:x64-windows
             executable: ellipse_detector.exe
             artifact_name: ellipse-detector-windows-x64
           - os: macos-latest
