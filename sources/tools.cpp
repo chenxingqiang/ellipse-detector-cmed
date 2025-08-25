@@ -1,4 +1,4 @@
-/* ÏñËØµã²Ù×÷·½·¨µÄ¹¤¾ßÀà */
+/* ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ï¿½ï¿½ï¿½ */
 
 /*
 This code is intended for academic use only.
@@ -19,15 +19,15 @@ last update:
 
 Point2f lineCrossPoint(Point2f l1p1,Point2f l1p2,Point2f l2p1,Point2f l2p2 )
 {
-	/* Îª±ÜÃâ¸ÕºÃ(0, 0)µãÎª½»µãµÄÇé¿ö£¬'ÎÞÐ§µã'ÓÉ'ÕýÎÞÇîÐ¡Êý'±íÊ¾£º1.#INF = 1/tmp(=0) */
+	/* Îªï¿½ï¿½ï¿½ï¿½Õºï¿½(0, 0)ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½'ï¿½ï¿½Ð§ï¿½ï¿½'ï¿½ï¿½'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½'ï¿½ï¿½Ê¾ï¿½ï¿½1.#INF = 1/tmp(=0) */
 	float tmp = 0;
 	float positive_infinity = 1 / tmp;
 	/*int positive_infinity = 0;*/
 
 	Point2f crossPoint;
 	float k1,k2,b1,b2;
-	if (l1p1.x==l1p2.x&&l2p1.x==l2p2.x){						// ´¹Ö±xÖá²úÉúÆ½ÐÐ
-		crossPoint=Point2f(positive_infinity, positive_infinity);//ÎÞÐ§µã
+	if (l1p1.x==l1p2.x&&l2p1.x==l2p2.x){						// ï¿½ï¿½Ö±xï¿½ï¿½ï¿½ï¿½ï¿½Æ½ï¿½ï¿½
+		crossPoint=Point2f(positive_infinity, positive_infinity);//ï¿½ï¿½Ð§ï¿½ï¿½
 		return crossPoint;
 	}
 	if (l1p1.x==l1p2.x)
@@ -51,9 +51,9 @@ Point2f lineCrossPoint(Point2f l1p1,Point2f l1p2,Point2f l2p1,Point2f l2p2 )
 	k2=(l2p2.y-l2p1.y)/(l2p2.x-l2p1.x);
 	b1=l1p1.y-k1*l1p1.x;
 	b2=l2p1.y-k2*l2p1.x;
-	if (k1==k2)													// Ð±ÂÊÏàµÈ²úÉúÆ½ÐÐ
+	if (k1==k2)													// Ð±ï¿½ï¿½ï¿½ï¿½È²ï¿½ï¿½ï¿½Æ½ï¿½ï¿½
 	{
-		crossPoint=Point2f(positive_infinity, positive_infinity);//ÎÞÐ§µã
+		crossPoint=Point2f(positive_infinity, positive_infinity);//ï¿½ï¿½Ð§ï¿½ï¿½
 	}
 	else
 	{
@@ -70,7 +70,7 @@ void point2Mat(Point2f p1,Point2f p2,float mat[2][2])
 	mat[1][0]=p2.x;
 	mat[1][1]=p2.y;
 }
-// ×Ô¶¨Òåº¯Êý£ºÍ¨¹ýÐÐÁÐÊ½µÄ¼ÆËã·½Ê½ÇóAµÄÐÐÁÐÊ½£¬´úÌæÄÚÖÃµÄdetº¯Êý£¬AÎª3*3µÄ¾ØÕó¡£
+// ï¿½Ô¶ï¿½ï¿½åº¯ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½Ä¼ï¿½ï¿½ã·½Ê½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½detï¿½ï¿½ï¿½ï¿½ï¿½ï¿½AÎª3*3ï¿½Ä¾ï¿½ï¿½ï¿½
 float detResult(float matR[])
 {
 	float result = matR[0] * matR[4] * matR[8] + matR[1] * matR[5] * matR[6]
@@ -79,71 +79,71 @@ float detResult(float matR[])
 
 	return result;
 }
-// ×Ô¶¨Òåº¯Êý£ºÇóµãR1µ½µãR2+R3Ëù¶¨µÄÖ±ÏßµÄ¾àÀë¡£
+// ï¿½Ô¶ï¿½ï¿½åº¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½R1ï¿½ï¿½ï¿½ï¿½R2+R3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ßµÄ¾ï¿½ï¿½ë¡£
 float getDistance(Point2f R1, Point2f R2, Point2f R3) {
-	// ÇóÖ±Ïß·½³ÌL:R2R3
+	// ï¿½ï¿½Ö±ï¿½ß·ï¿½ï¿½ï¿½L:R2R3
 	float A = 0, B = 0, C = 0;
 	A = R3.y - R2.y;	// A = y2 - y1
 	B = R2.x - R3.x;	// B = x1 - x2
 	C = R3.x * R2.y - R2.x * R3.y;	// C = x2 * y1 - x1 * y2
-	// ´úÈëÇóµãR1µ½Ö±ÏßL:R2R3¾àÀëµÄ¹«Ê½ÖÐ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½R1ï¿½ï¿½Ö±ï¿½ï¿½L:R2R3ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½Ê½ï¿½ï¿½
 	float distance = abs(A * R1.x + B * R1.y + C) / (sqrtf(A * A + B * B));
 
 	return distance;
 }
 /**
- *ÕâÀïÊÇÎÒÐèÒª¸Ä¶¯µÄ£º¸ü»»Á½»¡ÉÏÁùµãÅÐ¶ÏÍ¬Ô²µÄ·½·¨ÎªÈýµã¹²Ïß£¬¿´Ð§ÂÊÊÇ·ñÓÐÌáÉý£¡
- * Ô­°æ£º¼ÆËã³öÕâÁùµãµÄÌØÕ÷Öµ(b1~b6 / a1~a6)²¢·µ»Ø£¬¾ø¶ÔÖµºóÔÙÓë'1'±È½Ï£¬
- *	Èô²î¾àÔÚÎó²î·¶Î§(·§Öµ)ÄÚ£¬ÔòÊÓÎªÂú×ãÌõ¼þ¼´ÊÓÎªÁ½»¡(Áùµã)¹²Ô²¡£
+ *ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½Ä¶ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½Í¬Ô²ï¿½Ä·ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ã¹²ï¿½ß£ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * Ô­ï¿½æ£ºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ(b1~b6 / a1~a6)ï¿½ï¿½ï¿½ï¿½ï¿½Ø£ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½'1'ï¿½È½Ï£ï¿½
+ *	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½î·¶Î§(ï¿½ï¿½Öµ)ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½Ô²ï¿½ï¿½
  *
- * ÐÂ°æ£ºËã³öÁùµãµÄÓ³ÉäµãR1~R3£¬ÅÐ¶ÏR1~R3ÊÇ·ñ'½üËÆ'¹²Ïß£¬ÔòÊÓÎªÂú×ãÍ¬Ô²Ìõ¼þ¡£
+ * ï¿½Â°æ£ºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó³ï¿½ï¿½ï¿½R1~R3ï¿½ï¿½ï¿½Ð¶ï¿½R1~R3ï¿½Ç·ï¿½'ï¿½ï¿½ï¿½ï¿½'ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½Í¬Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  */
 /**
- *²ÎÊý½âÊÍ£º
+ *ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
  * V2SP = (Point2f p3,Point2f p2,Point2f p1,Point2f p4,Point2f p5,Point2f p6)
- *	(p3, p2, p1)-(p4, p5, p6)£¬La:<p1, p2>~~~Lb:<p3, p4>~~~Lc:<p5, p6>¡£
- * Mat£ºÊÇOpenCV±í´ï¶þÎ¬Í¼Æ¬µÄ»ù´¡£¬ÔÚ´æ´¢ÏñËØµãÐÅÏ¢Ê±Ê¹ÓÃC++½Ó¿Ú-Mat¿ÉÒÔ×Ô¶¯¹ÜÀíÄÚ´æ£¬
- *	ÓÉ¾ØÕóÍ·(¾ØÕó´óÐ¡+´æ´¢µØÖ·µÈÐÅÏ¢)ºÍÖ¸Õë(Ö¸ÏòÏñËØÖµ¾ØÕó)×é³É¡£
- * OpenCVÖÐ±íÊ¾Í¼Æ¬Ò»°ãÓÃMatµÄ×ÓÀà_MatÀàÐÍ£¬²¢Ö¸¶¨Í¨µÀÎ»Êý+Êý¾ÝÀàÐÍ+Í¨µÀ£¬
- *	Èç'CV_32F3C'±íÊ¾32Î»+floatÀàÐÍ+ÈýÍ¨µÀ£¬Ò»°ãÊ¹ÓÃBGRÈýÍ¨µÀ¼´¿É£¬´æ´¢ÖµÎªÏñËØ»Ò¶ÈÖµ¡£
+ *	(p3, p2, p1)-(p4, p5, p6)ï¿½ï¿½La:<p1, p2>~~~Lb:<p3, p4>~~~Lc:<p5, p6>ï¿½ï¿½
+ * Matï¿½ï¿½ï¿½ï¿½OpenCVï¿½ï¿½ï¿½ï¿½ï¿½Î¬Í¼Æ¬ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú´æ´¢ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½Ï¢Ê±Ê¹ï¿½ï¿½C++ï¿½Ó¿ï¿½-Matï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú´æ£¬
+ *	ï¿½É¾ï¿½ï¿½ï¿½Í·(ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡+ï¿½æ´¢ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ï¢)ï¿½ï¿½Ö¸ï¿½ï¿½(Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½É¡ï¿½
+ * OpenCVï¿½Ð±ï¿½Ê¾Í¼Æ¬Ò»ï¿½ï¿½ï¿½ï¿½Matï¿½ï¿½ï¿½ï¿½ï¿½ï¿½_Matï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Í¨ï¿½ï¿½Î»ï¿½ï¿½+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½+Í¨ï¿½ï¿½ï¿½ï¿½
+ *	ï¿½ï¿½'CV_32F3C'ï¿½ï¿½Ê¾32Î»+floatï¿½ï¿½ï¿½ï¿½+ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê¹ï¿½ï¿½BGRï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½É£ï¿½ï¿½æ´¢ÖµÎªï¿½ï¿½ï¿½Ø»Ò¶ï¿½Öµï¿½ï¿½
  */
 float value4SixPoints( V2SP )
 {
-/* Ô­·½·¨£ºÁùµãÌØÕ÷Êý=1~ÅÐ¶ÏÍ¬Ô² */
+/* Ô­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½=1~ï¿½Ð¶ï¿½Í¬Ô² */
 #if 0
 	float result=1;
 	Mat A,B,C;
 	float matB[2][2],matC[2][2];
 	
-	// ÈýÖ±Ïßabc(Á½µãÈ·¶¨Ò»ÌõÖ±ÏßÈçp1p2È·¶¨Ö±Ïßa)Á½Á½½»ÓÚuvwÈýµã( u=<a, c> )
+	// ï¿½ï¿½Ö±ï¿½ï¿½abc(ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½Ò»ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½p1p2È·ï¿½ï¿½Ö±ï¿½ï¿½a)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½uvwï¿½ï¿½ï¿½ï¿½( u=<a, c> )
 	Point2f v,w,u;
 	v=lineCrossPoint(p1,p2,p3,p4);
 	w=lineCrossPoint(p5,p6,p3,p4);
 	u=lineCrossPoint(p5,p6,p1,p2);
 
 	float tmp = 0;
-	float positive_infinity = 1 / tmp;	// ÕýÎÞÇîÐ¡Êý1.#INF
+	float positive_infinity = 1 / tmp;	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½1.#INF
 	/*float positive_infinity = 0;*/
-	// ÅÐ¶ÏÈýÖ±Ïß½»µãÊÇ·ñÎªÎÞÐ§µã
+	// ï¿½Ð¶ï¿½ï¿½ï¿½Ö±ï¿½ß½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½Ð§ï¿½ï¿½
 	if (v.x == positive_infinity || w.x == positive_infinity || u.x == positive_infinity) {
 
 		// cout << "result:" << result << endl;
 		// cout << "test:" << (fabs(result) > 0.47f) << endl;
 		// cout << "infinity\t";
 
-		// ·µ»ØÒ»¸ö"|x| > tCNC·§Öµ = false"µÄÊý¼´¿É£¬·ûºÏ"NaN > tCNC = false"¡£
+		// ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½"|x| > tCNCï¿½ï¿½Öµ = false"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É£ï¿½ï¿½ï¿½ï¿½ï¿½"NaN > tCNC = false"ï¿½ï¿½
 		return 0;
 	}
 
-	// ½«u,v×ø±ê·ÅÈë¶þÎ¬Êý×ématBµÄÁ½ÐÐ£¬p1,p2×ø±ê·ÅÈë¶þÎ¬Êý×ématCµÄÁ½ÐÐ
+	// ï¿½ï¿½u,vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¬ï¿½ï¿½ï¿½ï¿½matBï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½p1,p2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¬ï¿½ï¿½ï¿½ï¿½matCï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	point2Mat(u,v,matB);
 	point2Mat(p1,p2,matC);
-	// ¸ù¾Ý¶þÎ¬Êý×é¶¨Òå¾ØÕóBC£»¸ù¾ÝBC(uvºÍp1p2)£¬ÇóA=C*(B^-1)£»¸³ÖµA[a1 b1; a2 b2]
+	// ï¿½ï¿½ï¿½Ý¶ï¿½Î¬ï¿½ï¿½ï¿½é¶¨ï¿½ï¿½ï¿½ï¿½ï¿½BCï¿½ï¿½ï¿½ï¿½ï¿½ï¿½BC(uvï¿½ï¿½p1p2)ï¿½ï¿½ï¿½ï¿½A=C*(B^-1)ï¿½ï¿½ï¿½ï¿½ÖµA[a1 b1; a2 b2]
 	B=Mat(2,2,CV_32F,matB);
 	C=Mat(2,2,CV_32F,matC);
 	A=C*B.inv();
-	// ÇóÌØÕ÷±È£ºb1* b2 / a1 * a2
-	/* TODO£ºÕâÀïÓÃµÄÊÇa1*a2 / b1*b2£¬ÒòÑÏ¸ñÖÐ±ÈÖµÎª1ËùÒÔ¶þÕß½á¹ûÓ¦¸Ã²î±ð²»´ó£»ÎªÊ²Ã´ÕâÀïÊ¹ÓÃb/aµÄÐÎÊ½»á½µµÍÐÔÄÜ£¿ */
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½b1* b2 / a1 * a2
+	/* TODOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½a1*a2 / b1*b2ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ð±ï¿½ÖµÎª1ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ß½ï¿½ï¿½Ó¦ï¿½Ã²ï¿½ð²»´ï¿½ÎªÊ²Ã´ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½b/aï¿½ï¿½ï¿½ï¿½Ê½ï¿½á½µï¿½ï¿½ï¿½ï¿½ï¿½Ü£ï¿½ */
 	result*=A.at<float>(0,0)*A.at<float>(1,0)/(A.at<float>(0,1)*A.at<float>(1,1));
 	/*result *= A.at<float>(0, 1) * A.at<float>(1, 1) / (A.at<float>(0, 0) * A.at<float>(1, 0));*/
 
@@ -154,7 +154,7 @@ float value4SixPoints( V2SP )
 	cout<<"A:\t"<<A<<endl;
 	cout<<"result:\t"<<result<<endl;*/
 
-	/* Í¬ÀíÇó³ö b3*b4 / a3*a4 */
+	/* Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ b3*b4 / a3*a4 */
 	point2Mat(v,w,matB);
 	point2Mat(p3,p4,matC);
 	B=Mat(2,2,CV_32F,matB);
@@ -162,7 +162,7 @@ float value4SixPoints( V2SP )
 	A=C*B.inv();
 	result*=A.at<float>(0,0)*A.at<float>(1,0)/(A.at<float>(0,1)*A.at<float>(1,1));
 
-	/* Í¬ÀíÇó³ö b5*b6 / a5*a6 */
+	/* Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ b5*b6 / a5*a6 */
 	point2Mat(w,u,matB);
 	point2Mat(p5,p6,matC);
 	B=Mat(2,2,CV_32F,matB);
@@ -170,22 +170,22 @@ float value4SixPoints( V2SP )
 	A=C*B.inv();
 	result*=A.at<float>(0,0)*A.at<float>(1,0)/(A.at<float>(0,1)*A.at<float>(1,1));
 	
-	// ÀÛ¼ÆÇó»ýµÃµ½ÌØÕ÷ÊýCNC£ºb1*b2 * b3*b4 * b5*b6 / a1*a2 * a3*a4 * a5*a6 = 1
-	return result - 1;	// ÌØÕ÷ÊýCNCÏÈ'-1'²Ù×÷£¬ÔÙ·µ»ØÓÃ¾ø¶ÔÖµºÍ·§Öµ±È½Ï
+	// ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½CNCï¿½ï¿½b1*b2 * b3*b4 * b5*b6 / a1*a2 * a3*a4 * a5*a6 = 1
+	return result - 1;	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½CNCï¿½ï¿½'-1'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù·ï¿½ï¿½ï¿½ï¿½Ã¾ï¿½ï¿½ï¿½Öµï¿½Í·ï¿½Öµï¿½È½ï¿½
 #endif // 0
 
-/* ¸Äa£ºÈýÓ³ÉäµãÃæ»ý=1/2*ÐÐÁÐÊ½=0~ÅÐ¶ÏÓ³Éäµã¹²Ïß~ÅÐ¶ÏÍ¬Ô² */
+/* ï¿½ï¿½aï¿½ï¿½ï¿½ï¿½Ó³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½=1/2*ï¿½ï¿½ï¿½ï¿½Ê½=0~ï¿½Ð¶ï¿½Ó³ï¿½ï¿½ã¹²ï¿½ï¿½~ï¿½Ð¶ï¿½Í¬Ô² */
 #if 0
-	// Áùµãp1~p6×é³ÉµÄÁù±ßÐÎ£¬Èý¶Ô¶Ô±ßÑÓ³¤Ïß½»ÓÚR1, R2, R3Èýµã(ÌØÕ÷Ó³Éäµã)
+	// ï¿½ï¿½ï¿½ï¿½p1~p6ï¿½ï¿½Éµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î£ï¿½ï¿½ï¿½ï¿½Ô¶Ô±ï¿½ï¿½Ó³ï¿½ï¿½ß½ï¿½ï¿½ï¿½R1, R2, R3ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½Ó³ï¿½ï¿½ï¿½)
 	Point2f R1, R2, R3;
 	R1 = lineCrossPoint(p1, p2, p4, p5);
 	R2 = lineCrossPoint(p2, p3, p5, p6);
 	R3 = lineCrossPoint(p3, p4, p6, p1);
 	
 	float tmp = 0;
-	float positive_infinity = 1 / tmp;	// ÕýÎÞÇîÐ¡Êý1.#INF
+	float positive_infinity = 1 / tmp;	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½1.#INF
 	/*float positive_infinity = 0;*/
-	// ÅÐ¶ÏRµãÊÇ·ñÎªÎÞÐ§µã(ÎÞÇî)-¶Ô±ßÆ½ÐÐ£¬ÈôRÎªÎÞÇîÔ¶µãÔòÔÝ½«ÆäÅÐÎªÍ¬Ô²£»
+	// ï¿½Ð¶ï¿½Rï¿½ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½Ð§ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)-ï¿½Ô±ï¿½Æ½ï¿½Ð£ï¿½ï¿½ï¿½RÎªï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½Ý½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÍ¬Ô²ï¿½ï¿½
 	if (R1.x == positive_infinity || R2.x == positive_infinity || R3.x == positive_infinity) {
 
 		//Mat A = Mat(3, 3, CV_32F, matR);
@@ -194,31 +194,31 @@ float value4SixPoints( V2SP )
 		//cout << "test:" << (fabs(result) > 500.36f) << endl;
 		//cout << "infinity\t";
 
-		// ·µ»ØÒ»¸ö"|x| > tCNC·§Öµ = false"µÄÊý¼´¿É£¬·ûºÏ"result > tCNC = false"¡£
+		// ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½"|x| > tCNCï¿½ï¿½Öµ = false"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É£ï¿½ï¿½ï¿½ï¿½ï¿½"result > tCNC = false"ï¿½ï¿½
 		return 0;
 	}
 	
-	// ¼ÆËãR1, R2, R3Èýµã¹¹³ÉµÄÐÐÁÐÊ½µÄÖµdet(A)
+	// ï¿½ï¿½ï¿½ï¿½R1, R2, R3ï¿½ï¿½ï¿½ã¹¹ï¿½Éµï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½Öµdet(A)
 	float matR[] = {R1.x, R1.y, 1, R2.x, R2.y, 1, R3.x, R3.y, 1};
-	// det(A)ÊÇÈý½ÇÐÎR1R2R3Ãæ»ýµÄ2±¶£¬¶øÈý½ÇÐÎR1R2R3Ãæ»ý½üËÆÎª0 ~ Èýµã½üËÆ¹²Ïß
+	// det(A)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½R1R2R3ï¿½ï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½R1R2R3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª0 ~ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¹ï¿½ï¿½ï¿½
 	float result = detResult(matR) * 0.5;
 	
-	// ¼ÆËã³ö1/2ÐÐÁÐÊ½µÄÖµ=ÈýµãÃæ»ý½üËÆÎª0£¬ÔÙ·µ»ØÓÃ|result|ºÍtCNC·§Öµ±È½Ï
+	// ï¿½ï¿½ï¿½ï¿½ï¿½1/2ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½Öµ=ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª0ï¿½ï¿½ï¿½Ù·ï¿½ï¿½ï¿½ï¿½ï¿½|result|ï¿½ï¿½tCNCï¿½ï¿½Öµï¿½È½ï¿½
 	return result;
 #endif // 0
 
-/* ¸Äb£ºÈýÓ³ÉäµãÌØÕ÷Êý=-1~ÅÐ¶ÏÓ³Éäµã¹²Ïß~ÅÐ¶ÏÍ¬Ô² */
+/* ï¿½ï¿½bï¿½ï¿½ï¿½ï¿½Ó³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½=-1~ï¿½Ð¶ï¿½Ó³ï¿½ï¿½ã¹²ï¿½ï¿½~ï¿½Ð¶ï¿½Í¬Ô² */
 #if 0
-	// Áùµãp1~p6×é³ÉµÄÁù±ßÐÎ£¬Èý¶Ô¶Ô±ßÑÓ³¤Ïß½»ÓÚR1, R2, R3Èýµã(ÌØÕ÷Ó³Éäµã)
+	// ï¿½ï¿½ï¿½ï¿½p1~p6ï¿½ï¿½Éµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î£ï¿½ï¿½ï¿½ï¿½Ô¶Ô±ï¿½ï¿½Ó³ï¿½ï¿½ß½ï¿½ï¿½ï¿½R1, R2, R3ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½Ó³ï¿½ï¿½ï¿½)
 	Point2f R1, R2, R3;
 	R1 = lineCrossPoint(p1, p2, p4, p5);
 	R2 = lineCrossPoint(p2, p3, p5, p6);
 	R3 = lineCrossPoint(p3, p4, p6, p1);
 
 	float tmp = 0;
-	float positive_infinity = 1 / tmp;	// ÕýÎÞÇîÐ¡Êý1.#INF
+	float positive_infinity = 1 / tmp;	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½1.#INF
 	/*float positive_infinity = 0;*/
-	// ÅÐ¶ÏRµãÊÇ·ñÎªÎÞÐ§µã(ÎÞÇî)-¶Ô±ßÆ½ÐÐ£¬ÈôRÎªÎÞÇîÔ¶µãÔòÔÝ½«ÆäÅÐÎªÍ¬Ô²£»
+	// ï¿½Ð¶ï¿½Rï¿½ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½Ð§ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)-ï¿½Ô±ï¿½Æ½ï¿½Ð£ï¿½ï¿½ï¿½RÎªï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½Ý½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÍ¬Ô²ï¿½ï¿½
 	if (R1.x == positive_infinity || R2.x == positive_infinity || R3.x == positive_infinity) {
 
 		//Mat A = Mat(3, 3, CV_32F, matR);
@@ -227,11 +227,11 @@ float value4SixPoints( V2SP )
 		//cout << "test:" << (fabs(result) > 500.36f) << endl;
 		//cout << "infinity\t";
 
-		// ·µ»ØÒ»¸ö"|x| > tCNC·§Öµ = false"µÄÊý¼´¿É£¬·ûºÏ"result > tCNC = false"¡£
+		// ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½"|x| > tCNCï¿½ï¿½Öµ = false"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É£ï¿½ï¿½ï¿½ï¿½ï¿½"result > tCNC = false"ï¿½ï¿½
 		return 0;
 	}
 
-	// ¼ÆËãÈýÓ³ÉäµãR1, R2, R3µÄÌØÕ÷ÊýCNL½üËÆÎª-1£¬ÔòÈýµã¹²Ïß£»
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó³ï¿½ï¿½ï¿½R1, R2, R3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½CNLï¿½ï¿½ï¿½ï¿½Îª-1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã¹²ï¿½ß£ï¿½
 	float result = 1;
 	Mat A, B, C;
 	float matB[2][2], matC[1][2];
@@ -240,30 +240,30 @@ float value4SixPoints( V2SP )
 	v = lineCrossPoint(p1, p2, p3, p4);
 	w = lineCrossPoint(p5, p6, p3, p4);
 	u = lineCrossPoint(p5, p6, p1, p2);
-	// ÅÐ¶ÏÈýÖ±Ïß½»µãÊÇ·ñÎªÎÞÐ§µã
+	// ï¿½Ð¶ï¿½ï¿½ï¿½Ö±ï¿½ß½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½Ð§ï¿½ï¿½
 	if (v.x == positive_infinity || w.x == positive_infinity || u.x == positive_infinity) {
 
 		// cout << "result:" << result << endl;
 		// cout << "test:" << (fabs(result) > 0.47f) << endl;
 		// cout << "infinity\t";
 
-		// ·µ»ØÒ»¸ö"|x| > tCNC·§Öµ = false"µÄÊý¼´¿É£¬·ûºÏ"NaN > tCNC = false"¡£
+		// ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½"|x| > tCNCï¿½ï¿½Öµ = false"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É£ï¿½ï¿½ï¿½ï¿½ï¿½"NaN > tCNC = false"ï¿½ï¿½
 		return 0;
 	}
 
-	// ½«u,v×ø±ê·ÅÈë¶þÎ¬Êý×ématBµÄÁ½ÐÐ£»R1×ø±ê·ÅÈë¶þÎ¬Êý×ématCµÄÒ»ÐÐ
+	// ï¿½ï¿½u,vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¬ï¿½ï¿½ï¿½ï¿½matBï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½R1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¬ï¿½ï¿½ï¿½ï¿½matCï¿½ï¿½Ò»ï¿½ï¿½
 	point2Mat(u, v, matB);
 	matC[0][0] = R1.x;
 	matC[0][1] = R1.y;
-	// ¸ù¾Ý¶þÎ¬Êý×é¶¨Òå¾ØÕóBC£»¸ù¾ÝBC(uvºÍR1)£¬ÇóA=C*(B^-1)£»¸³ÖµA[a1 b1]
+	// ï¿½ï¿½ï¿½Ý¶ï¿½Î¬ï¿½ï¿½ï¿½é¶¨ï¿½ï¿½ï¿½ï¿½ï¿½BCï¿½ï¿½ï¿½ï¿½ï¿½ï¿½BC(uvï¿½ï¿½R1)ï¿½ï¿½ï¿½ï¿½A=C*(B^-1)ï¿½ï¿½ï¿½ï¿½ÖµA[a1 b1]
 	B = Mat(2, 2, CV_32F, matB);
 	C = Mat(1, 2, CV_32F, matC);
 	A = C * B.inv();
-	// ÇóÌØÕ÷±È£ºb1 / a1£»ÕâÀïÓÃµÄÊÇa1 / b1£¬Ô­ÒòÍ¬ÉÏÊöµÚÒ»¸ö·½·¨ÖÐÁùµãÌØÕ÷±È
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½b1 / a1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½a1 / b1ï¿½ï¿½Ô­ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	result *= A.at<float>(0, 0) / A.at<float>(0, 1);
 	/*result *= A.at<float>(0, 1) / A.at<float>(0, 0);*/
 
-	/* Í¬ÀíÇó³ö b2 / a2 */
+	/* Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ b2 / a2 */
 	point2Mat(u, w, matB);
 	matC[0][0] = R2.x;
 	matC[0][1] = R2.y;
@@ -272,7 +272,7 @@ float value4SixPoints( V2SP )
 	A = C * B.inv();
 	result *= A.at<float>(0, 0) / A.at<float>(0, 1);
 
-	/* Í¬ÀíÇó³ö b3 / a3 */
+	/* Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ b3 / a3 */
 	point2Mat(v, w, matB);
 	matC[0][0] = R3.x;
 	matC[0][1] = R3.y;
@@ -281,22 +281,22 @@ float value4SixPoints( V2SP )
 	A = C * B.inv();
 	result *= A.at<float>(0, 0) / A.at<float>(0, 1);
 
-	// ÀÛ¼ÆÇó»ýµÃµ½ÌØÕ÷ÊýCNL£ºb1 * b2 * b3 / a1 * a2 * a3 = -1
-	return result + 1;	// ÌØÕ÷ÊýCNCÏÈ'+1'²Ù×÷£¬ÔÙ·µ»ØÓÃ¾ø¶ÔÖµºÍ·§Öµ±È½Ï
+	// ï¿½Û¼ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½CNLï¿½ï¿½b1 * b2 * b3 / a1 * a2 * a3 = -1
+	return result + 1;	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½CNCï¿½ï¿½'+1'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù·ï¿½ï¿½ï¿½ï¿½Ã¾ï¿½ï¿½ï¿½Öµï¿½Í·ï¿½Öµï¿½È½ï¿½
 #endif // 0
 
-/* ¸Äc1+c2£ºµãµ½ÁíÁ½µãÏß×î´ó¾àÀë<Th + µãµ½»Ø¹éÏß×î´ó¾àÀë<Th~ÅÐ¶ÏÓ³Éäµã¹²Ïß~ÅÐ¶ÏÍ¬Ô² */
+/* ï¿½ï¿½c1+c2ï¿½ï¿½ï¿½ãµ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½<Th + ï¿½ãµ½ï¿½Ø¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½<Th~ï¿½Ð¶ï¿½Ó³ï¿½ï¿½ã¹²ï¿½ï¿½~ï¿½Ð¶ï¿½Í¬Ô² */
 #if 1
-	// Áùµãp1~p6×é³ÉµÄÁù±ßÐÎ£¬Èý¶Ô¶Ô±ßÑÓ³¤Ïß½»ÓÚR1, R2, R3Èýµã(ÌØÕ÷Ó³Éäµã)
+	// ï¿½ï¿½ï¿½ï¿½p1~p6ï¿½ï¿½Éµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î£ï¿½ï¿½ï¿½ï¿½Ô¶Ô±ï¿½ï¿½Ó³ï¿½ï¿½ß½ï¿½ï¿½ï¿½R1, R2, R3ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½Ó³ï¿½ï¿½ï¿½)
 	Point2f R1, R2, R3;
 	R1 = lineCrossPoint(p1, p2, p4, p5);
 	R2 = lineCrossPoint(p2, p3, p5, p6);
 	R3 = lineCrossPoint(p3, p4, p6, p1);
 
 	float tmp = 0;
-	float positive_infinity = 1 / tmp;	// ÕýÎÞÇîÐ¡Êý1.#INF
+	float positive_infinity = 1 / tmp;	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½1.#INF
 	/*float positive_infinity = 0;*/
-	// ÅÐ¶ÏRµãÊÇ·ñÎªÎÞÐ§µã(ÎÞÇî)-¶Ô±ßÆ½ÐÐ£¬ÈôRÎªÎÞÇîÔ¶µãÔòÔÝ½«ÆäÅÐÎªÍ¬Ô²£»
+	// ï¿½Ð¶ï¿½Rï¿½ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½Ð§ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)-ï¿½Ô±ï¿½Æ½ï¿½Ð£ï¿½ï¿½ï¿½RÎªï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½Ý½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÍ¬Ô²ï¿½ï¿½
 	if (R1.x == positive_infinity || R2.x == positive_infinity || R3.x == positive_infinity) {
 
 		//Mat A = Mat(3, 3, CV_32F, matR);
@@ -305,12 +305,12 @@ float value4SixPoints( V2SP )
 		//cout << "test:" << (fabs(result) > 500.36f) << endl;
 		//cout << "infinity\t";
 
-		// ·µ»ØÒ»¸ö"|x| > tCNC·§Öµ = false"µÄÊý¼´¿É£¬·ûºÏ"result > tCNC = false"¡£
+		// ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½"|x| > tCNCï¿½ï¿½Öµ = false"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É£ï¿½ï¿½ï¿½ï¿½ï¿½"result > tCNC = false"ï¿½ï¿½
 		return 0;
 	}
 
 	#if 0
-		/* ·½·¨1½ÏÑÏ¸ñ£ºÇóµãµ½ÁíÁ½µãËù¶¨Ö±ÏßµÄ¾àÀë£¬È¡Èý´Î¶ÔÓ¦¾àÀëµÄ×î´ó£¬·µ»ØºÍ·§Öµ±È½Ï£»*/
+		/* ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ãµ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ßµÄ¾ï¿½ï¿½ë£¬È¡ï¿½ï¿½ï¿½Î¶ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó£¬·ï¿½ï¿½ØºÍ·ï¿½Öµï¿½È½Ï£ï¿½*/
 		float distanceR1 = getDistance(R1, R2, R3);
 		float distanceR2 = getDistance(R2, R1, R3);
 		float distanceR3 = getDistance(R3, R2, R1);
@@ -326,25 +326,25 @@ float value4SixPoints( V2SP )
 		}
 	
 		//cout << "test:" << maxDistance << endl;
-		return maxDistance;	// ·µ»Øµãµ½Ö±ÏßµÄ×î´ó¾àÀë£¬ºÍ·§Öµ±È½Ï
+		return maxDistance;	// ï¿½ï¿½ï¿½Øµãµ½Ö±ï¿½ßµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¬ï¿½Í·ï¿½Öµï¿½È½ï¿½
 	#endif // 0
 
 	#if 1
-		/* ·½·¨2½Ï×¼È·£º×îÐ¡¶þ³Ë·¨ÇóÈýµãµÄ»Ø¹éÏß£¬È¡Æäµ½»Ø¹éÏß¾àÀëµÄ×î´ó£¬·µ»ØºÍ·§Öµ±È½Ï£»*/
+		/* ï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½×¼È·ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½Ë·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»Ø¹ï¿½ï¿½ß£ï¿½È¡ï¿½äµ½ï¿½Ø¹ï¿½ï¿½ß¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó£¬·ï¿½ï¿½ØºÍ·ï¿½Öµï¿½È½Ï£ï¿½*/
 		float sumRx = R1.x + R2.x + R3.x;
 		float sumRxSquare = R1.x*R1.x + R2.x*R2.x + R3.x*R3.x;
 		float sumRxRy = R1.x*R1.y + R2.x*R2.y + R3.x*R3.y;
 		float sumRy = R1.y + R2.y + R3.y;
 
-		// ²Ð²îe^2=ÇóºÍ(yi - (kxi+b))^2£»·Ö±ð¶ÔkbÇóÆ«µ¼ÇÒÁîµ¼Êý=0(¿ÉÊ¹Îó²îe×îÐ¡)£¬¿ÉµÃ¹ØÓÚkbµÄ·½³Ì×é£¬Çó½â·½³Ì×éµÄ¿ÉµÃÊ¹e^2×îÐ¡µÄkbÖµ£¬¼´Ê¹µÃe^2×îÐ¡µÄy(È·¶¨»Ø¹éÏß)£»
-		// ½«·½³Ì×é»¯Îª¾ØÕó³Ë»ýÐÎÊ½A * k_b = B£¬¼´k_b(º¬k, b) = A.inv()*B£»
+		// ï¿½Ð²ï¿½e^2=ï¿½ï¿½ï¿½(yi - (kxi+b))^2ï¿½ï¿½ï¿½Ö±ï¿½ï¿½kbï¿½ï¿½Æ«ï¿½ï¿½ï¿½ï¿½ï¿½îµ¼ï¿½ï¿½=0(ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½eï¿½ï¿½Ð¡)ï¿½ï¿½ï¿½ÉµÃ¹ï¿½ï¿½ï¿½kbï¿½Ä·ï¿½ï¿½ï¿½ï¿½é£¬ï¿½ï¿½â·½ï¿½ï¿½ï¿½ï¿½Ä¿Éµï¿½Ê¹e^2ï¿½ï¿½Ð¡ï¿½ï¿½kbÖµï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½e^2ï¿½ï¿½Ð¡ï¿½ï¿½y(È·ï¿½ï¿½ï¿½Ø¹ï¿½ï¿½ï¿½)ï¿½ï¿½
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é»¯Îªï¿½ï¿½ï¿½ï¿½Ë»ï¿½ï¿½ï¿½Ê½A * k_b = Bï¿½ï¿½ï¿½ï¿½k_b(ï¿½ï¿½k, b) = A.inv()*Bï¿½ï¿½
 		float arryA[] = { sumRxSquare, sumRx, sumRx, 3 };
 		Mat1f matA = Mat(2, 2, CV_32F, arryA);
 		float arryB[] = { sumRxRy, sumRy };
 		Mat1f matB = Mat(2, 1, CV_32F, arryB);
-		Mat1f k_b = matA.inv() * matB;	// ½â³ökbÈ·¶¨Ö±ÏßL:y = kx + b
+		Mat1f k_b = matA.inv() * matB;	// ï¿½ï¿½ï¿½kbÈ·ï¿½ï¿½Ö±ï¿½ï¿½L:y = kx + b
 
-		// ÇóÈý¸öRµãµ½»Ø¹éÏßµÄÈý¸ö¾àÀëÖÐµÄ×î´ó¾àÀë
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Rï¿½ãµ½ï¿½Ø¹ï¿½ï¿½ßµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		float k = k_b.at<float>(0, 0);
 		float b = k_b.at<float>(1, 0);
 		float distanceR1 = abs(k * R1.x - R1.y + b) / (sqrtf(k * k + 1));
@@ -362,11 +362,11 @@ float value4SixPoints( V2SP )
 		}
 
 		//cout << "test:" << maxDistance << endl;
-		return maxDistance;	// ·µ»Øµãµ½»Ø¹éÏßµÄ×î´ó¾àÀë£¬ºÍ·§Öµ±È½Ï
+		return maxDistance;	// ï¿½ï¿½ï¿½Øµãµ½ï¿½Ø¹ï¿½ï¿½ßµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¬ï¿½Í·ï¿½Öµï¿½È½ï¿½
 	#endif // 0
 #endif // 0
 }
-/* ¸Ä¶¯½áÊø */
+/* ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½ */
 
 void MultiImage_OneWin(const std::string& MultiShow_WinName, const vector<Mat>& SrcImg_V, CvSize SubPlot, CvSize ImgMax_Size)  
 {  
@@ -434,12 +434,11 @@ void MultiImage_OneWin(const std::string& MultiShow_WinName, const vector<Mat>& 
 	int Scree_W = 1366;//GetSystemMetrics(SM_CXSCREEN);  
 	int Scree_H = 768;//GetSystemMetrics(SM_CYSCREEN);  
 	//cout<<Scree_W<<"\t"<<Scree_H<<endl;
-	cvNamedWindow(MultiShow_WinName.c_str(), CV_WINDOW_NORMAL);
-	cvMoveWindow(MultiShow_WinName.c_str(),(Scree_W - Disp_Img.cols)/2 ,(Scree_H - Disp_Img.rows)/2);//Centralize the window  
-	IplImage tmp_Disp_Img= IplImage(Disp_Img);
-	cvShowImage(MultiShow_WinName.c_str(), &tmp_Disp_Img);  
-	cvWaitKey(0);  
-	cvDestroyWindow(MultiShow_WinName.c_str());  
+	namedWindow(MultiShow_WinName, WINDOW_NORMAL);
+	moveWindow(MultiShow_WinName,(Scree_W - Disp_Img.cols)/2 ,(Scree_H - Disp_Img.rows)/2);//Centralize the window  
+	imshow(MultiShow_WinName, Disp_Img);  
+	waitKey(0);  
+	destroyWindow(MultiShow_WinName);  
 }  
 
 
@@ -448,7 +447,7 @@ void PyrDown(string picName)
 	Mat img1=imread(picName);
 	Mat img2;
 	Size sz;
-	//½ð×ÖËþÏòÏÂ»òÕßÏòÉÏ²ÉÑù²Ù×÷ £¬»ù±¾²»¸Ä±äÍ¼Ïñ³¤¿í±ÈÂÊ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½Í¼ï¿½ñ³¤¿ï¿½ï¿½ï¿½ï¿½ï¿½
 	//pyrDown(img1,img2,sz,BORDER_DEFAULT);
 	pyrUp(img1,img2,sz,BORDER_DEFAULT);
 	pyrUp(img2,img2,sz,BORDER_DEFAULT);
@@ -465,25 +464,25 @@ Mat matResize(Mat src,double scale){
 	if(!showtimeandpic){
 		Size dsize = Size(int(src.cols*scale),int(src.rows*scale));
 		img2 = Mat(dsize,CV_32S);
-		resize(src, img2,dsize,CV_INTER_CUBIC);
+		resize(src, img2,dsize,INTER_CUBIC);
 	}
 	else{
 		clock_t start_time=clock();
 		{
 			Size dsize = Size(int(src.cols*scale),int(src.rows*scale));
 			img2 = Mat(dsize,CV_32S);
-			resize(src, img2,dsize,CV_INTER_CUBIC);
+			resize(src, img2,dsize,INTER_CUBIC);
 		}
 		clock_t end_time=clock();
-		cout<< "Running time is: "<<static_cast<double>(end_time-start_time)/CLOCKS_PER_SEC*1000<<"ms"<<endl;//Êä³öÔËÐÐÊ±¼ä
+		cout<< "Running time is: "<<static_cast<double>(end_time-start_time)/CLOCKS_PER_SEC*1000<<"ms"<<endl;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
 
-		//CV_INTER_NN - ×î½üÁÚ²îÖµ,
-		//CV_INTER_LINEAR -  Ë«ÏßÐÔ²îÖµ (È±Ê¡Ê¹ÓÃ) 
-		//CV_INTER_AREA -  Ê¹ÓÃÏóËØ¹ØÏµÖØ²ÉÑù¡£µ±Í¼ÏñËõÐ¡Ê±ºò£¬¸Ã·½·¨
-		//¿ÉÒÔ±ÜÃâ²¨ÎÆ³öÏÖ¡£µ±Í¼Ïñ·Å´óÊ±£¬ÀàËÆÓÚ  CV_INTER_NN  ·½·¨.. 
-		//CV_INTER_CUBIC -  Á¢·½²îÖµ. 
-		namedWindow("WindowOrg",CV_WINDOW_AUTOSIZE);
-		namedWindow("WindowNew",CV_WINDOW_AUTOSIZE);
+		//CV_INTER_NN - ï¿½ï¿½ï¿½ï¿½Ú²ï¿½Öµ,
+		//CV_INTER_LINEAR -  Ë«ï¿½ï¿½ï¿½Ô²ï¿½Öµ (È±Ê¡Ê¹ï¿½ï¿½) 
+		//CV_INTER_AREA -  Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½Ø¹ï¿½Ïµï¿½Ø²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½Ð¡Ê±ï¿½ò£¬¸Ã·ï¿½ï¿½ï¿½
+		//ï¿½ï¿½ï¿½Ô±ï¿½ï¿½â²¨ï¿½Æ³ï¿½ï¿½Ö¡ï¿½ï¿½ï¿½Í¼ï¿½ï¿½Å´ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  CV_INTER_NN  ï¿½ï¿½ï¿½ï¿½.. 
+		//CV_INTER_CUBIC -  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ. 
+		namedWindow("WindowOrg",WINDOW_AUTOSIZE);
+		namedWindow("WindowNew",WINDOW_AUTOSIZE);
 		imshow("WindowOrg",src);
 		imshow("WindowNew",img2);
 
@@ -492,7 +491,7 @@ Mat matResize(Mat src,double scale){
 	return img2;
 }
 
-//»æÖÆÑ¡³öµÄ»¡¶Î
+//ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½
 void showEdge(vector<vector<Point>> points_,Mat& picture)
 {
 	srand( (unsigned)time( NULL ));
@@ -511,13 +510,12 @@ void showEdge(vector<vector<Point>> points_,Mat& picture)
 		int sPoints=Edge.size();
 		for(int iPoint=0;iPoint<sPoints-1;iPoint++){
 			center=Edge.at(iPoint);
-			//²ÎÊýÎª£º³ÐÔØµÄÍ¼Ïñ¡¢Ô²ÐÄ¡¢°ë¾¶¡¢ÑÕÉ«¡¢´ÖÏ¸¡¢ÏßÐÍ  
+			//ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½Í¼ï¿½ï¿½Ô²ï¿½Ä¡ï¿½ï¿½ë¾¶ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
 			//circle(picture,center,radius,color); 
 			prev_point=Edge.at(iPoint);
 			current_point=Edge.at(iPoint+1);
-			//Mat to IplImage to cvArr
-			IplImage ipl_img = picture;
-			cvLine(&ipl_img, prev_point, current_point, color, 1, CV_AA);
+					// Use modern OpenCV line function
+		line(picture, prev_point, current_point, color, 1, LINE_AA);
 		}
 	}
 }
@@ -529,7 +527,7 @@ int writeFile(string fileName_cpp,vector<string> vsContent){
 	ofstream out(fileName_cpp);
 	if(!out)
 	{
-		cout<<"¶ÁÐ´ÎÄ¼þÊ§°Ü"<<endl;
+		cout<<"ï¿½ï¿½Ð´ï¿½Ä¼ï¿½Ê§ï¿½ï¿½"<<endl;
 		return -1;
 	}
 	for(vector<string>::iterator i=vsContent.begin();i<vsContent.end();i++){
@@ -545,21 +543,21 @@ int readFile(string fileName_cpp){
 	ifstream in(fileName_cpp);
 	if(!in)
 	{
-		cout<<"¶ÁÐ´ÎÄ¼þÊ§°Ü"<<endl;
+		cout<<"ï¿½ï¿½Ð´ï¿½Ä¼ï¿½Ê§ï¿½ï¿½"<<endl;
 		return -1;
 	}
 	while(getline(in,line))
 	{
-		data.push_back(line);     //¶ÁÈ¡ÎÄ¼þÃ¿Ò»ÐÐÊý¾Ý£¬²¢·Åµ½¡°ÈÝÆ÷¡±ÀïÃæ
+		data.push_back(line);     //ï¿½ï¿½È¡ï¿½Ä¼ï¿½Ã¿Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½Åµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	}
 	in.close();
-	/******±éÀúdataÀïÃæµÄÄÚÈÝ******/
+	/******ï¿½ï¿½ï¿½ï¿½dataï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½******/
 	for(unsigned int i=0;i<data.size();i++)
 	{
 		cout<<data.at(i)<<endl;
 	}
 	return 0;
-	/******±éÀúdataÀïÃæµÄÄÚÈÝ******/
+	/******ï¿½ï¿½ï¿½ï¿½dataï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½******/
 }
 int readFileByChar(string fileName_split){
 
@@ -569,18 +567,18 @@ int readFileByChar(string fileName_split){
 	ifstream in_split(fileName_split);
 	if(!in_split)
 	{
-		cout<<"¶ÁÐ´ÎÄ¼þÊ§°Ü"<<endl;
+		cout<<"ï¿½ï¿½Ð´ï¿½Ä¼ï¿½Ê§ï¿½ï¿½"<<endl;
 		return -1;
 	}
 	while(getline(in_split,line))
 	{
-		data_split.push_back(line);     //¶ÁÈ¡ÎÄ¼þÃ¿Ò»ÐÐÊý¾Ý£¬²¢·Åµ½¡°ÈÝÆ÷¡±ÀïÃæ
+		data_split.push_back(line);     //ï¿½ï¿½È¡ï¿½Ä¼ï¿½Ã¿Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½Åµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	}
 	in_split.close();
-	/******¶ÁÎÄ¼þ******/
-	/******ÌáÈ¡split.txtÎÄ¼þÀïÃæµÄÊý¾Ý******/
+	/******ï¿½ï¿½ï¿½Ä¼ï¿½******/
+	/******ï¿½ï¿½È¡split.txtï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½******/
 
-	/******±éÀúdata_splitÀïÃæµÄÄÚÈÝ(Êý¾Ý·ÖÀë)******/
+	/******ï¿½ï¿½ï¿½ï¿½data_splitï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½Ý·ï¿½ï¿½ï¿½)******/
 	for(unsigned int i=0;i<data_split.size();i++)
 	{
 		cout<<"--------------------"<<endl;
@@ -589,7 +587,7 @@ int readFileByChar(string fileName_split){
 			cout<<getStr(data_split.at(i)).at(j)<<endl;
 		}
 	}
-	/******±éÀúdata_splitÀïÃæµÄÄÚÈÝ(Êý¾Ý·ÖÀë)******/
+	/******ï¿½ï¿½ï¿½ï¿½data_splitï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½Ý·ï¿½ï¿½ï¿½)******/
 	return 0;
 }
 void Trim(string &str)
@@ -598,8 +596,8 @@ void Trim(string &str)
 	int e=str.find_last_not_of(" \t\n");
 	str=str.substr(s,e-s+1);
 }
-/******·ÖÀëÌØ¶¨¸ñÊ½µÄÊý¾Ý******/
-//C++ÖÐÃ»ÓÐSplit()Õâ¸ö·½·¨£¬ÐèÒª×Ô¶¨Òåº¯Êý·ÖÀëÊý¾Ý£¬¶øC#ºÍJavaÖÐÓÐÕâ¸ö·½·¨
+/******ï¿½ï¿½ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½******/
+//C++ï¿½ï¿½Ã»ï¿½ï¿½Split()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½Ô¶ï¿½ï¿½åº¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½C#ï¿½ï¿½Javaï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 vector<string> getStr(string str)
 {
 	int j=0;
@@ -621,12 +619,12 @@ vector<string> getStr(string str)
 	}
 	return v_a;
 }
-/******·ÖÀëÌØ¶¨¸ñÊ½µÄÊý¾Ý******/
+/******ï¿½ï¿½ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½******/
 
 /**
 * path:Ä¿Â¼
-* files£ºÓÃÓÚ±£´æÎÄ¼þÃûµÄvector
-* r£ºÊÇ·ñÐèÒª±éÀú×ÓÄ¿Â¼
+* filesï¿½ï¿½ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½vector
+* rï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Â¼
 */
 void listDir(string real_dir,vector<string>& files,bool r){
 	DIR *pDir;
@@ -639,17 +637,17 @@ void listDir(string real_dir,vector<string>& files,bool r){
 			if (strcmp(ent->d_name, ".") == 0 || strcmp(ent->d_name, "..") == 0){
 				continue;
 			}
-			if(r){ //Èç¹ûÐèÒª±éÀú×ÓÄ¿Â¼
+			if(r){ //ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Â¼
 				childpath=real_dir+ent->d_name;
 				listDir(childpath,files);
 			}
 		}
 		else{
 			absolutepath= real_dir+ent->d_name;
-			files.push_back(ent->d_name);//ÎÄ¼þÃû
+			files.push_back(ent->d_name);//ï¿½Ä¼ï¿½ï¿½ï¿½
 		}
 	}
-	sort(files.begin(),files.end());//ÅÅÐò
+	sort(files.begin(),files.end());//ï¿½ï¿½ï¿½ï¿½
 }
 void SaveEllipses(const string& fileName, const vector<Ellipse>& ellipses){
 	unsigned n = ellipses.size();
@@ -658,7 +656,7 @@ void SaveEllipses(const string& fileName, const vector<Ellipse>& ellipses){
 	// Save number of ellipses
 	resultsitem << n;
 	resultString.push_back(resultsitem.str());
-	// Save ellipses£ºÔÝ²»±£´æÍÖÔ²ÆÀ·Ö_score²ÎÊý
+	// Save ellipsesï¿½ï¿½ï¿½Ý²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½ï¿½_scoreï¿½ï¿½ï¿½ï¿½
 	for (unsigned i = 0; i<n; ++i)
 	{
 		const Ellipse& e = ellipses[i];
@@ -669,7 +667,7 @@ void SaveEllipses(const string& fileName, const vector<Ellipse>& ellipses){
 		resultString.push_back(resultsitem.str());
 	}
 	writeFile(fileName,resultString);
-	// ²âÊÔÊý¾Ý¼¯Ê±²»ÐèÒª¿ØÖÆÌ¨Êä³öÍÖÔ²¼¯ÐÅÏ¢
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¼ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½ï¿½Ï¢
 	/*for (int i=0;i<resultString.size();i++){
 		cout<<resultString[i]<<endl;
 	}*/
@@ -699,8 +697,8 @@ void SaveEllipses(const string& workingDir, const string& imgName, const vector<
 	out.close();
 }
 
-/* ²»¹ÜÊäÈëµÄÍÖÔ²¼¯ÖÐµÚÎå¸ö²ÎÊýradµÄÖµÎª[0~180]»ò[-PI/2~PI/2]£¬
-¶¼×ªÎª[0~PI]µÄ»¡¶ÈÖÆÖµ£¬·ûºÏ²â³öµÄTest¼¯µÄradÓò£¬¶þÕßÒ»ÖÂ·½±ãËãFÖµ¡£ */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½radï¿½ï¿½ÖµÎª[0~180]ï¿½ï¿½[-PI/2~PI/2]ï¿½ï¿½
+ï¿½ï¿½×ªÎª[0~PI]ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½Ï²ï¿½ï¿½ï¿½ï¿½Testï¿½ï¿½ï¿½ï¿½radï¿½ò£¬¶ï¿½ï¿½ï¿½Ò»ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½FÖµï¿½ï¿½ */
 void LoadGT(vector<Ellipse>& gt, const string& sGtFileName, bool bIsAngleInRadians)
 {
 	ifstream in(sGtFileName);
@@ -803,7 +801,7 @@ float Evaluate(const vector<Ellipse>& ellGT, const vector<Ellipse>& ellTest, con
 
 	vector<Mat1b> gts(sz_gt);
 	vector<Mat1b> tests(sz_test);
-	//»æÖÆÃ¿¸öÄ¿±êÍÖÔ²(Ïß´ÖÎª-1´ú±íÌî³äÍÖÔ²)
+	//ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½Ô²(ï¿½ß´ï¿½Îª-1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô²)
 	for (unsigned i = 0; i<sz_gt; ++i)
 	{
 		const Ellipse& e = ellGT[i];
@@ -815,7 +813,7 @@ float Evaluate(const vector<Ellipse>& ellGT, const vector<Ellipse>& ellTest, con
 		/*imshow("TestGT", tmp);
 		imwrite("result/TestGT.jpg", tmp);*/
 	}
-	//»æÖÆ¼ì²âµÄÍÖÔ²(Ïß´ÖÎª-1´ú±íÌî³äÍÖÔ²)
+	//ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ï¿½Ô²(ï¿½ß´ï¿½Îª-1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô²)
 	for (unsigned i = 0; i<sz_test; ++i)
 	{
 		const Ellipse& e = ellTest[i];
@@ -833,7 +831,7 @@ float Evaluate(const vector<Ellipse>& ellGT, const vector<Ellipse>& ellTest, con
 	{
 		for (int c = 0; c < overlap.cols; ++c)
 		{
-			//ÖØµþÇøÓòÕ¼Õæ¸öÇøÓòµÄ±ÈÀý Óë±ÈÉÏ²¢´óÓÚãÐÖµ Îª255
+			//ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ Îª255
 			overlap(r, c) = TestOverlap(gts[r], tests[c], threshold_overlap) ? uchar(255) : uchar(0);
 		}
 	}
@@ -841,7 +839,7 @@ float Evaluate(const vector<Ellipse>& ellGT, const vector<Ellipse>& ellTest, con
 	int counter = 0;
 
 	vector<bool> vec_gt(sz_gt, false);
-	//¾ØÕóÃ¿ÐÐÓÐÒ»¸ö¾Í´ú±íÕÒµ½
+	//ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Í´ï¿½ï¿½ï¿½ï¿½Òµï¿½
 	for (unsigned int i = 0; i < sz_test; ++i)
 	{
 		//const Ellipse& e = ellTest[i];
@@ -891,7 +889,7 @@ float Evaluate(const vector<Ellipse>& ellGT, const vector<Ellipse>& ellTest, con
 
 	return fmeasure;
 }
-// ¡¾Ð§¹û²»¼Ñ¡¿ÁíÒ»ÖÖÆÀ¼Û·½·¨(Lu's)£º½«tp¡°È«²¿°´ÐÐÍ³¼Æ¡±¸ÄÎª¡°·Ö±ð°´ÐÐ¡¢°´ÁÐÍ³¼Æ¡±£¬²¢ÔÚºóÃæµÄ²½Öè½«Ã¿¸öÍ¼µÄtp£¬fnºÍfpÀÛ¼Óºó£¬ÔÙ¼ÆËãPre+Re+FÖµ¡£
+// ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Û·ï¿½ï¿½ï¿½(Lu's)ï¿½ï¿½ï¿½ï¿½tpï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í³ï¿½Æ¡ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½Ö±ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½Í³ï¿½Æ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úºï¿½ï¿½ï¿½Ä²ï¿½ï¿½è½«Ã¿ï¿½ï¿½Í¼ï¿½ï¿½tpï¿½ï¿½fnï¿½ï¿½fpï¿½Û¼Óºï¿½ï¿½Ù¼ï¿½ï¿½ï¿½Pre+Re+FÖµï¿½ï¿½
 vector<double> Evaluate_Lu(const vector<Ellipse>& ellGT, const vector<Ellipse>& ellTest, const float th_score, const Mat3b& img)
 {
 	float threshold_overlap = 0.8f;
@@ -904,7 +902,7 @@ vector<double> Evaluate_Lu(const vector<Ellipse>& ellGT, const vector<Ellipse>& 
 
 	vector<Mat1b> gts(sz_gt);
 	vector<Mat1b> tests(sz_test);
-	//»æÖÆÃ¿¸öÄ¿±êÍÖÔ²(Ïß´ÖÎª-1´ú±íÌî³äÍÖÔ²)
+	//ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½Ô²(ï¿½ß´ï¿½Îª-1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô²)
 	for (unsigned i = 0; i < sz_gt; ++i)
 	{
 		const Ellipse& e = ellGT[i];
@@ -916,7 +914,7 @@ vector<double> Evaluate_Lu(const vector<Ellipse>& ellGT, const vector<Ellipse>& 
 		/*imshow("TestGT", tmp);
 		imwrite("result/TestGT.jpg", tmp);*/
 	}
-	//»æÖÆ¼ì²âµÄÍÖÔ²(Ïß´ÖÎª-1´ú±íÌî³äÍÖÔ²)
+	//ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ï¿½Ô²(ï¿½ß´ï¿½Îª-1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô²)
 	for (unsigned i = 0; i < sz_test; ++i)
 	{
 		const Ellipse& e = ellTest[i];
@@ -934,7 +932,7 @@ vector<double> Evaluate_Lu(const vector<Ellipse>& ellGT, const vector<Ellipse>& 
 	{
 		for (int c = 0; c < overlap.cols; ++c)
 		{
-			//ÖØµþÇøÓòÕ¼Õæ¸öÇøÓòµÄ±ÈÀý Óë±ÈÉÏ²¢´óÓÚãÐÖµ Îª255
+			//ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ Îª255
 			overlap(r, c) = TestOverlap(gts[r], tests[c], threshold_overlap) ? uchar(255) : uchar(0);
 		}
 	}
@@ -942,7 +940,7 @@ vector<double> Evaluate_Lu(const vector<Ellipse>& ellGT, const vector<Ellipse>& 
 	int counter = 0;
 
 	vector<bool> vec_gt(sz_gt, false);
-	//¾ØÕóÃ¿ÐÐÓÐÒ»¸ö¾Í´ú±íÕÒµ½
+	//ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Í´ï¿½ï¿½ï¿½ï¿½Òµï¿½
 	for (unsigned int i = 0; i < sz_test; ++i)
 	{
 		//const Ellipse& e = ellTest[i];
@@ -960,7 +958,7 @@ vector<double> Evaluate_Lu(const vector<Ellipse>& ellGT, const vector<Ellipse>& 
 		}
 	}
 	vector<bool> vec_test(sz_test, false);
-	//¾ØÕóÃ¿ÁÐÓÐÒ»¸ö¾Í´ú±íÕÒµ½
+	//ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Í´ï¿½ï¿½ï¿½ï¿½Òµï¿½
 	for (unsigned int j = 0; j < sz_gt; ++j)
 	{
 		//const Ellipse& e = ellTest[i];
@@ -1024,14 +1022,14 @@ void salt(cv::Mat& image, int n){
 	}
 }
 
-/* ´úÂë¸Ä¶¯£º
-1¡¢line-20£º¸ü»»lineCrossPoint()·½·¨ÖÐÎÞÐ§µãµÄ±íÊ¾£¬ÓÉ'ÕýÎÞÇîÐ¡Êý1.#INF'´úÌæ'0'£¬²¢ÔÚvalue4SixPoints( V2SP )·½·¨ÖÐ½øÐÐÎÞÐ§µãµÄÅÐ¶¨¡£
-2¡¢line-110£º¸Ä±äÌØÕ÷±ÈµÄÐÎÊ½£¬ÓÉa/b¸ÄÎª±ê×¼b/aÓÐÃ÷ÏÔÐÔÄÜÏÂ½µ£¬ÔÝÎ´·¢ÏÖÔ­Òò£¬»Ø¹ö¡£
-2¡¢line-661¡¢672£ºSaveEllipses()Êä³ö¿ØÖÆÌ¨Ê±£¬ÔÝ²»±£´æÍÖÔ²ÆÀ·Ö_score²ÎÊý£¬ÇÒ²âÊÔÊý¾Ý¼¯Ê±²»ÐèÒª¿ØÖÆÌ¨Êä³öÍÖÔ²¼¯ÐÅÏ¢£»
-¸¨Öú3¡¢line-73¡¢82£ºÌí¼Ó×Ô¶¨Òå¼ÆËãÐÐÁÐÊ½º¯Êý£»line-82:Ìí¼Ó×Ô¶¨ÒåÇóµãµ½Ïß¾àÀëº¯Êý¡£
-ÖØµã4¡¢line-110£º¸ü¸Ävalue4SixPoints()·½·¨£¬»»ÁùµãÍ¬Ô²'ÌØÕ÷Êý=1'Îª'Èýµã¹²Ïß'£º
-	¸Äa¡¢ÀûÓÃ'1/2*det(Ó³Éäµã×ø±ê) = ÈýµãÃæ»ý = 0'~Ó³Éäµã¹²Ïß~ÅÐ¶ÏÍ¬Ô²£»
-	¸Äb¡¢ÀûÓÃ'Ó³ÉäµãÌØÕ÷Êý = -1'~Ó³Éäµã¹²Ïß~ÅÐ¶ÏÍ¬Ô²£»
-	¸Äc1-ÑÏ¸ñ¡¢ÀûÓÃÓ³Éäµã'Ò»µãµ½ÁíÁ½µãÈ·¶¨µÄÖ±ÏßµÄ(×î´óµÄ)¾àÀë < Th'~Ó³Éäµã¹²Ïß~ÅÐ¶ÏÍ¬Ô²£»
-	¸Äc2-×¼È·¡¢ÀûÓÃÓ³Éäµã'Èýµãµ½ÆäÈ·¶¨µÄ»Ø¹éÏßµÄ(×î´óµÄ)¾àÀë < Th'~Ó³Éäµã¹²Ïß~ÅÐ¶ÏÍ¬Ô²£»
+/* ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½
+1ï¿½ï¿½line-20ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½lineCrossPoint()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½Ä±ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½1.#INF'ï¿½ï¿½ï¿½ï¿½'0'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½value4SixPoints( V2SP )ï¿½ï¿½ï¿½ï¿½ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½
+2ï¿½ï¿½line-110ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Èµï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½a/bï¿½ï¿½Îªï¿½ï¿½×¼b/aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â½ï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½Ô­ï¿½ò£¬»Ø¹ï¿½ï¿½ï¿½
+2ï¿½ï¿½line-661ï¿½ï¿½672ï¿½ï¿½SaveEllipses()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨Ê±ï¿½ï¿½ï¿½Ý²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½ï¿½_scoreï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¼ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½
+ï¿½ï¿½ï¿½ï¿½3ï¿½ï¿½line-73ï¿½ï¿½82ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½line-82:ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ãµ½ï¿½ß¾ï¿½ï¿½ëº¯ï¿½ï¿½ï¿½ï¿½
+ï¿½Øµï¿½4ï¿½ï¿½line-110ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½value4SixPoints()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬Ô²'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½=1'Îª'ï¿½ï¿½ï¿½ã¹²ï¿½ï¿½'ï¿½ï¿½
+	ï¿½ï¿½aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½'1/2*det(Ó³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½) = ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ = 0'~Ó³ï¿½ï¿½ã¹²ï¿½ï¿½~ï¿½Ð¶ï¿½Í¬Ô²ï¿½ï¿½
+	ï¿½ï¿½bï¿½ï¿½ï¿½ï¿½ï¿½ï¿½'Ó³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ = -1'~Ó³ï¿½ï¿½ã¹²ï¿½ï¿½~ï¿½Ð¶ï¿½Í¬Ô²ï¿½ï¿½
+	ï¿½ï¿½c1-ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½Ó³ï¿½ï¿½ï¿½'Ò»ï¿½ãµ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ßµï¿½(ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½ < Th'~Ó³ï¿½ï¿½ã¹²ï¿½ï¿½~ï¿½Ð¶ï¿½Í¬Ô²ï¿½ï¿½
+	ï¿½ï¿½c2-×¼È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó³ï¿½ï¿½ï¿½'ï¿½ï¿½ï¿½ãµ½ï¿½ï¿½È·ï¿½ï¿½ï¿½Ä»Ø¹ï¿½ï¿½ßµï¿½(ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½ < Th'~Ó³ï¿½ï¿½ã¹²ï¿½ï¿½~ï¿½Ð¶ï¿½Í¬Ô²ï¿½ï¿½
 */

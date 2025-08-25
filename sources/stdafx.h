@@ -1,10 +1,11 @@
-/* Ô¤±àÒëÍ·ÎÄ¼þ£¬ÉèÖÃ»·¾³²ÎÊý£»¿ÉÒÔ¼Ó¿ì±àÒëËÙ¶È¡£ */
+/* Ô¤ï¿½ï¿½ï¿½ï¿½Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼Ó¿ï¿½ï¿½ï¿½ï¿½ï¿½Ù¶È¡ï¿½ */
 
-// stdafx.h : ±ê×¼ÏµÍ³°üº¬ÎÄ¼þµÄ°üº¬ÎÄ¼þ£¬
-// »òÊÇ¾­³£Ê¹ÓÃµ«²»³£¸ü¸ÄµÄ
-// ÌØ¶¨ÓÚÏîÄ¿µÄ°üº¬ÎÄ¼þ
+// stdafx.h : ï¿½ï¿½×¼ÏµÍ³ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ä°ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
+// ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½Ê¹ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½
+// ï¿½Ø¶ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½Ä°ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
 //
 #pragma once
+#include "compatibility.h"
 #include <opencv2/opencv.hpp>
 #include <opencv2/core/core.hpp>
 #include <opencv2/core/types_c.h>
@@ -26,16 +27,18 @@
 #include <fstream>
 #include <math.h>
 
-#include <direct.h>
-
 #include <sys/stat.h> 
 
-#ifdef LINUX
-#include<dirent.h>
-#include </usr/include/x86_64-linux-gnu/sys/io.h>
-#else 
+#ifdef _WIN32
+#include <direct.h>
 #include <io.h>
-#include "dirent.h"
+#elif defined(__linux__)
+#include <dirent.h>
+#include <unistd.h>
+#include <sys/io.h>
+#elif defined(__APPLE__)
+#include <dirent.h>
+#include <unistd.h>
 #endif
 
 using namespace std;using namespace cv;

@@ -1,4 +1,4 @@
-/* CNED·½·¨¹ý³Ì */
+/* CNEDï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 
 /*
 This code is intended for academic use only.
@@ -18,16 +18,16 @@ last update:
 #include "CNEllipseDetector.h"
 
 
-/* ÍÖÔ²¼ì²â²ÎÊýÉèÖÃ(·§Öµ-Êµ¼ÊÓëÀíÏëÖµµÄ²îÖµ)£ºÎÒµÄÏÞ¶¨Ìõ¼þ123¡¢Ö±»¡¼ì²â·§Öµ¡¢»¡×éºÏÉ¸Ñ¡·§Öµ */
+/* ï¿½ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½Öµ-Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½Ä²ï¿½Öµ)ï¿½ï¿½ï¿½Òµï¿½ï¿½Þ¶ï¿½ï¿½ï¿½ï¿½ï¿½123ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½â·§Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¸Ñ¡ï¿½ï¿½Öµ */
 bool myselect1=true;
 bool myselect2 = false;
-bool myselect3 = false;	// TODO£ºselectµÄ×÷ÓÃÊÇ¿ª¹ØÂð£¬ÕâÀïÉèÎªfalseÊÇÎªÁË·ÅËÉÔ¼ÊøÂð£¿
-float tTCNl = 0.05f;//¹ýÂËÌ«Ö±µÄÇúÏß
+bool myselect3 = false;	// TODOï¿½ï¿½selectï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªfalseï¿½ï¿½Îªï¿½Ë·ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½
+float tTCNl = 0.05f;//ï¿½ï¿½ï¿½ï¿½Ì«Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //float tCNC=0.3f;
 float tCNC = 2.97f;	// Ô­:0.34f~0.47f; 
-	// ¸Äa:100.36f; // ¸Äb:0.52f; // ¸Äc1:20.26f~20.57f; // ¸Äc2:2.97f;
+	// ï¿½ï¿½a:100.36f; // ï¿½ï¿½b:0.52f; // ï¿½ï¿½c1:20.26f~20.57f; // ï¿½ï¿½c2:2.97f;
 
-// ´æ´¢Ñ¡Ôñ×éºÏÇ°µÄºÏ¸ñµÄ»¡
+// ï¿½æ´¢Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ÄºÏ¸ï¿½Ä»ï¿½
 Mat DPDN_temp_only_wan_arc;
 
 
@@ -197,11 +197,11 @@ void CNEllipseDetector::GetFastCenter(vector<Point>& e1, vector<Point>& e2, Elli
 		vector<Point2f> med;
 		med.reserve(hsize_2);
 
-		unsigned minPoints = (_uNs < hsize_2) ? _uNs : hsize_2;//Æ½ÐÐÏÒ¸öÊý
+		unsigned minPoints = (_uNs < hsize_2) ? _uNs : hsize_2;//Æ½ï¿½ï¿½ï¿½Ò¸ï¿½ï¿½ï¿½
 
 		vector<uint> indexes(minPoints);
 		if (_uNs < hsize_2)
-		{//°ë¸ö»¡µãÊý¶àÓÚÉè¶¨µÄ×îÉÙÆ½ÐÐÏÒÊý
+		{//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½è¶¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿„1ï¿½7
 			unsigned iSzBin = hsize_2 / unsigned(_uNs);
 			unsigned iIdx = hsize_2 + (iSzBin / 2);
 
@@ -213,10 +213,10 @@ void CNEllipseDetector::GetFastCenter(vector<Point>& e1, vector<Point>& e2, Elli
 		}
 		else
 		{
-			iota(indexes.begin(), indexes.end(), hsize_2);//×ª³Éunsigned
+			iota(indexes.begin(), indexes.end(), hsize_2);//×ªï¿½ï¿½unsigned
 		}
 		for (uint ii = 0; ii<minPoints; ++ii)
-		{//»¡2ÖÐÃ¿¸öµãÕÒµ½¶ÔÓ¦Æ½ÐÐÏÒµã
+		{//ï¿½ï¿½2ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½Ó¦Æ½ï¿½ï¿½ï¿½Òµï¿½
 			uint i = indexes[ii];
 
 			float x1 = float(e2[i].x);
@@ -224,7 +224,7 @@ void CNEllipseDetector::GetFastCenter(vector<Point>& e1, vector<Point>& e2, Elli
 
 			uint begin = 0;
 			uint end = size_1 - 1;
-			//Ò»¸öµãÓë»¡1ÉÏµÄ¿ªÊ¼ºó×îºóµãÔÚÆ½ÐÐÏÒÁ½²à
+			//Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ë»¡1ï¿½ÏµÄ¿ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			float xb = float(e1[begin].x);
 			float yb = float(e1[begin].y);
 			float res_begin = ((xb - x1) * dy_ref) - ((yb - y1) * dx_ref);
@@ -246,13 +246,13 @@ void CNEllipseDetector::GetFastCenter(vector<Point>& e1, vector<Point>& e2, Elli
 				med.push_back(Point2f((xe + x1)* 0.5f, (ye + y1)* 0.5f));
 				continue;
 			}
-			//Èç¹ûÔÚÒ»²à
+			//ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿„1ï¿½7
 			if ((sign_begin + sign_end) != 0)
-			{//ÇøÓòÄÚÃ»ÓÐÆ½ÐÐµÄÏÒ
+			{//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Æ½ï¿½Ðµï¿½ï¿½ï¿½
 				continue;
 			}
 
-			//¶þ·Ö·¨²éÕÒÆ½ÐÐÏÒ
+			//ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½Æ½ï¿½ï¿½ï¿½ï¿½
 			uint j = (begin + end) >> 1;
 			while (end - begin > 2)
 			{
@@ -280,7 +280,7 @@ void CNEllipseDetector::GetFastCenter(vector<Point>& e1, vector<Point>& e2, Elli
 				}
 				j = (begin + end) >> 1;
 			}
-			//¶þ·Ö·¨²éÕÒÆ½ÐÐÏÒ end ÓÐ´í
+			//ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½Æ½ï¿½ï¿½ï¿½ï¿½ end ï¿½Ð´ï¿½
 			med.push_back(Point2f((e1[j].x + x1)* 0.5f, (e1[j].y + y1)* 0.5f));
 		}
 
@@ -290,7 +290,7 @@ void CNEllipseDetector::GetFastCenter(vector<Point>& e1, vector<Point>& e2, Elli
 			return;
 		}
 
-		q2 = GetMedianSlope(med, M12, data.Sa);//µÃµ½Sa ta=q2 Ma
+		q2 = GetMedianSlope(med, M12, data.Sa);//ï¿½Ãµï¿½Sa ta=q2 Ma
 	}
 
 	{// Second to first
@@ -426,7 +426,7 @@ void CNEllipseDetector::DetectEdges13(Mat1b& DP, VVP& points_1, VVP& points_3)
 	VVP contours;
 	int countedges=0;
 	// Labeling 8-connected edge points, discarding edge too small
-	Labeling(DP, contours, _iMinEdgeLength);//°ÑÔÚÒ»¸ö»¡µÄµã·Åµ½Ò»¸öÎÞÐò¼¯ºÏÖÐ
+	Labeling(DP, contours, _iMinEdgeLength);//ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½Åµï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ò¼¯ºï¿½ï¿½ï¿„1ï¿½7
 	int iContoursSize = int(contours.size());
 
 	// For each edge
@@ -446,14 +446,14 @@ void CNEllipseDetector::DetectEdges13(Mat1b& DP, VVP& points_1, VVP& points_3)
 			continue;
 		}
 
-		// Èç¹ûÄÜ×ßµ½ÕâÀï£¬ËµÃ÷Õâ¸ö»¡ÊÇ×ã¹»ÍäµÄ»¡£¬°ÑÕâ¸ö»¡¼ÍÂ¼ÏÂÀ´£¨13ÏóÏÞÄÚµÄ»¡£©
-		/*for (int kl = 0; kl < edgeSegment.size(); kl++) {	// ¶ÔÓÚÕâÌõ»¡µÄÃ¿Ò»¸öµã
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½ï¿½ï¿½ï¿½ï£¬Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã¹»ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½13ï¿½ï¿½ï¿½ï¿½ï¿½ÚµÄ»ï¿½ï¿½ï¿½
+		/*for (int kl = 0; kl < edgeSegment.size(); kl++) {	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿Ò»ï¿½ï¿½ï¿½ï¿½
 			DPDN_temp_only_wan_arc.at<uchar>(edgeSegment[kl].y, edgeSegment[kl].x) = 255;
 		}*/
 
 #endif
 		// Order edge points of the same arc
-		sort(edgeSegment.begin(), edgeSegment.end(), SortTopLeft2BottomRight);//ÓÐÐòÁ¬½Óµã
+		sort(edgeSegment.begin(), edgeSegment.end(), SortTopLeft2BottomRight);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½
 		int iEdgeSegmentSize = unsigned(edgeSegment.size());
 
 		// Get extrema of the arc
@@ -464,7 +464,7 @@ void CNEllipseDetector::DetectEdges13(Mat1b& DP, VVP& points_1, VVP& points_3)
 		int flag=0;
 		for(int j=0;j<iEdgeSegmentSize;j++){
 			Point& mid = edgeSegment[j];
-			float data[] = {left.x, left.y, 1,mid.x, mid.y, 1,right.x, right.y, 1};
+			float data[] = {static_cast<float>(left.x), static_cast<float>(left.y), 1.0f, static_cast<float>(mid.x), static_cast<float>(mid.y), 1.0f, static_cast<float>(right.x), static_cast<float>(right.y), 1.0f};
 			Mat threePoints(Size(3, 3), CV_32FC1, data);
 			double ans = determinant(threePoints);
 
@@ -485,7 +485,7 @@ void CNEllipseDetector::DetectEdges13(Mat1b& DP, VVP& points_1, VVP& points_3)
 #endif
 #ifndef DISCARD_TCN1
 		Point& mid = edgeSegment[iEdgeSegmentSize/2];
-		float data[] = {left.x, left.y, 1,mid.x, mid.y, 1,right.x, right.y, 1};
+		float data[] = {static_cast<float>(left.x), static_cast<float>(left.y), 1.0f, static_cast<float>(mid.x), static_cast<float>(mid.y), 1.0f, static_cast<float>(right.x), static_cast<float>(right.y), 1.0f};
 		Mat threePoints(Size(3, 3), CV_32FC1, data);
 		double ans = determinant(threePoints);
 
@@ -555,8 +555,8 @@ void CNEllipseDetector::DetectEdges24(Mat1b& DN, VVP& points_2, VVP& points_4 )
 			continue;
 		}
 
-		// Èç¹ûÄÜ×ßµ½ÕâÀï£¬ËµÃ÷Õâ¸ö»¡ÊÇ×ã¹»ÍäµÄ»¡£¬°ÑÕâ¸ö»¡¼ÍÂ¼ÏÂÀ´£¨24ÏóÏÞÄÚµÄ»¡£©
-		/*for (int kl = 0; kl < edgeSegment.size(); kl++) {	// ¶ÔÓÚÕâÌõ»¡µÄÃ¿Ò»¸öµã
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½ï¿½ï¿½ï¿½ï£¬Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã¹»ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½24ï¿½ï¿½ï¿½ï¿½ï¿½ÚµÄ»ï¿½ï¿½ï¿½
+		/*for (int kl = 0; kl < edgeSegment.size(); kl++) {	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿Ò»ï¿½ï¿½ï¿½ï¿½
 			DPDN_temp_only_wan_arc.at<uchar>(edgeSegment[kl].y, edgeSegment[kl].x) = 255;
 		}*/
 
@@ -573,7 +573,7 @@ void CNEllipseDetector::DetectEdges24(Mat1b& DN, VVP& points_2, VVP& points_4 )
 		int flag=0;
 		for(int j=0;j<iEdgeSegmentSize;j++){
 			Point& mid = edgeSegment[j];
-			float data[] = {left.x, left.y, 1,mid.x, mid.y, 1,right.x, right.y, 1};
+			float data[] = {static_cast<float>(left.x), static_cast<float>(left.y), 1.0f, static_cast<float>(mid.x), static_cast<float>(mid.y), 1.0f, static_cast<float>(right.x), static_cast<float>(right.y), 1.0f};
 			Mat threePoints(Size(3, 3), CV_32FC1, data);
 			double ans = determinant(threePoints);
 
@@ -595,7 +595,7 @@ void CNEllipseDetector::DetectEdges24(Mat1b& DN, VVP& points_2, VVP& points_4 )
 #endif
 #ifndef DISCARD_TCN1
 		Point& mid = edgeSegment[iEdgeSegmentSize/2];
-		float data[] = {left.x, left.y, 1,mid.x, mid.y, 1,right.x, right.y, 1};
+		float data[] = {static_cast<float>(left.x), static_cast<float>(left.y), 1.0f, static_cast<float>(mid.x), static_cast<float>(mid.y), 1.0f, static_cast<float>(right.x), static_cast<float>(right.y), 1.0f};
 		Mat threePoints(Size(3, 3), CV_32FC1, data);
 		double ans = determinant(threePoints);
 
@@ -611,7 +611,7 @@ void CNEllipseDetector::DetectEdges24(Mat1b& DN, VVP& points_2, VVP& points_4 )
 #endif
 #endif
 		// Find convexity - See Sect [3.1.3] of the paper
-		//ÅÐ¶Ï°¼Í¹ÐÔ
+		//ï¿½Ð¶Ï°ï¿½Í¹ï¿½ï¿½
 		int iCountBottom = 0;
 		int xx = left.x;
 		for (int k = 1; k < iEdgeSegmentSize; ++k)
@@ -644,7 +644,7 @@ void CNEllipseDetector::FindEllipses(	Point2f& center,
 										VP& edge_i,VP& edge_j,VP& edge_k,
 										EllipseData& data_ij,EllipseData& data_ik,
 										vector<Ellipse>& ellipses)
-{//¸ù¾ÝÈý¶Î»¡¼ÆËãÍÖÔ²²ÎÊý£¬²¢¼ÆËãµÃµ½µÄÍÖÔ²²ÎÊýµÄ×¼È·¶¨¡£
+{//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¼È·ï¿½ï¿½ï¿½ï¿„1ï¿½7
 	countsOfFindEllipse++;
 	// Find ellipse parameters
 
@@ -681,13 +681,13 @@ void CNEllipseDetector::FindEllipses(	Point2f& center,
 
 		for (int ij1 = 0; ij1 < sz_ij1; ++ij1)
 		{
-			float q2 = data_ij.Sa[ij1];//ÓÐ±ØÒª±éÀúÂð£¿
+			float q2 = data_ij.Sa[ij1];//ï¿½Ð±ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 			float q1xq2 = q1*q2;
 			// ij1 and ik1
 			for (int ik1 = 0; ik1 < sz_ik1; ++ik1)
 			{
-				float q4 = data_ik.Sa[ik1];//ÓÐ±ØÒª±éÀúÂð£¿
+				float q4 = data_ik.Sa[ik1];//ï¿½Ð±ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 				float q3xq4 = q3*q4;
 
@@ -697,7 +697,7 @@ void CNEllipseDetector::FindEllipses(	Point2f& center,
 				float b = (q3xq4 + 1)*(q1 + q2) - (q1xq2 + 1)*(q3 + q4);//beta
 				float Kp = (-b + sqrt(b*b + 4 * a*a)) / (2 * a);//K+
 				float zplus = ((q1 - Kp)*(q2 - Kp)) / ((1 + q1*Kp)*(1 + q2*Kp));
-				// ÅÐ¶ÏÓÐÐ§ÐÔ  zplus ºÍK²»ÊÇÏßÐÔ¹ØÏµ
+				// ï¿½Ð¶ï¿½ï¿½ï¿½Ð§ï¿½ï¿½  zplus ï¿½ï¿½Kï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¹ï¿½Ïµ
 				if (zplus >= 0.0f) continue;
 
 				float Np = sqrt(-zplus);//N+
@@ -710,15 +710,15 @@ void CNEllipseDetector::FindEllipses(	Point2f& center,
 				}
 				else
 				{
-					rhoDeg = cvRound((rho * 180 / CV_PI) + 90) % 180; // [0,180)//rho ½Ç¶È±íÊ¾£¬¹éÒ»»¯
+					rhoDeg = cvRound((rho * 180 / CV_PI) + 90) % 180; // [0,180)//rho ï¿½Ç¶È±ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
 				}
 
-				int iNp = cvRound(Np * 100); // [0, 100]È¡Õû
+				int iNp = cvRound(Np * 100); // [0, 100]È¡ï¿½ï¿½
 
 				if (0 <= iNp	&& iNp < ACC_N_SIZE &&
 					0 <= rhoDeg	&& rhoDeg < ACC_R_SIZE
 					)
-				{//ÎªÊ²Ã´¶¼±éÀú£¬Ö»±éÀúÒ»¸ö¿ÉÒÔÂð  ÒòÎª zplus ºÍK²»ÊÇÏßÐÔ¹ØÏµ
+				{//ÎªÊ²Ã´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½Îª zplus ï¿½ï¿½Kï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¹ï¿½Ïµ
 					++accN[iNp];	// Increment N accumulator
 					++accR[rhoDeg];	// Increment R accumulator
 				}
@@ -880,16 +880,16 @@ void CNEllipseDetector::FindEllipses(	Point2f& center,
 	float Kp = tan(rho);
 
 	// Estimate A. See Eq. [19 - 22] in Sect [3.2.3] of the paper  
-	// Èý¶Î»¡ÉÏµÄµã¶¼ÓÃÀ´¹ÀËãA
-	//¿ÉÒÔÓÅ»¯   
+	// ï¿½ï¿½ï¿½Î»ï¿½ï¿½ÏµÄµã¶¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½A
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Å»ï¿½   
 	for (ushort l = 0; l < sz_ei; ++l)
 	{
 		Point& pp = edge_i[l];
 		float sk = 1.f / sqrt(Kp*Kp + 1.f);//cos rho
-		float x0 = ((pp.x - a0) * sk) + (((pp.y - b0)*Kp) * sk);//¿ÉÓÅ»¯
-		float y0 = -(((pp.x - a0) * Kp) * sk) + ((pp.y - b0) * sk);//¿ÉÓÅ»¯
+		float x0 = ((pp.x - a0) * sk) + (((pp.y - b0)*Kp) * sk);//ï¿½ï¿½ï¿½Å»ï¿½
+		float y0 = -(((pp.x - a0) * Kp) * sk) + ((pp.y - b0) * sk);//ï¿½ï¿½ï¿½Å»ï¿½
 		float Ax = sqrt((x0*x0*Np*Np + y0*y0) / ((Np*Np)*(1.f + Kp*Kp)));
-		int A = cvRound(abs(Ax / cos(rho)));//¿ÉÒÔÓÅ»¯
+		int A = cvRound(abs(Ax / cos(rho)));//ï¿½ï¿½ï¿½ï¿½ï¿½Å»ï¿½
 		if ((0 <= A) && (A < ACC_A_SIZE))
 		{
 			++accA[A];
@@ -1146,19 +1146,19 @@ Point2f CNEllipseDetector::GetCenterCoordinates(EllipseData& data_ij, EllipseDat
 };
 
 
-/* ÈýÍÖÔ²»¡×éºÏÉ¸Ñ¡-ÏàÁÚÈýÏóÏÞ×éºÏ£º */
+/* ï¿½ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½É¸Ñ„1ï¿½7-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï£ï¿„1ï¿½7 */
 //123456 124 80 48 246
-//#define T124 pil,pim,pif,pjl,pjm,pjf // ÏÂÒ»ÐÐµÄ¶¨ÒåÊÇÔ­À´µÄ¡¶²»ÍÆ¼öÊ¹ÓÃºê¶¨Òå¡·
+//#define T124 pil,pim,pif,pjl,pjm,pjf // ï¿½ï¿½Ò»ï¿½ÐµÄ¶ï¿½ï¿½ï¿½ï¿½ï¿½Ô­ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½Ê¹ï¿½Ãºê¶¨ï¿½å¡·
 #define T124 pjf,pjm,pjl,pif,pim,pil
 #define T231 pil,pim,pif,pjf,pjm,pjl
 #define T342 pif,pim,pil,pjf,pjm,pjl
 #define T413 pif,pim,pil,pjl,pjm,pjf	
-/* TODO£ºÎªÊ²Ã´ÁùµãÐèÒªÓÐË³Ðò(ÀíÂÛÉÏÇóÓ³ÉäµãÅÐ¹²Ïß²»ÐèÒªË³Ðò)£¿ÎªÊ²Ã´V2SPµÄÅÅÁÐÎª(p3, p2, p1)-(p4, p5, p6)£¿ */
+/* TODOï¿½ï¿½ÎªÊ²Ã´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Ë³ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó³ï¿½ï¿½ï¿½ï¿½Ð¹ï¿½ï¿½ß²ï¿½ï¿½ï¿½ÒªË³ï¿½ï¿„1ï¿½7)ï¿½ï¿½ÎªÊ²Ã´V2SPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª(p3, p2, p1)-(p4, p5, p6)ï¿½ï¿½ */
 
-// VPÎªµã¼¯ºÏ£¬¼´´ú±íÒ»¸ö»¡£¬»¡ÉÏµãµÄÅÅÁÐ°´<×ó¡úÓÒµÄ·½Ïò>ÅÅÁÐ£»VVPÎªµã¼¯ºÏµÄ¼¯ºÏ£¬¼´´ú±íÒ»¸ö»¡µÄ¼¯ºÏ¡£
-// unordered_mapÀàËÆHashMap£¬ÒÔhashÖµÅÐ¶ÏÔªËØÊÇ·ñÏàµÈ£¬ÄÚ²¿ÔªËØÎÞÐò£¬Ïà½ÏÓÚHashMapÇ°ÕßÖ§³Östring»ò¸´ÔÓ¶ÔÏó×ökeyÔªËØ¡£
+// VPÎªï¿½ã¼¯ï¿½Ï£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½Ð°ï¿„1ï¿½7<ï¿½ï¿½ï¿½ï¿½ÒµÄ·ï¿½ï¿½ï¿„1ï¿½7>ï¿½ï¿½ï¿½Ð£ï¿½VVPÎªï¿½ã¼¯ï¿½ÏµÄ¼ï¿½ï¿½Ï£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ï¡ï¿½
+// unordered_mapï¿½ï¿½ï¿½ï¿½HashMapï¿½ï¿½ï¿½ï¿½hashÖµï¿½Ð¶ï¿½Ôªï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½È£ï¿½ï¿½Ú²ï¿½Ôªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½HashMapÇ°ï¿½ï¿½Ö§ï¿½ï¿½stringï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½ï¿½ï¿½keyÔªï¿½Ø¡ï¿½
 
-/* ·Ö±ðÔÚ124ÏóÏÞÖÐµÄ»¡¼¯ºÏ(pi, pj, pk)ÖÐ¸÷È¡Ò»¸ö£¬×éºÏºó½øÐÐ¼¸ºÎÔ¼ÊøºÍÍ¬Ô²ÅÐ¶Ï£¬Âú×ãÁ½É¸Ñ¡Ìõ¼þµÄ¼ÓÈëºòÑ¡×éºÏµÄ¼¯ºÏÖÐ¡£ */
+/* ï¿½Ö±ï¿½ï¿½ï¿½124ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄ»ï¿½ï¿½ï¿½ï¿½ï¿½(pi, pj, pk)ï¿½Ð¸ï¿½È¡Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïºï¿½ï¿½ï¿½Ð¼ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½Í¬Ô²ï¿½Ð¶Ï£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¸Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ÏµÄ¼ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ */
 // Verify triplets of arcs with convexity: i=1, j=2, k=4
 void CNEllipseDetector::Triplets124(VVP& pi,
 									   VVP& pj,
@@ -1167,47 +1167,47 @@ void CNEllipseDetector::Triplets124(VVP& pi,
 									   vector<Ellipse>& ellipses
 									   )
 {
-	/* ·Ö±ð»ñÈ¡ÈýÏóÏÞÖÐÃ¿¸ö»¡¼¯ºÏµÄ´óÐ¡ */
+	/* ï¿½Ö±ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÄ´ï¿½Ð„1ï¿½7 */
 	// get arcs length(size)
 	ushort sz_i = ushort(pi.size());
 	ushort sz_j = ushort(pj.size());
 	ushort sz_k = ushort(pk.size());
 
-	/* 1-Ê×ÏÈ±éÀúÖÐ¼äÏóÏÞµÄ»¡¼¯ºÏ(1ÏóÏÞ-pi) */
+	/* 1-ï¿½ï¿½ï¿½È±ï¿½ï¿½ï¿½ï¿½Ð¼ï¿½ï¿½ï¿½ï¿½ÞµÄ»ï¿½ï¿½ï¿½ï¿½ï¿½(1ï¿½ï¿½ï¿½ï¿½-pi) */
 	// For each edge i
 	for (ushort i = 0; i < sz_i; ++i)
 	{
-		/* È¡ÆäÖÐÄ³¸ö»¡edge_i(arc_i) */
+		/* È¡ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½edge_i(arc_i) */
 		VP& edge_i = pi[i];
 		ushort sz_ei = ushort(edge_i.size());
 
-		/* »¡arc_iÉÏÈ¡Èýµã£º×ó¶Ëµã+»¡ÖÐµã+ÓÒ¶Ëµã(×óx×îÐ¡ < ÓÒx×î´ó) */
+		/* ï¿½ï¿½arc_iï¿½ï¿½È¡ï¿½ï¿½ï¿½ã£ºï¿½ï¿½Ëµï¿„1ï¿½7+ï¿½ï¿½ï¿½Ðµï¿½+ï¿½Ò¶Ëµï¿½(ï¿½ï¿½xï¿½ï¿½Ð¡ < ï¿½ï¿½xï¿½ï¿½ï¿„1ï¿½7) */
 		Point& pif = edge_i[0];
 		Point& pim = edge_i[sz_ei/2];
 		Point& pil = edge_i[sz_ei - 1];
 
-		/* ½«»¡arc_iÉÏµÄËùÓÐµãÔªËØÄæÐò£¬¸³Öµµ½ÄæÐò»¡rev_iÖÐ£»
-		TODO£ºÕâÀïÎªÊ²Ã´ÒªÓÃedge_iµÄÄæÐòrev_iÀ´¼ÆËãÔ²ÐÄ£¿ */
+		/* ï¿½ï¿½ï¿½ï¿½arc_iï¿½Ïµï¿½ï¿½ï¿½ï¿½Ðµï¿½Ôªï¿½ï¿½ï¿½ï¿½ï¿½ò£¬¸ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½rev_iï¿½Ð£ï¿½
+		TODOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÊ²Ã´Òªï¿½ï¿½edge_iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½rev_iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô²ï¿½Ä£ï¿½ */
 		// 1,2 -> reverse 1, swap
 		VP rev_i(edge_i.size());
 		reverse_copy(edge_i.begin(), edge_i.end(), rev_i.begin());
 
-		/* 2-Æä´Î±éÀúÁÚÏóÏÞµÄ»¡¼¯ºÏ(2ÏóÏÞ-pj) */
+		/* 2-ï¿½ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÞµÄ»ï¿½ï¿½ï¿½ï¿½ï¿„1ï¿½7(2ï¿½ï¿½ï¿½ï¿½-pj) */
 		// For each edge j
 		for (ushort j = 0; j < sz_j; ++j)
 		{
-			/* È¡ÆäÖÐÄ³¸ö»¡edge_j(arc_j) */
+			/* È¡ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½edge_j(arc_j) */
 			VP& edge_j = pj[j];
 			ushort sz_ej = ushort(edge_j.size());
 
-			/* »¡arc_jÉÏÈ¡Èýµã£º×ó¶Ëµã+»¡ÖÐµã+ÓÒ¶Ëµã(×óx×îÐ¡ < ÓÒx×î´ó) */
+			/* ï¿½ï¿½arc_jï¿½ï¿½È¡ï¿½ï¿½ï¿½ã£ºï¿½ï¿½Ëµï¿„1ï¿½7+ï¿½ï¿½ï¿½Ðµï¿½+ï¿½Ò¶Ëµï¿½(ï¿½ï¿½xï¿½ï¿½Ð¡ < ï¿½ï¿½xï¿½ï¿½ï¿„1ï¿½7) */
 			Point& pjf = edge_j[0];
 			Point& pjm = edge_j[sz_ej/2];
 			Point& pjl = edge_j[sz_ej - 1];
 
 #ifndef DISCARD_CONSTRAINT_POSITION
-			/* ¼¸ºÎÔ¼ÊøÑéÖ¤-1£º2ÏóÏÞÖÐ»¡ÉÏµãµÄx×ø±ê < 1ÏóÏÞÖÐ»¡ÉÏµãµÄx×ø±ê£» */
-			/* Èô2.x > 1.x£¬¼´²»Âú×ãÔ¼ÊøÌõ¼þÔòÌø¹ý£¬½øÈëÏÂÒ»Ìõ»¡µÄÅÐ¶Ï¡£(1.x+1ÊÇÎó²î·¶Î§) */
+			/* ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½Ö¤-1ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½Ïµï¿½ï¿½xï¿½ï¿½ï¿½ï¿½ < 1ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½Ïµï¿½ï¿½xï¿½ï¿½ï¿½ê£» */
+			/* ï¿½ï¿½2.x > 1.xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶Ï¡ï¿½(1.x+1ï¿½ï¿½ï¿½ï¿½î·¶Î„1ï¿½7) */
 			// CONSTRAINTS on position
 			if (pjl.x > pif.x + _fThPosition) //is right	
 			{
@@ -1215,36 +1215,36 @@ void CNEllipseDetector::Triplets124(VVP& pi,
 				continue;
 			}
 #endif
-/* ÕâÀïÊÇÎÒÐèÒª¸Ä¶¯µÄvalue4SixPoints£º¸ü»»Á½»¡ÉÏÁùµãÅÐ¶ÏÍ¬Ô²µÄ·½·¨£¬¿´Ð§ÂÊÊÇ·ñÓÐÌáÉý£¡ */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½Ä¶ï¿½ï¿½ï¿½value4SixPointsï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½Í¬Ô²ï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 #ifndef DISCARD_CONSTRAINT_CNC
-			/* Í¬Ô²ÅÐ¶Ï-0£º»¡arci-1ÏóÏÞºÍ»¡arcj-2ÏóÏÞÉÏµÄ·Ö±ðÈýµã(¹²Áùµã)£¬¼ÆËãÌØÕ÷ÖµCNC£¬Âú×ã·§Öµ·¶Î§ÄÚÔòÁ½»¡Í¬Ô²£» */
-			/* Èô |T124=12µÄÌØÕ÷Öµ - 1| > thCNC(=0.3)£¬¼´²»Âú×ã·§Öµ·¶Î§£¬ÔòÁ½»¡²»Í¬Ô²£¬Ìø¹ý½øÈëÏÂÒ»Ìõ»¡µÄÅÐ¶Ï¡£(0.3ÊÇÎó²î·¶Î§£¬ÑÏ¸ñËµT124µÄCNCÖµÓ¦¸ÃÎª1) */
-			/* Èý¸ömyselectÌõ¼þ£ºÓ¦¸ÃÊÇ¿ØÖÆ'´Ë´ÎÔËÐÐÊ±Ä³¸öÁ½ÁÚÓò»¡ÅÐ¶ÏÍ¬Ô²²Ù×÷ÊÇ·ñÉúÐ§'µÄ¿ª¹Ø */
-			// Ìí¼ÓÏÞ¶¨Ìõ¼þ  2se se1//pil,pim,pif,pjf,pjm,pjl»òpjf,pjm,pjl,pif,pim,pil
+			/* Í¬Ô²ï¿½Ð¶ï¿½-0ï¿½ï¿½ï¿½ï¿½arci-1ï¿½ï¿½ï¿½ÞºÍ»ï¿½arcj-2ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÄ·Ö±ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÖµCNCï¿½ï¿½ï¿½ï¿½ï¿½ã·§Öµï¿½ï¿½Î§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬Ô²ï¿½ï¿½ */
+			/* ï¿½ï¿½ |T124=12ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ - 1| > thCNC(=0.3)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã·§Öµï¿½ï¿½Î§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶Ï¡ï¿½(0.3ï¿½ï¿½ï¿½ï¿½î·¶Î§ï¿½ï¿½ï¿½Ï¸ï¿½ËµT124ï¿½ï¿½CNCÖµÓ¦ï¿½ï¿½Îª1) */
+			/* ï¿½ï¿½ï¿½ï¿½myselectï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½Ç¿ï¿½ï¿½ï¿½'ï¿½Ë´ï¿½ï¿½ï¿½ï¿½ï¿½Ê±Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½Í¬Ô²ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ð§'ï¿½Ä¿ï¿½ï¿½ï¿½ */
+			// ï¿½ï¿½ï¿½ï¿½ï¿½Þ¶ï¿½ï¿½ï¿½ï¿½ï¿½  2se se1//pil,pim,pif,pjf,pjm,pjlï¿½ï¿½pjf,pjm,pjl,pif,pim,pil
 			if(myselect1&&fabs(value4SixPoints(T124))>tCNC)
 			{
 				continue;
 			}
 #endif
-			/* ÈôÂú×ãÉÏÊöÁ½¸öÔ¼ÊøÌõ¼þ£¬Ôò·ûºÏÕâÁ½»¡ºòÑ¡Çé¿ö£¬¸ù¾ÝijË÷ÒýÖµºÍ12ÏóÏÞkey¼ÆËãÆäHasnTableµÄ´æ´¢key£¬ÒÔ±ãºóÐø²åÈëºòÑ¡×éºÏ¼¯ºÏÖÐ¡£ */
+			/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ijï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½12ï¿½ï¿½ï¿½ï¿½keyï¿½ï¿½ï¿½ï¿½ï¿½ï¿½HasnTableï¿½Ä´æ´¢keyï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½ï¿½Ð¡ï¿„1ï¿½7 */
 			uint key_ij = GenerateKey(PAIR_12, i, j);
 
-			/* 3-×îºó±éÀúÁíÒ»ÁÚÏóÏÞµÄ»¡¼¯ºÏ(4ÏóÏÞ-pk) */
+			/* 3-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ÞµÄ»ï¿½ï¿½ï¿½ï¿½ï¿½(4ï¿½ï¿½ï¿½ï¿½-pk) */
 			//for each edge k
 			for (ushort k = 0; k < sz_k; ++k)
 			{
-				/* È¡ÆäÖÐÄ³¸ö»¡edge_k(arc_k) */
+				/* È¡ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½edge_k(arc_k) */
 				VP& edge_k = pk[k];
 				ushort sz_ek = ushort(edge_k.size());
 
-				/* »¡arc_kÉÏÈ¡Èýµã£º×ó¶Ëµã+»¡ÖÐµã+ÓÒ¶Ëµã(×óx×îÐ¡ < ÓÒx×î´ó) */
+				/* ï¿½ï¿½arc_kï¿½ï¿½È¡ï¿½ï¿½ï¿½ã£ºï¿½ï¿½Ëµï¿„1ï¿½7+ï¿½ï¿½ï¿½Ðµï¿½+ï¿½Ò¶Ëµï¿½(ï¿½ï¿½xï¿½ï¿½Ð¡ < ï¿½ï¿½xï¿½ï¿½ï¿„1ï¿½7) */
 				Point& pkf = edge_k[0];
 				Point& pkm = edge_k[sz_ek/2];
 				Point& pkl = edge_k[sz_ek - 1];
 
 #ifndef DISCARD_CONSTRAINT_POSITION
-				/* ¼¸ºÎÔ¼ÊøÑéÖ¤-2£º4ÏóÏÞÖÐ»¡ÉÏµãµÄy×ø±ê > 1ÏóÏÞÖÐ»¡ÉÏµãµÄy×ø±ê£» */
-				/* Èô4.y < 1.y£¬¼´²»Âú×ãÔ¼ÊøÌõ¼þÔòÌø¹ý£¬½øÈëÏÂÒ»Ìõ»¡µÄÅÐ¶Ï¡£(1.y-1ÊÇÎó²î·¶Î§) */
+				/* ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½Ö¤-2ï¿½ï¿½4ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½Ïµï¿½ï¿½yï¿½ï¿½ï¿½ï¿½ > 1ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½Ïµï¿½ï¿½yï¿½ï¿½ï¿½ê£» */
+				/* ï¿½ï¿½4.y < 1.yï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶Ï¡ï¿½(1.y-1ï¿½ï¿½ï¿½ï¿½î·¶Î„1ï¿½7) */
 				//CONSTRAINTS on position
 				if (pkl.y < pil.y - _fThPosition)
 				{
@@ -1254,35 +1254,35 @@ void CNEllipseDetector::Triplets124(VVP& pi,
 #endif
 
 #ifndef DISCARD_CONSTRAINT_CNC
-				/* Í¬Ô²ÅÐ¶Ï-0£º»¡arci-1ÏóÏÞºÍ»¡arck-4ÏóÏÞÉÏµÄ·Ö±ðÈýµã(¹²Áùµã)£¬¼ÆËãÌØÕ÷ÖµCNC£¬Âú×ã·§Öµ·¶Î§ÄÚÔòÁ½»¡Í¬Ô²£» */
-				/* Èô |T124=14µÄÌØÕ÷Öµ - 1| > thCNC(=0.3)£¬¼´²»Âú×ã·§Öµ·¶Î§£¬ÔòÁ½»¡²»Í¬Ô²£¬Ìø¹ý½øÈëÏÂÒ»Ìõ»¡µÄÅÐ¶Ï¡£(0.3ÊÇÎó²î·¶Î§£¬ÑÏ¸ñËµT124µÄCNCÖµÓ¦¸ÃÎª1) */
-				// Ìí¼ÓÏÞ¶¨Ìõ¼þ2		pif,pim,pil,pkf,pkm,pkl
+				/* Í¬Ô²ï¿½Ð¶ï¿½-0ï¿½ï¿½ï¿½ï¿½arci-1ï¿½ï¿½ï¿½ÞºÍ»ï¿½arck-4ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÄ·Ö±ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÖµCNCï¿½ï¿½ï¿½ï¿½ï¿½ã·§Öµï¿½ï¿½Î§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬Ô²ï¿½ï¿½ */
+				/* ï¿½ï¿½ |T124=14ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ - 1| > thCNC(=0.3)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã·§Öµï¿½ï¿½Î§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶Ï¡ï¿½(0.3ï¿½ï¿½ï¿½ï¿½î·¶Î§ï¿½ï¿½ï¿½Ï¸ï¿½ËµT124ï¿½ï¿½CNCÖµÓ¦ï¿½ï¿½Îª1) */
+				// ï¿½ï¿½ï¿½ï¿½ï¿½Þ¶ï¿½ï¿½ï¿½ï¿½ï¿½2		pif,pim,pil,pkf,pkm,pkl
 				if(myselect2&&fabs(value4SixPoints(pif, pim, pil, pkf, pkm, pkl))>tCNC)
 				{
 					continue;
 				}
-				/* Í¬Ô²ÅÐ¶Ï-0£º»¡arcj-2ÏóÏÞºÍ»¡arck-4ÏóÏÞÉÏµÄ·Ö±ðÈýµã(¹²Áùµã)£¬¼ÆËãÌØÕ÷ÖµCNC£¬Âú×ã·§Öµ·¶Î§ÄÚÔòÁ½»¡Í¬Ô²£» */
-				/* Èô |T124=24µÄÌØÕ÷Öµ - 1| > thCNC(=0.3)£¬¼´²»Âú×ã·§Öµ·¶Î§£¬ÔòÁ½»¡²»Í¬Ô²£¬Ìø¹ý½øÈëÏÂÒ»Ìõ»¡µÄÅÐ¶Ï¡£(0.3ÊÇÎó²î·¶Î§£¬ÑÏ¸ñËµT124µÄCNCÖµÓ¦¸ÃÎª1) */
-				// Ìí¼ÓÏÞ¶¨Ìõ¼þ3		pjf,pjm,pjl,pkf,pkm,pkl
+				/* Í¬Ô²ï¿½Ð¶ï¿½-0ï¿½ï¿½ï¿½ï¿½arcj-2ï¿½ï¿½ï¿½ÞºÍ»ï¿½arck-4ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÄ·Ö±ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÖµCNCï¿½ï¿½ï¿½ï¿½ï¿½ã·§Öµï¿½ï¿½Î§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬Ô²ï¿½ï¿½ */
+				/* ï¿½ï¿½ |T124=24ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ - 1| > thCNC(=0.3)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã·§Öµï¿½ï¿½Î§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶Ï¡ï¿½(0.3ï¿½ï¿½ï¿½ï¿½î·¶Î§ï¿½ï¿½ï¿½Ï¸ï¿½ËµT124ï¿½ï¿½CNCÖµÓ¦ï¿½ï¿½Îª1) */
+				// ï¿½ï¿½ï¿½ï¿½ï¿½Þ¶ï¿½ï¿½ï¿½ï¿½ï¿½3		pjf,pjm,pjl,pkf,pkm,pkl
 				if(myselect3&&fabs(value4SixPoints(pjf, pjm, pjl, pkf, pkm, pkl))>tCNC)
 				{
 					continue;
 				}
 #endif
-				/* ÈôÂú×ãÉÏÊöÁ½¸öÔ¼ÊøÌõ¼þ£¬Ôò·ûºÏÕâÁ½»¡ºòÑ¡Çé¿ö£¬¸ù¾ÝijË÷ÒýÖµºÍ12ÏóÏÞkey¼ÆËãÆäHasnTableµÄ´æ´¢key£¬ÒÔ±ãºóÐø²åÈëºòÑ¡×éºÏ¼¯ºÏÖÐ¡£ */
+				/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ijï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½12ï¿½ï¿½ï¿½ï¿½keyï¿½ï¿½ï¿½ï¿½ï¿½ï¿½HasnTableï¿½Ä´æ´¢keyï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½ï¿½Ð¡ï¿„1ï¿½7 */
 				uint key_ik = GenerateKey(PAIR_14, i, k);
 
 
-				/* dataÊÇÎÞÐòMap¼¯ºÏ(É¸Ñ¡ºóµÄºòÑ¡»¡×éºÏ)£¬ÆäÖÐkeyÖµÓÉGenerateKey()º¯ÊýÉú³É£¬valueÎªEllipseDataÀàÐÍµÄ¶ÔÏó¡£ */
-				/* ¸ù¾Ý»¡arci-1ºÍ»¡arcj-2ÕÒµ½Ô²ÐÄO12-data_ij£¬ÒÔ¼°¸ù¾Ý»¡arci-1ºÍ»¡arck-4ÕÒµ½Ô²ÐÄO14-data_ik */
+				/* dataï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Mapï¿½ï¿½ï¿½ï¿½(É¸Ñ¡ï¿½ï¿½Äºï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½keyÖµï¿½ï¿½GenerateKey()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É£ï¿½valueÎªEllipseDataï¿½ï¿½ï¿½ÍµÄ¶ï¿½ï¿½ï¿½ */
+				/* ï¿½ï¿½ï¿½Ý»ï¿½arci-1ï¿½Í»ï¿½arcj-2ï¿½Òµï¿½Ô²ï¿½ï¿½O12-data_ijï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½Ý»ï¿½arci-1ï¿½Í»ï¿½arck-4ï¿½Òµï¿½Ô²ï¿½ï¿½O14-data_ik */
 				// Find centers
 				EllipseData data_ij, data_ik;
 
-				/* ÅÐ¶Ïkey_ij¶ÔÓ¦µÄEllipseDataÔªËØdata_ijÊÇ·ñÒÑÔÚ¼¯ºÏÖÐ£» */
+				/* ï¿½Ð¶ï¿½key_ijï¿½ï¿½Ó¦ï¿½ï¿½EllipseDataÔªï¿½ï¿½data_ijï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ */
 				// If the data for the pair i-j have not been computed yet
 				if (data.count(key_ij) == 0)
 				{
-					/* Èô²»ÔÚ¼¯ºÏÖÐ£¬Ôò¼ÆËã³ödata_ijµÄÏà¹ØÄÚÈÝ(Ô²ÐÄO12µÈ)£¬²¢²åÈë¼¯ºÏÖÐ */
+					/* ï¿½ï¿½ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½data_ijï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿„1ï¿½7(Ô²ï¿½ï¿½O12ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë¼¯ï¿½ï¿½ï¿½ï¿½ */
 					
 					//1,2 -> reverse 1, swap
 
@@ -1293,17 +1293,17 @@ void CNEllipseDetector::Triplets124(VVP& pi,
 				}
 				else
 				{
-					/* ÈôÒÑÔÚ¼¯ºÏÖÐ£¬Ôò¸ù¾ÝkeyÖµÈ¡³ö¶ÔÓ¦µÄdata_ijÔªËØ(Ô²ÐÄO12µÈÏà¹ØÄÚÈÝÔÚ²åÈë¼¯ºÏÖ®Ç°ÒÑ¾­¼ÆËãºÃÁË) */
+					/* ï¿½ï¿½ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½keyÖµÈ¡ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½data_ijÔªï¿½ï¿½(Ô²ï¿½ï¿½O12ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ë¼¯ï¿½ï¿½Ö®Ç°ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½) */
 					
 					// Otherwise, just lookup the data in the hash table
 					data_ij = data.at(key_ij);
 				}
 
-				/* ÅÐ¶Ïkey_ik¶ÔÓ¦µÄEllipseDataÔªËØdata_ikÊÇ·ñÒÑÔÚ¼¯ºÏÖÐ£» */
+				/* ï¿½Ð¶ï¿½key_ikï¿½ï¿½Ó¦ï¿½ï¿½EllipseDataÔªï¿½ï¿½data_ikï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ */
 				// If the data for the pair i-k have not been computed yet
 				if (data.count(key_ik) == 0)
 				{
-					/* Èô²»ÔÚ¼¯ºÏÖÐ£¬Ôò¼ÆËã³ödata_ikµÄÏà¹ØÄÚÈÝ(Ô²ÐÄO14µÈ)£¬²¢²åÈë¼¯ºÏÖÐ */
+					/* ï¿½ï¿½ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½data_ikï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿„1ï¿½7(Ô²ï¿½ï¿½O14ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë¼¯ï¿½ï¿½ï¿½ï¿½ */
 
 					//1,4 -> ok
 
@@ -1314,13 +1314,13 @@ void CNEllipseDetector::Triplets124(VVP& pi,
 				}
 				else
 				{
-					/* ÈôÒÑÔÚ¼¯ºÏÖÐ£¬Ôò¸ù¾ÝkeyÖµÈ¡³ö¶ÔÓ¦µÄdata_ikÔªËØ(Ô²ÐÄO14µÈÏà¹ØÄÚÈÝÔÚ²åÈë¼¯ºÏÖ®Ç°ÒÑ¾­¼ÆËãºÃÁË) */
+					/* ï¿½ï¿½ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½keyÖµÈ¡ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½data_ikÔªï¿½ï¿½(Ô²ï¿½ï¿½O14ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ë¼¯ï¿½ï¿½Ö®Ç°ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½) */
 					
 					// Otherwise, just lookup the data in the hash table
 					data_ik = data.at(key_ik);
 				}
 				
-				/* Ðè±£Ö¤data_ijºÍdata_ik½ÔÎªÓÐÐ§ÄÚÈÝ */
+				/* ï¿½è±£Ö¤data_ijï¿½ï¿½data_ikï¿½ï¿½Îªï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ */
 				// INVALID CENTERS
 				if (!data_ij.isValid || !data_ik.isValid)
 				{
@@ -1328,7 +1328,7 @@ void CNEllipseDetector::Triplets124(VVP& pi,
 				}
 
 #ifndef DISCARD_CONSTRAINT_CENTER
-				/* ÐèÂú×ãÔ²ÐÄÎ»ÖÃÔ¼Êø£ºO12ºÍO14¾àÀëÏà½ü£»ÑÏ¸ñËµÒòÎªarciºÍarcjÍ¬Ô²ÇÒarciºÍarckÍ¬Ô²£¬ÔòO12ºÍO14Ó¦¸ÃÖØºÏ£¬Ä¿Ç°Ö»Ðè¶þÕßÔÚÎó²î·¶Î§ÄÚ¼´¿É¡£ */
+				/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô²ï¿½ï¿½Î»ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½O12ï¿½ï¿½O14ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½Ëµï¿½ï¿½Îªarciï¿½ï¿½arcjÍ¬Ô²ï¿½ï¿½arciï¿½ï¿½arckÍ¬Ô²ï¿½ï¿½ï¿½ï¿½O12ï¿½ï¿½O14Ó¦ï¿½ï¿½ï¿½ØºÏ£ï¿½Ä¿Ç°Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½î·¶Î§ï¿½Ú¼ï¿½ï¿½É¡ï¿½ */
 				// Selection strategy - Step 3. See Sect [3.2.2] in the paper
 				// The computed centers are not close enough
 				if (ed2(data_ij.Cab, data_ik.Cab) > _fMaxCenterDistance2)
@@ -1337,7 +1337,7 @@ void CNEllipseDetector::Triplets124(VVP& pi,
 					continue;
 				}
 #endif
-				/* ÈôÉÏÊöËùÓÐÔ¼Êø£ºÃ¿Á½»¡µÄ¼¸ºÎÔ¼Êø+Í¬Ô²ÅÐ¶Ï£¬Á½Ô²ÐÄO12ºÍO14µÄÎ»ÖÃÔ¼Êø£»¾ùÒÑÂú×ã£¬Ôò¿É¸ù¾ÝÉÏÊö½á¹û¹À¼ÆÔ²ÐÄ×ø±êºÍ³¤¶ÌÖáµÈ²ÎÊý¡£ */
+				/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½+Í¬Ô²ï¿½Ð¶Ï£ï¿½ï¿½ï¿½Ô²ï¿½ï¿½O12ï¿½ï¿½O14ï¿½ï¿½Î»ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã£¬ï¿½ï¿½É¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í³ï¿½ï¿½ï¿½ï¿½ï¿½È²ï¿½ï¿½ï¿½ï¿½ï¿½ */
 				// If all constraints of the selection strategy have been satisfied, 
 				// we can start estimating the ellipse parameters
 
@@ -1399,8 +1399,8 @@ void CNEllipseDetector::Triplets231(VVP& pi,
 #endif
 
 #ifndef DISCARD_CONSTRAINT_CNC
-			//Ìí¼ÓÔ¼Êø
-			// Ìí¼ÓÏÞ¶¨Ìõ¼þ 2es se3 //pif,pim,pil,pjf,pjm,pjl pil,pim,pif,pjf,pjm,pjl
+			//ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½
+			// ï¿½ï¿½ï¿½ï¿½ï¿½Þ¶ï¿½ï¿½ï¿½ï¿½ï¿½ 2es se3 //pif,pim,pil,pjf,pjm,pjl pil,pim,pif,pjf,pjm,pjl
 			if(myselect1&&fabs(value4SixPoints(T231))>tCNC)
 			{
 				continue;
@@ -1432,12 +1432,12 @@ void CNEllipseDetector::Triplets231(VVP& pi,
 #endif
 
 #ifndef DISCARD_CONSTRAINT_CNC
-				// Ìí¼ÓÏÞ¶¨Ìõ¼þ2		pif,pim,pil,pkf,pkm,pkl
+				// ï¿½ï¿½ï¿½ï¿½ï¿½Þ¶ï¿½ï¿½ï¿½ï¿½ï¿½2		pif,pim,pil,pkf,pkm,pkl
 				if(myselect2&&fabs(value4SixPoints(pif, pim, pil, pkf, pkm, pkl))>tCNC)
 				{
 					continue;
 				}
-				// Ìí¼ÓÏÞ¶¨Ìõ¼þ3		pjf,pjm,pjl,pkf,pkm,pkl
+				// ï¿½ï¿½ï¿½ï¿½ï¿½Þ¶ï¿½ï¿½ï¿½ï¿½ï¿½3		pjf,pjm,pjl,pkf,pkm,pkl
 				if(myselect3&&fabs(value4SixPoints(pjf, pjm, pjl, pkf, pkm, pkl))>tCNC)
 				{
 					continue;
@@ -1544,7 +1544,7 @@ void CNEllipseDetector::Triplets342(VVP& pi,
 #endif
 
 #ifndef DISCARD_CONSTRAINT_CNC
-			// Ìí¼ÓÏÞ¶¨Ìõ¼þ 3se se4 // pil,pim,pif,pjf,pjm,pjl pif,pim,pil,pjf,pjm,pjl
+			// ï¿½ï¿½ï¿½ï¿½ï¿½Þ¶ï¿½ï¿½ï¿½ï¿½ï¿½ 3se se4 // pil,pim,pif,pjf,pjm,pjl pif,pim,pil,pjf,pjm,pjl
 			if(myselect1&&fabs(value4SixPoints(T342))>tCNC)
 			{
 				continue;
@@ -1576,12 +1576,12 @@ void CNEllipseDetector::Triplets342(VVP& pi,
 #endif
 
 #ifndef DISCARD_CONSTRAINT_CNC
-				// Ìí¼ÓÏÞ¶¨Ìõ¼þ2		pif,pim,pil,pkf,pkm,pkl
+				// ï¿½ï¿½ï¿½ï¿½ï¿½Þ¶ï¿½ï¿½ï¿½ï¿½ï¿½2		pif,pim,pil,pkf,pkm,pkl
 				if(myselect2&&fabs(value4SixPoints(pif, pim, pil, pkf, pkm, pkl))>tCNC)
 				{
 					continue;
 				}
-				// Ìí¼ÓÏÞ¶¨Ìõ¼þ3		pjf,pjm,pjl,pkf,pkm,pkl
+				// ï¿½ï¿½ï¿½ï¿½ï¿½Þ¶ï¿½ï¿½ï¿½ï¿½ï¿½3		pjf,pjm,pjl,pkf,pkm,pkl
 				if(myselect3&&fabs(value4SixPoints(pjf, pjm, pjl, pkf, pkm, pkl))>tCNC)
 				{
 					continue;
@@ -1691,7 +1691,7 @@ void CNEllipseDetector::Triplets413(VVP& pi,
 #endif
 
 #ifndef DISCARD_CONSTRAINT_CNC
-			// Ìí¼ÓÏÞ¶¨Ìõ¼þ 4se es1//pif,pim,pil,pjf,pjm,pjl pil,pim,pif,pjl,pjm,pjf pif,pim,pil,pjl,pjm,pjf
+			// ï¿½ï¿½ï¿½ï¿½ï¿½Þ¶ï¿½ï¿½ï¿½ï¿½ï¿½ 4se es1//pif,pim,pil,pjf,pjm,pjl pil,pim,pif,pjl,pjm,pjf pif,pim,pil,pjl,pjm,pjf
 			if(myselect1&&fabs(value4SixPoints(T413))>tCNC)
 			{
 				continue;
@@ -1720,12 +1720,12 @@ void CNEllipseDetector::Triplets413(VVP& pi,
 #endif
 
 #ifndef DISCARD_CONSTRAINT_CNC
-				// Ìí¼ÓÏÞ¶¨Ìõ¼þ2		pif,pim,pil,pkf,pkm,pkl
+				// ï¿½ï¿½ï¿½ï¿½ï¿½Þ¶ï¿½ï¿½ï¿½ï¿½ï¿½2		pif,pim,pil,pkf,pkm,pkl
 				if(myselect2&&fabs(value4SixPoints(pif, pim, pil, pkf, pkm, pkl))>tCNC)
 				{
 					continue;
 				}
-				// Ìí¼ÓÏÞ¶¨Ìõ¼þ3		pjf,pjm,pjl,pkf,pkm,pkl
+				// ï¿½ï¿½ï¿½ï¿½ï¿½Þ¶ï¿½ï¿½ï¿½ï¿½ï¿½3		pjf,pjm,pjl,pkf,pkm,pkl
 				if(myselect3&&fabs(value4SixPoints(pjf, pjm, pjl, pkf, pkm, pkl))>tCNC)
 				{
 					continue;
@@ -1782,7 +1782,7 @@ void CNEllipseDetector::Triplets413(VVP& pi,
 		}
 	}
 };
-/* ÈýÍÖÔ²»¡×éºÏÉ¸Ñ¡½áÊø */
+/* ï¿½ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½É¸Ñ¡ï¿½ï¿½ï¿½ï¿„1ï¿½7 */
 
 
 void CNEllipseDetector::RemoveShortEdges(Mat1b& edges, Mat1b& clean)
@@ -1937,8 +1937,8 @@ void CNEllipseDetector::Detect(Mat1b& I, vector<Ellipse>& ellipses)
 {
 	countsOfFindEllipse=0;
 	countsOfGetFastCenter=0;
-	/*Ê¹ÓÃ·â×°µÄº¯ÊýTic()Ê×-Toc()Î²¼ÇÂ¼Ã¿Ò»²½µÄÔËÐÐÊ±¼ä(ms)µ½Ê±¼äÊý×é_timesÖÐ£º
-	    [±ßÔµ¼ì²â, Ô¤´¦Àí, ·Ö×é, Ô¤¹À, Ð£Ñé, ¾ÛÀà]¡£*/
+	/*Ê¹ï¿½Ã·ï¿½×°ï¿½Äºï¿½ï¿½ï¿½Tic()ï¿½ï¿½-Toc()Î²ï¿½ï¿½Â¼Ã¿Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½(ms)ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½_timesï¿½Ð£ï¿½
+	    [ï¿½ï¿½Ôµï¿½ï¿½ï¿„1ï¿½7, Ô¤ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, Ô¤ï¿½ï¿½, Ð£ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½]ï¿½ï¿½*/
 	Tic(1); //prepare data structure
 
 	// Set the image size
@@ -1971,10 +1971,10 @@ void CNEllipseDetector::Detect(Mat1b& I, vector<Ellipse>& ellipses)
 	Tac(1); //preprocessing
 	// Detect edges and find convexities
 
-	/* ±£´æ´ËÍ¼Æ¬13+24ÏóÏÞÄÚºÏ¸ñµÄ»¡£º³õÊ¼»¯£¬¼ÍÂ¼13ÏóÏÞ+¼ÍÂ¼24ÏóÏÞ£¬±£´æÐ´ÈëÍ¼Æ¬ */
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ„1ï¿½713+24ï¿½ï¿½ï¿½ï¿½ï¿½ÚºÏ¸ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â„1ï¿½713ï¿½ï¿½ï¿½ï¿½+ï¿½ï¿½Â¼24ï¿½ï¿½ï¿½Þ£ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½Í¼Æ¬ */
 	/*DPDN_temp_only_wan_arc = DP.clone();
-	int rows = DP.rows;  //Í¼Æ¬µÄ¿í
-	int cols = DP.cols;  //Í¼Æ¬µÄ¸ß
+	int rows = DP.rows;  //Í¼Æ¬ï¿½Ä¿ï¿½
+	int cols = DP.cols;  //Í¼Æ¬ï¿½Ä¸ï¿½
 	for (int i = 0; i < rows; i++)
 		for (int j = 0; j < cols; j++)
 		{
@@ -1984,8 +1984,8 @@ void CNEllipseDetector::Detect(Mat1b& I, vector<Ellipse>& ellipses)
 	DetectEdges13(DP, points_1, points_3);
 	DetectEdges24(DN, points_2, points_4);
 
-	/*imwrite("./result/ºÏ¸ñµÄ»¡.jpg", DPDN_temp_only_wan_arc);*/
-	/* ±£´æ´ËÍ¼Æ¬13+24ÏóÏÞÄÚºÏ¸ñµÄ»¡£º½áÊø*/
+	/*imwrite("./result/ï¿½Ï¸ï¿½Ä»ï¿„1ï¿½7.jpg", DPDN_temp_only_wan_arc);*/
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ„1ï¿½713+24ï¿½ï¿½ï¿½ï¿½ï¿½ÚºÏ¸ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿„1ï¿½7*/
 
 	Toc(1); //preprocessing
 
@@ -2034,11 +2034,11 @@ void CNEllipseDetector::Detect(Mat1b& I, vector<Ellipse>& ellipses)
 	Triplets413(points_4, points_1, points_3, centers, ellipses);
 	Toc(2); //grouping	
 	// time estimation, validation inside
-	_times[2] -= (_times[3] + _times[4]);//²»¹»×¼È·
+	_times[2] -= (_times[3] + _times[4]);//ï¿½ï¿½ï¿½ï¿½×¼È·
 
 	Tac(4); //validation
 	// Sort detected ellipses with respect to score
-	sort(ellipses.begin(), ellipses.end());//°´ÕÕ·ÖÊýÅÅÐò ·ÖÊýÏàÍ¬ Ô½½Ó½üÔ²Ô½Ð¡
+	sort(ellipses.begin(), ellipses.end());//ï¿½ï¿½ï¿½Õ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬ Ô½ï¿½Ó½ï¿½Ô²Ô½Ð¡
 	Toc(4); //validation
 
 
@@ -2158,7 +2158,7 @@ void CNEllipseDetector::DrawDetectedEllipses(Mat3b& output, vector<Ellipse>& ell
 	}
 }
 
-// add 2015Äê12ÔÂ24ÈÕ
+// add 2015ï¿½ï¿½12ï¿½ï¿½24ï¿½ï¿½
 void CNEllipseDetector:: showEdgeInPic(Mat1b& I){
 	_szImg = I.size();
 	// initialize temporary data structures
@@ -2189,23 +2189,25 @@ void CNEllipseDetector:: showEdgeInPic(Mat1b& I){
 //	IplImage ttt = (IplImage)tmp2;
 //	IplImage *tt2 = &ttt;
 //	cvShowImage("DNP", tt2);
-	IplImage tmp3 = (IplImage)tmp2;
-	IplImage tmp4 = IplImage(tmp2);
-	cvShowImage("DNP", &tmp3);
-//	CvArr tmp4 = IplImage(tmp3);
-//	cvSaveImage("DPN.jpg",&IplImage(tmp2));
- 	cvSaveImage("DPN.jpg",&tmp4);
+	// IplImage conversions removed for compatibility
+	// IplImage tmp3 = (IplImage)tmp2;
+	// IplImage tmp4 = IplImage(tmp2);
+	// cvShowImage("DNP", &tmp3);
+	// cvSaveImage("DPN.jpg",&tmp4);
+	imshow("DNP", tmp2);
+	imwrite("DPN.jpg", tmp2);
 //  
 	//end show DpDn
 	float t_fMinOrientedRectSide = _fMinOrientedRectSide;
 	_fMinOrientedRectSide=4;
-	//detect edges and find convexities// 4¸öÏóÏÞ
+	//detect edges and find convexities// 4ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	DetectEdges13(DP, points_1, points_3);
 	DetectEdges24(DN, points_2, points_4);
 	_fMinOrientedRectSide=t_fMinOrientedRectSide;
-	//ÏÔÊ¾Ñ¡³öµÄ±ß
+	//ï¿½ï¿½Ê¾Ñ¡ï¿½ï¿½ï¿½Ä±ï¿½
 	Mat picture(_szImg, CV_8UC3,Scalar(255,255,255));
-	IplImage *image= cvCreateImage(_szImg,IPL_DEPTH_8U,3);
+	// IplImage *image= cvCreateImage(_szImg,IPL_DEPTH_8U,3);
+	Mat image(_szImg, CV_8UC3);
 	// Mat picture(_szImg,CV_8UC3);
 	/*for(int ih=0;ih<_szImg.height;ih++){
 	for(int iw=0;iw<_szImg.width;iw++){
@@ -2225,10 +2227,10 @@ void CNEllipseDetector:: showEdgeInPic(Mat1b& I){
 	showEdge(points_3,picture3);
 	showEdge(points_4,picture4);
 	/*
-	imshow("µÚ1ÏóÏÞ", picture1);
-	imshow("µÚ2ÏóÏÞ", picture2);
-	imshow("µÚ3ÏóÏÞ", picture3);
-	imshow("µÚ4ÏóÏÞ", picture4);*/
+	imshow("ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½", picture1);
+	imshow("ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½", picture2);
+	imshow("ï¿½ï¿½3ï¿½ï¿½ï¿½ï¿½", picture3);
+	imshow("ï¿½ï¿½4ï¿½ï¿½ï¿½ï¿½", picture4);*/
 	
 	Mat picture5=picture.clone();
 	showEdge(points_1,picture5);
@@ -2240,16 +2242,18 @@ void CNEllipseDetector:: showEdgeInPic(Mat1b& I){
 	imgs[1] = picture1;
 	imgs[2] = picture3;
 	imgs[3] = picture4; 
-	IplImage picture5_1 = (IplImage)picture5;
-	IplImage picture5_2 = IplImage(picture5);
-	cvNamedWindow("all arcs", CV_WINDOW_NORMAL);  
-//	cvShowImage("all arcs",&(IplImage)picture5 );
-	cvShowImage("all arcs", &picture5_1);
-	cvSaveImage("arcs.jpg", &picture5_2);
+	// IplImage picture5_1 = (IplImage)picture5;
+	// IplImage picture5_2 = IplImage(picture5);
+	// cvNamedWindow("all arcs", CV_WINDOW_NORMAL);  
+	// cvShowImage("all arcs", &picture5_1);
+	// cvSaveImage("arcs.jpg", &picture5_2);
+	namedWindow("all arcs", WINDOW_NORMAL);
+	imshow("all arcs", picture5);
+	imwrite("arcs.jpg", picture5);
 
 	//imshow("all arcs", picture5);
 
-	MultiImage_OneWin("ÏóÏÞÖÐµÄ»¡", imgs, cvSize(2, 2), cvSize(400,800)); 
+	MultiImage_OneWin("ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄ»ï¿½", imgs, cvSize(2, 2), cvSize(400,800)); 
 	//cvWaitKey(0);  
 	//cvDestroyWindow("all arcs");
 }
@@ -2270,13 +2274,14 @@ void CNEllipseDetector:: showAllEdgeInPic(Mat1b& I){
 	//this->_uNs=0;
 
 	PrePeocessing(I, DP, DN);
-	cvNamedWindow("aaas", CV_WINDOW_NORMAL);
+	namedWindow("aaas", WINDOW_NORMAL);
 	Mat1b tmp	= Mat1b::zeros(_szImg);
 	
-	IplImage DP_1 = (IplImage)DP;
-	cvShowImage("aaas", &DP_1);
+	// IplImage DP_1 = (IplImage)DP;
+	// cvShowImage("aaas", &DP_1);
+	imshow("aaas", DP);
 //	cvShowImage("aaas",&(IplImage)DP );
-	//detect edges and find convexities// 4¸öÏóÏÞ
+	//detect edges and find convexities// 4ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	//DetectEdges13(DP, points_1, points_3);
 	//DetectEdges24(DN, points_2, points_4);
 }
@@ -2295,18 +2300,18 @@ int CNEllipseDetector:: showEdgeInPic(Mat1b& I,bool showedge){
 
 
 	PrePeocessing(I, DP, DN);
-	//detect edges and find convexities// 4¸öÏóÏÞ
+	//detect edges and find convexities// 4ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	DetectEdges13(DP, points_1, points_3);
 	DetectEdges24(DN, points_2, points_4);
 	int EdgesNumber=points_1.size()+points_2.size()+points_3.size()+points_4.size();
-	//ÏÔÊ¾Ñ¡³öµÄ±ß
+	//ï¿½ï¿½Ê¾Ñ¡ï¿½ï¿½ï¿½Ä±ï¿½
 	return EdgesNumber;
 	//cvWaitKey(0);  
 	//cvDestroyWindow("all arcs");
 }
 
-/* ´úÂë¸Ä¶¯£º
-1¡¢line-27¡¢72£º×îÓÅ»¯²ÎÊý£¬tCNC = 0.47f£»score = 0.61ÊÇ_fMinScore = 0.61Âð£¿
-2¡¢line-1147£º124+231+342+413·½·¨ÖÐµÄ·§ÖµÅÐ¶ÏÊ±µÄ'-1'²Ù×÷»»µ½value4SixPoints·½·¨·µ»ØresultÖµÊ±½øÐÐ£»
-3¡¢°ÑDISCARD_TCNºÍDISCARD_TCN1µÄºê¶¨ÒåÈ¥µô£¬¸ÄÎªDISCARD_TCN2ºê¶¨Òå¡£
+/* ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½ï¿½ï¿„1ï¿½7
+1ï¿½ï¿½line-27ï¿½ï¿½72ï¿½ï¿½ï¿½ï¿½ï¿½Å»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½tCNC = 0.47fï¿½ï¿½score = 0.61ï¿½ï¿½_fMinScore = 0.61ï¿½ï¿½
+2ï¿½ï¿½line-1147ï¿½ï¿½124+231+342+413ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄ·ï¿½Öµï¿½Ð¶ï¿½Ê±ï¿½ï¿½'-1'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½value4SixPointsï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½resultÖµÊ±ï¿½ï¿½ï¿½Ð£ï¿½
+3ï¿½ï¿½ï¿½ï¿½DISCARD_TCNï¿½ï¿½DISCARD_TCN1ï¿½Äºê¶¨ï¿½ï¿½È¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªDISCARD_TCN2ï¿½ê¶¨ï¿½å¡£
 */

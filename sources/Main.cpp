@@ -115,7 +115,7 @@ vector<double> showT(string sWorkingDir,string imagename, CNEllipseDetector cned
 	else {
 		//【为减少实验时的等待时间，第二遍或非必要下可不保存结果图片】
 		string tmpPath = sWorkingDir + "/resultDetImages/";
-		_mkdir(tmpPath.data());
+		MKDIR(tmpPath.data());
 		imwrite(tmpPath + "det_" + imagename, resultImage);
 	}
 
@@ -206,9 +206,8 @@ vector<double> OnImage(string filename,float fThScoreScore,float fMinReliability
 	cned.DrawDetectedEllipses(resultImage, ellsCned);
 	imshow("Cned", resultImage);
 	if(showpic){
-		_mkdir("result");
-		IplImage resultImage_1 = IplImage(resultImage);
-		cvSaveImage("result/resultImage.jpg",&resultImage_1);
+		MKDIR("result");
+		imwrite("result/resultImage.jpg", resultImage);
 		SaveEllipses("result/result.txt", ellsCned);
 	}
 	double fmeasure = 0;//showT(sWorkingDir,imagename, cned,ellsCned,0.8f,showpic);
@@ -327,14 +326,14 @@ vector<double> OnImage(string sWorkingDir,string imagename,float fThScoreScore,f
 	cned.Detect(gray_clone, ellsCned);
 	vector<double> times = cned.GetTimes();
 	if(showpic){
-		_mkdir("result");
+		MKDIR("result");
 		SaveEllipses("result/result.txt", ellsCned);
 	}
 	// 更改：测试整个数据集时，将其每个测试图片的测试结果也保存到参数文件
 	// 【为减少实验时的等待时间，第二遍或非必要下可不保存结果参数txt】
 	else {
 		string tmpPath = sWorkingDir + "/resultDet/";
-		_mkdir(tmpPath.data());
+		MKDIR(tmpPath.data());
 		SaveEllipses(tmpPath+"det_"+imagename+".txt", ellsCned);
 	}
 
@@ -484,7 +483,7 @@ int main_allDB(int argc, char** argv)
 	char cnewDir[100];
 	sprintf(cnewDir,"normal/");
 	string newDir=cnewDir;
-	_mkdir(cnewDir);
+			MKDIR(cnewDir);
 	vector<string> resultString;
 	resultString.push_back("iDir,fThScoreScore,fMinReliability,fTaoCenters,Edge Detection,Pre processing,Grouping,Estimation,Validation,Clustering,WholeTime,F-measure,countsOfFindEllipse,countsOfGetFastCenter");
 
@@ -679,7 +678,7 @@ int main_salt(int argc, char** argv)
 		char cnewDir[20];
 		sprintf(cnewDir,"%02d/",saltrate);
 		string newDir=cnewDir;
-		_mkdir(cnewDir);
+		MKDIR(cnewDir);
 		vector<string> resultString;
 		resultString.push_back("iDir,fThScoreScore,fMinReliability,fTaoCenters,Edge Detection,Pre processing,Grouping,Estimation,Validation,Clustering,Totaltimes,F-measure,countsOfFindEllipse,countsOfGetFastCenter");
 		for(iDir=0;iDir<3;iDir++){
