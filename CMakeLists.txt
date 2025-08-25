@@ -18,8 +18,19 @@ else()
     add_compile_options(-Wall -Wextra -O2)
 endif()
 
-# Find OpenCV
-find_package(OpenCV REQUIRED COMPONENTS core imgproc highgui features2d imgcodecs)
+# Find OpenCV - handle vcpkg installation
+if(VCPKG_TOOLCHAIN)
+    # For vcpkg, try to find OpenCV4 first
+    find_package(OpenCV CONFIG REQUIRED)
+else()
+    # For system packages, use standard find
+    find_package(OpenCV REQUIRED COMPONENTS core imgproc highgui features2d imgcodecs)
+endif()
+
+# Print OpenCV info for debugging
+message(STATUS "OpenCV version: ${OpenCV_VERSION}")
+message(STATUS "OpenCV include dirs: ${OpenCV_INCLUDE_DIRS}")
+message(STATUS "OpenCV libraries: ${OpenCV_LIBS}")
 
 # Include directories
 include_directories(${OpenCV_INCLUDE_DIRS})
