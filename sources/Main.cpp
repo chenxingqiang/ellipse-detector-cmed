@@ -12,7 +12,7 @@ If you need further details about the code or the algorithm, please contact me a
 
 lianbosong@turingai.cc
 
-last update: 
+last update:
 */
 
 #include "stdafx.h"
@@ -33,10 +33,10 @@ int MethodId = 2;
 /* 椭圆检测参数设置(阀值-实际与理想值的差值)：椭圆评定阀值a、椭圆评定阀值b、？、弧长阀值、？、？ */
 //float	fThScoreScore = 0.7f;	//0.8
 //float	fMinReliability	= 0.5f;	// Const parameters to discard bad ellipses 0.4
-//float	fTaoCenters = 0.05f;//0.05 	
+//float	fTaoCenters = 0.05f;//0.05
 float	fThScoreScore = 0.2f;	//0.8 - Very relaxed for testing
 float	fMinReliability	= 0.1f;	// Const parameters to discard bad ellipses 0.4 - Very relaxed
-float	fTaoCenters = 0.15f;//0.05 - Much increased for center clustering	
+float	fTaoCenters = 0.15f;//0.05 - Much increased for center clustering
 
 int		ThLength=8;//16 - Much reduced for shorter arcs
 float	MinOrientedRectSide=1.0f;//3.0f - Much reduced for smaller ellipses
@@ -76,7 +76,7 @@ vector<double> showT(string sWorkingDir,string imagename, CNEllipseDetector cned
 	{
 		LoadGT(gt, sWorkingDir + "/gt/" + imagename + ".txt", true);
 	}
-	else if (DBNAME == "Industrial PCB Image Dataset") 
+	else if (DBNAME == "Industrial PCB Image Dataset")
 	{
 		LoadGT(gt, sWorkingDir + "/gt0/" + imagename.substr(0, imagename.find(".")) + ".txt", true);
 	}
@@ -132,19 +132,19 @@ void OnVideo()
 
 	Mat1b gray;
 	while(true)
-	{	
+	{
 		Mat3b image;
 		cap >> image;
-		cvtColor(image, gray, CV_BGR2GRAY);	
+		cvtColor(image, gray, CV_BGR2GRAY);
 
 		vector<Ellipse> ellipses;
 
-		//Find Ellipses		
+		//Find Ellipses
 		cned.Detect(gray, ellipses);
 		cned.DrawDetectedEllipses(image,ellipses);
 		imshow("Output", image);
 
-			
+
 		if(waitKey(10) >= 0) break;
 	}
 }
@@ -155,7 +155,7 @@ vector<double> OnImage(string filename,float fThScoreScore,float fMinReliability
 	CNEllipseDetector cned;
 	// Read image
 	Mat3b image = imread(filename);
-	
+
 	if(!image.data){
 		cout<<filename<<" not exist"<<endl;
 		return times;
@@ -174,7 +174,7 @@ vector<double> OnImage(string filename,float fThScoreScore,float fMinReliability
 	int 	iNs = 16;//弦数
 	float	fMaxCenterDistance = sqrt(float(sz.width*sz.width + sz.height*sz.height)) * fTaoCenters;
 
-	//float	fThScoreScore = 0.5f;//0.8	
+	//float	fThScoreScore = 0.5f;//0.8
 	//fTaoCenters = 0.05f;
 	// Other constant parameters settings.
 	// Gaussian filter parameters, in pre-processing
@@ -185,18 +185,18 @@ vector<double> OnImage(string filename,float fThScoreScore,float fMinReliability
 	//float	fMinReliability					= 0.4f;	// Const parameters to discard bad ellipses 0.5
 
 	// Initialize Detector with selected parameters
-	cned.SetParameters	(	szPreProcessingGaussKernelSize,	
-		dPreProcessingGaussSigma,		
+	cned.SetParameters	(	szPreProcessingGaussKernelSize,
+		dPreProcessingGaussSigma,
 		fThPos,
 		fMaxCenterDistance,
 		iThLength,
 		fThObb,
-		fDistanceToEllipseContour,		
+		fDistanceToEllipseContour,
 		fThScoreScore,
-		fMinReliability,		
+		fMinReliability,
 		iNs
 		);
-	// Detect 
+	// Detect
 	vector<Ellipse> ellsCned;
 	Mat1b gray_clone=gray.clone();
 	cned.Detect(gray_clone, ellsCned);
@@ -269,7 +269,7 @@ void ReadParameter(int argc,char** argv){
     for(it=Parameter.begin();it!=Parameter.end();++it)
         cout<<"key: "<<it->first <<" value: "<<it->second<<endl;
 	SetParameter(Parameter);
-	
+
 }
 
 
@@ -298,7 +298,7 @@ vector<double> OnImage(string sWorkingDir,string imagename,float fThScoreScore,f
 	int 	iNs = 16;//弦数
 	float	fMaxCenterDistance = sqrt(float(sz.width*sz.width + sz.height*sz.height)) * fTaoCenters;
 
-	//float	fThScoreScore = 0.5f;//0.8	
+	//float	fThScoreScore = 0.5f;//0.8
 	//fTaoCenters = 0.05f;
 	// Other constant parameters settings.
 	// Gaussian filter parameters, in pre-processing
@@ -309,18 +309,18 @@ vector<double> OnImage(string sWorkingDir,string imagename,float fThScoreScore,f
 	//float	fMinReliability					= 0.4f;	// Const parameters to discard bad ellipses 0.5
 
 	// Initialize Detector with selected parameters
-	cned.SetParameters	(	szPreProcessingGaussKernelSize,	
-		dPreProcessingGaussSigma,		
+	cned.SetParameters	(	szPreProcessingGaussKernelSize,
+		dPreProcessingGaussSigma,
 		fThPos,
 		fMaxCenterDistance,
 		iThLength,
 		fThObb,
-		fDistanceToEllipseContour,		
+		fDistanceToEllipseContour,
 		fThScoreScore,
-		fMinReliability,		
+		fMinReliability,
 		iNs
 		);
-	// Detect 
+	// Detect
 	vector<Ellipse> ellsCned;
 	Mat1b gray_clone=gray.clone();
 	cned.Detect(gray_clone, ellsCned);
@@ -363,7 +363,7 @@ vector<double> database(string sWorkingDir,float fThScoreScore,float fMinReliabi
 	double fmeasure = results[6];
 	vector<double> times = results;	// times = results = [0~5为六步时间数据，6为F值，7~8为counts数据，9~11为tp_fn_fp]
 	double wholetime=accumulate(times.begin(),times.begin()+6,0.0);
-	
+
 	fmeasure=0.0;	// 评价1
 	double tps = 0;	// 评价2
 	double fns = 0;
@@ -391,7 +391,7 @@ vector<double> database(string sWorkingDir,float fThScoreScore,float fMinReliabi
 		times[i]=allTimes[i]/(1.0*files.size());
 	}
 	wholetime=accumulate(times.begin(),times.begin()+6,0.0);
-	
+
 	// 评价1
 	fmeasure = fmeasure / (1.0 * files.size());
 	// 评价2
@@ -426,7 +426,7 @@ vector<double> database(string sWorkingDir,float fThScoreScore,float fMinReliabi
 	cout << "--------------------------------" << endl;
 	cout << "countsOfFindEllipse \t"<<times[7]<<endl;
 	cout << "countsOfGetFastCenter \t"<<times[8]<<endl;
-	
+
 	stringstream resultsitem;
 	resultsitem<<"average"<<","<<times[0]<<","<<times[1]<<","<<times[2]<<","<<times[3]<<","<<times[4]<<","<<times[5]<<","<<wholetime<<","<<times[6]<<","<<times[7]<<","<<times[8];
 	resultString.push_back(resultsitem.str());
@@ -447,7 +447,7 @@ int main_OnePic()
 		waitKey(0);
 		cvDestroyWindow("Cned");
 	}
-	
+
 	return 0;
 }
 int main_OneDB()
@@ -473,13 +473,13 @@ int main_allDB(int argc, char** argv)
 
 	float	localThScoreScore = 0.5f;	//0.8
 	float	localMinReliability	= 0.50f;	// Const parameters to discard bad ellipses 0.4
-	float	localTaoCenters = 0.05f;//0.05 
+	float	localTaoCenters = 0.05f;//0.05
 	string oldname="dataset.csv";
 	string newname="";
 
 	vector<double> times;
 	char oneTimeName[100];
-	
+
 	char cnewDir[100];
 	sprintf(cnewDir,"normal/");
 	string newDir=cnewDir;
@@ -512,11 +512,11 @@ int main_allDB(int argc, char** argv)
 			}
 		}
 	}
-	
+
 	writeFile(newDir+"our_allaverage.csv",resultString);
 	return 0;
 }
-//salt 
+//salt
 vector<double> OnImage_salt(string sWorkingDir,string imagename,int saltrate,float fThScoreScore,float fMinReliability,float fTaoCenters,bool showpic)
 {
 	CNEllipseDetector cned;
@@ -526,7 +526,7 @@ vector<double> OnImage_salt(string sWorkingDir,string imagename,int saltrate,flo
 	Mat3b image = imread(filename);
 	Size sz = image.size();
 	int n=sz.width*sz.height;
-	
+
 	// Convert to grayscale
 	//medianBlur(image.clone(),image,3);
 
@@ -544,7 +544,7 @@ vector<double> OnImage_salt(string sWorkingDir,string imagename,int saltrate,flo
 	int 	iNs = 16;//弦数
 	float	fMaxCenterDistance = sqrt(float(sz.width*sz.width + sz.height*sz.height)) * fTaoCenters;
 
-	//float	fThScoreScore = 0.5f;//0.8	
+	//float	fThScoreScore = 0.5f;//0.8
 	//fTaoCenters = 0.05f;
 	// Other constant parameters settings.
 	// Gaussian filter parameters, in pre-processing
@@ -555,15 +555,15 @@ vector<double> OnImage_salt(string sWorkingDir,string imagename,int saltrate,flo
 	//float	fMinReliability					= 0.4f;	// Const parameters to discard bad ellipses 0.5
 
 	// Initialize Detector with selected parameters
-	cned.SetParameters	(	szPreProcessingGaussKernelSize,	
-		dPreProcessingGaussSigma,		
+	cned.SetParameters	(	szPreProcessingGaussKernelSize,
+		dPreProcessingGaussSigma,
 		fThPos,
 		fMaxCenterDistance,
 		iThLength,
 		fThObb,
-		fDistanceToEllipseContour,		
+		fDistanceToEllipseContour,
 		fThScoreScore,
-		fMinReliability,		
+		fMinReliability,
 		iNs
 		);
 	// Detect
@@ -666,7 +666,7 @@ int main_salt(int argc, char** argv)
 
 	float	localThScoreScore2 = 0.5f;	//0.8
 	float	localMinReliability2	= 0.50f;	// Const parameters to discard bad ellipses 0.4
-	float	localTaoCenters2 = 0.05f;//0.05 
+	float	localTaoCenters2 = 0.05f;//0.05
 	string oldname="dataset.csv";
 	string newname="";
 
@@ -686,7 +686,7 @@ int main_salt(int argc, char** argv)
 			for(iScore=0;iScore<6;iScore++){
 				fThScoreScore = afThScoreScore[iScore];
 				for(iReliability=0;iReliability<6;iReliability++){
-					fMinReliability = afMinReliability[iReliability]; 
+					fMinReliability = afMinReliability[iReliability];
 					for(iTaoCenter=0;iTaoCenter<6;iTaoCenter++){
 						fTaoCenters = afTaoCenters[iTaoCenter];
 						times=database_salt(sWorkingDir,saltrate,fThScoreScore,fMinReliability,fTaoCenters);
@@ -733,15 +733,15 @@ vector<double> detect4s(string sWorkingDir, string imageName){
 	float	fDistanceToEllipseContour		= 0.1f;	// (Sect. 3.3.1 - Validation)
 
 	// Initialize Detector with selected parameters
-	cned.SetParameters	(	szPreProcessingGaussKernelSize,	
-		dPreProcessingGaussSigma,		
+	cned.SetParameters	(	szPreProcessingGaussKernelSize,
+		dPreProcessingGaussSigma,
 		fThPos,
 		fMaxCenterDistance,
 		iThLength,
 		fThObb,
-		fDistanceToEllipseContour,		
+		fDistanceToEllipseContour,
 		fThScoreScore,
-		fMinReliability,		
+		fMinReliability,
 		iNs
 		);
 
@@ -817,7 +817,7 @@ vector<double> database_4s(string sWorkingDir){
 			<<","<<Counts[9]<<","<<Counts[10]<<","<<Counts[11]<<","<<Counts[12]
 			<<","<<Counts[13]<<","<<Counts[14]<<","<<Counts[15]<<","<<Counts[16];
 		resultString.push_back(resultsitem.str());
-		
+
 		for (unsigned int j=0;j<AllCounts.size();j++){
 			AllCounts[j]+=Counts[j];
 		}
@@ -868,7 +868,7 @@ int main_TCN()
 {// 遍历tTCNl
 	string sWorkingDirPath=SWORKINGDIR;
 	string sWorkingDirName[3] = {"PrasadImages-DatasetPrasad","RandomImages-Dataset#1","good2"};
-	
+
 	//float tTCN[6]={0,1.0f/64,2.0f/64,4.0f/64,6.0f/64,8.0f/64};
 	float tTCN[6]={0,1,2,3,4,5};
 	vector<double>  Counts;
@@ -879,12 +879,12 @@ int main_TCN()
 
 	float	localThScoreScore3 = 0.5f;	//0.8
 	float	localMinReliability3	= 0.50f;	// Const parameters to discard bad ellipses 0.4
-	float	localTaoCenters3 = 0.05f;//0.05 
+	float	localTaoCenters3 = 0.05f;//0.05
 	string oldname="dataset.csv";
 	string newname="";
 
 	vector<double> times;
-	
+
 	char oneTimeName[100];
 	vector<string> resultString;
 	resultString.push_back("iDir,tTCNl,EdgeNumber,select100Time,cOFE1,cOGFC1,F-m1,select110Time,cOFE2,cOGFC2,F-m2,select111Time,cOFE3,cOGFC3,F-m3,select000Time,cOFE,cOGFC,F-m");
@@ -907,16 +907,16 @@ int main_TCN()
 				<<","<<Counts[13]<<","<<Counts[14]<<","<<Counts[15]<<","<<Counts[16];
 			resultString.push_back(resultsitem.str());
 		}
-		
+
 	}
-	
+
 	writeFile("our_allEdgeCompareaverage.csv",resultString);
 	return 0;
 }
 int main_CNC(){
 	string sWorkingDirPath=SWORKINGDIR;
 	string sWorkingDirName[3] = {"PrasadImages-DatasetPrasad","RandomImages-Dataset#1","Dataset#2"};
-	
+
 	float tCNCs[21]={0,0.1f,0.2f,0.3f,0.4f,0.5f,0.6f,1,2,3,4,5,10,20,30,40,50,100,200,500,1000};
 	vector<double>  Counts;
 
@@ -927,7 +927,7 @@ int main_CNC(){
 	string newname="";
 
 	vector<double> times;
-	
+
 	char oneTimeName[100];
 	vector<string> resultString;
 	resultString.push_back("iDir,tTCNl,EdgeNumber,cOFE1,cOGFC1,select100Time,F-m1,cOFE2,cOGFC2,select110Time,F-m2,cOFE3,cOGFC3,select111Time,F-m3,cOFE,cOGFC,select000Time,F-m");
@@ -949,9 +949,9 @@ int main_CNC(){
 				<<","<<Counts[13]<<","<<Counts[14]<<","<<Counts[15]<<","<<Counts[16];
 			resultString.push_back(resultsitem.str());
 		}
-		
+
 	}
-	
+
 	writeFile("our_allEdgeCompareCNCaverage.csv",resultString);
 	return 0;
 }
@@ -1010,13 +1010,13 @@ int main(int argc, char** argv)
 	//tCNC=0.2f;
 	fThScoreScore = 0.2f;	//0.8 - Very relaxed for testing
 	fMinReliability	= 0.1f;	// Const parameters to discard bad ellipses 0.4 - Very relaxed
-	fTaoCenters = 0.15f;//0.05 - Much increased for center clustering	
+	fTaoCenters = 0.15f;//0.05 - Much increased for center clustering
 	ThLength=8;//16 - Much reduced for shorter arcs
 	MinOrientedRectSide=1.0f;
 	if(argc==2){
 		string filename= argv[1];
 		if(NULL!=strstr(filename.c_str(),".jpg")||NULL!=strstr(filename.c_str(),".bmp")
-			||NULL!=strstr(filename.c_str(),".JPG")||NULL!=strstr(filename.c_str(),".png")){	
+			||NULL!=strstr(filename.c_str(),".JPG")||NULL!=strstr(filename.c_str(),".png")){
 			cout<<filename<<endl;
 			// Parse filename to separate working directory and image name
 			size_t lastSlash = filename.find_last_of('/');
@@ -1065,17 +1065,17 @@ int main(int argc, char** argv)
 		main_allDB(argc, argv);
 
 		tCNC=0.2f;ThLength=16;tTCNl=3;
-		fThScoreScore = 0.7f;fMinReliability = 0.5f;fTaoCenters = 0.05f;//0.05 	
+		fThScoreScore = 0.7f;fMinReliability = 0.5f;fTaoCenters = 0.05f;//0.05
 		MinOrientedRectSide=3.0f;
 		main_salt(argc, argv);
 
 		tCNC=0.2f;ThLength=16;tTCNl=3;
-		fThScoreScore = 0.7f;fMinReliability = 0.5f;fTaoCenters = 0.05f;//0.05 	
+		fThScoreScore = 0.7f;fMinReliability = 0.5f;fTaoCenters = 0.05f;//0.05
 		MinOrientedRectSide=3.0f;
 		main_TCN();
 
 		tCNC=0.2f;ThLength=16;tTCNl=3;
-		fThScoreScore = 0.7f;fMinReliability = 0.5f;fTaoCenters = 0.05f;//0.05 	
+		fThScoreScore = 0.7f;fMinReliability = 0.5f;fTaoCenters = 0.05f;//0.05
 		MinOrientedRectSide=3.0f;
 		main_CNC();
 		}break;
