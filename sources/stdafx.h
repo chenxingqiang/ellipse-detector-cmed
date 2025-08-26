@@ -27,6 +27,7 @@
 #ifdef _WIN32
 #include <direct.h>
 #include <io.h>
+#include "dirent.h"  // Use local Windows-compatible dirent.h
 #elif defined(__linux__)
 #include <dirent.h>
 #include <unistd.h>

@@ -12,8 +12,14 @@ endif()
 
 # Compiler-specific options
 if(MSVC)
-    add_compile_options(/W4)
+    add_compile_options(/W3)  # Reduced warning level
     add_definitions(-D_CRT_SECURE_NO_WARNINGS)
+    # Suppress specific warnings that don't affect functionality
+    add_compile_options(/wd4459)  # declaration of 'name' hides global declaration
+    add_compile_options(/wd4100)  # unreferenced formal parameter
+    add_compile_options(/wd4189)  # local variable is initialized but not referenced
+    add_compile_options(/wd4267)  # conversion from 'size_t' to 'int', possible loss of data
+    add_compile_options(/wd4456)  # declaration of 'name' hides previous local declaration
 else()
     add_compile_options(-Wall -Wextra -O2)
 endif()

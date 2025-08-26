@@ -630,14 +630,17 @@ void listDir(string real_dir,vector<string>& files,bool r){
 	string childpath;
 	string absolutepath;
 	pDir = opendir(real_dir.c_str());
+	if (pDir == NULL) {
+		return; // Failed to open directory
+	}
 	while ((ent = readdir(pDir)) != NULL){
 		if (ent->d_type & DT_DIR){
 			if (strcmp(ent->d_name, ".") == 0 || strcmp(ent->d_name, "..") == 0){
 				continue;
 			}
 			if(r){ //If we need to recursively search subdirectories
-				childpath=real_dir+ent->d_name;
-				listDir(childpath,files);
+				childpath=real_dir+"/"+ent->d_name+"/";
+				listDir(childpath,files, r);
 			}
 		}
 		else{
@@ -645,6 +648,7 @@ void listDir(string real_dir,vector<string>& files,bool r){
 			files.push_back(ent->d_name);//File name
 		}
 	}
+	closedir(pDir); // Important: close the directory handle
 	sort(files.begin(),files.end());//Sort
 }
 void SaveEllipses(const string& fileName, const vector<Ellipse>& ellipses){

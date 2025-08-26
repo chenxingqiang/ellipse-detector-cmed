@@ -471,9 +471,9 @@ int main_allDB(int argc, char** argv)
 	int iTaoCenter=0;
 	string sWorkingDir;
 
-	float	fThScoreScore = 0.5f;	//0.8
-	float	fMinReliability	= 0.50f;	// Const parameters to discard bad ellipses 0.4
-	float	fTaoCenters = 0.05f;//0.05 
+	float	localThScoreScore = 0.5f;	//0.8
+	float	localMinReliability	= 0.50f;	// Const parameters to discard bad ellipses 0.4
+	float	localTaoCenters = 0.05f;//0.05 
 	string oldname="dataset.csv";
 	string newname="";
 
@@ -664,9 +664,9 @@ int main_salt(int argc, char** argv)
 	sWorkingDir=sWorkingDirPath+sWorkingDirName[iDir];
 
 
-	float	fThScoreScore = 0.5f;	//0.8
-	float	fMinReliability	= 0.50f;	// Const parameters to discard bad ellipses 0.4
-	float	fTaoCenters = 0.05f;//0.05 
+	float	localThScoreScore2 = 0.5f;	//0.8
+	float	localMinReliability2	= 0.50f;	// Const parameters to discard bad ellipses 0.4
+	float	localTaoCenters2 = 0.05f;//0.05 
 	string oldname="dataset.csv";
 	string newname="";
 
@@ -877,9 +877,9 @@ int main_TCN()
 	string sWorkingDir;
 	sWorkingDir=sWorkingDirPath+sWorkingDirName[iDir];
 
-	float	fThScoreScore = 0.5f;	//0.8
-	float	fMinReliability	= 0.50f;	// Const parameters to discard bad ellipses 0.4
-	float	fTaoCenters = 0.05f;//0.05 
+	float	localThScoreScore3 = 0.5f;	//0.8
+	float	localMinReliability3	= 0.50f;	// Const parameters to discard bad ellipses 0.4
+	float	localTaoCenters3 = 0.05f;//0.05 
 	string oldname="dataset.csv";
 	string newname="";
 
