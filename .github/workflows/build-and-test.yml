@@ -8,6 +8,12 @@ on:
   release:
     types: [published]
 
+# Add explicit permissions for releases
+permissions:
+  contents: write
+  packages: write
+  actions: read
+
 env:
   BUILD_TYPE: Release
 
@@ -270,6 +276,15 @@ jobs:
             cd ..
           fi
         done
+
+    - name: Create Git tag
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git tag -a "v${{ steps.version.outputs.version }}" -m "Release v${{ steps.version.outputs.version }}"
+        git push origin "v${{ steps.version.outputs.version }}"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Create Release
       uses: softprops/action-gh-release@v1
