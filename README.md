@@ -41,7 +41,10 @@ We provide several test images to demonstrate the algorithm's capabilities:
 
 ### Dependencies
 - **OpenCV 4.0+** (core, imgproc, highgui, features2d, imgcodecs, videoio)
+  - **Windows**: OpenCV4 via vcpkg (recommended) or manual installation
+  - **Linux/macOS**: System packages via package managers
 - **CMake 3.16+** (for Windows builds)
+- **vcpkg** (for Windows OpenCV installation)
 
 ## 🚀 Quick Start
 
@@ -101,11 +104,20 @@ git clone https://github.com/Microsoft/vcpkg.git
 cd vcpkg
 .\bootstrap-vcpkg.bat
 
-# Install OpenCV
-.\vcpkg install opencv[core,imgproc,highgui,features2d,imgcodecs]:x64-windows
+# Install OpenCV4 (recommended for this project)
+.\vcpkg install opencv4:x64-windows --feature-flags=versions
 
-# Integrate with Visual Studio (optional)
+# Integrate with CMake (optional but recommended)
 .\vcpkg integrate install
+
+# Verify installation
+.\vcpkg list
+```
+
+**Option 1b: Using vcpkg with specific features**
+```cmd
+# If you need specific OpenCV features, use this format:
+.\vcpkg install opencv[core,imgproc,highgui,features2d,imgcodecs]:x64-windows
 ```
 
 **Option 2: Using Chocolatey**
@@ -172,16 +184,27 @@ sudo make install
 mkdir build
 cd build
 
+# Configure with CMake using vcpkg toolchain
+# Set environment variables (adjust path to your vcpkg installation)
+set VCPKG_ROOT=C:\path\to\your\vcpkg
+set CMAKE_TOOLCHAIN_FILE=%VCPKG_ROOT%\scripts\buildsystems\vcpkg.cmake
+
 # Configure with CMake (choose your generator)
-cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_BUILD_TYPE=Release ..
+cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE="%CMAKE_TOOLCHAIN_FILE%" -DVCPKG_TOOLCHAIN=ON ..
 # OR for MinGW
-cmake -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release ..
+cmake -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE="%CMAKE_TOOLCHAIN_FILE%" -DVCPKG_TOOLCHAIN=ON ..
 
 # Build
 cmake --build . --config Release
 
 # Run tests
 ctest --verbose
+```
+
+**Alternative: Direct CMake configuration without vcpkg**
+```cmd
+# If you have OpenCV installed manually or via other methods
+cmake -G "Visual Studio 16 2019" -A x64 -DCMAKE_BUILD_TYPE=Release -DOpenCV_DIR="C:\path\to\opencv\build" ..
 ```
 
 #### Windows (Make with MinGW)
@@ -201,6 +224,23 @@ ls -la ellipse_detector*
 
 # Check help
 ./ellipse_detector --help
+```
+
+### Windows vcpkg Verification
+```cmd
+# Verify vcpkg installation
+cd vcpkg
+.\vcpkg list
+
+# Check OpenCV installation
+if (Test-Path "installed\x64-windows\include\opencv2") {
+    echo "✅ OpenCV headers found"
+} else {
+    echo "❌ OpenCV headers not found"
+}
+
+# Test CMake configuration
+cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE="%VCPKG_ROOT%\scripts\buildsystems\vcpkg.cmake" -DVCPKG_TOOLCHAIN=ON
 ```
 
 ## 📊 Example Results
@@ -387,9 +427,30 @@ pkg-config --libs opencv4
 
 **vcpkg OpenCV Installation Fails**
 ```cmd
-# Error: opencv has no feature named videoio
-# Solution: Remove videoio from installation
-vcpkg install opencv[core,imgproc,highgui,features2d,imgcodecs]:x64-windows
+# Error: opencv has no feature named imgproc
+# This is a common issue with newer vcpkg versions
+
+# Solution 1: Use OpenCV4 package instead (Recommended)
+.\vcpkg install opencv4:x64-windows --feature-flags=versions
+
+# Solution 2: Update vcpkg first
+git pull
+.\bootstrap-vcpkg.bat
+.\vcpkg install opencv4:x64-windows --feature-flags=versions
+
+# Solution 3: Check available features
+.\vcpkg search opencv
+.\vcpkg install opencv:x64-windows
+
+# Solution 4: Remove problematic features
+.\vcpkg install opencv[core,imgproc,highgui,features2d,imgcodecs]:x64-windows
+
+# Solution 5: Use the exact command from CI/CD (proven to work)
+git clone https://github.com/Microsoft/vcpkg.git
+cd vcpkg
+.\bootstrap-vcpkg.bat
+.\vcpkg install opencv4:x64-windows --feature-flags=versions
+.\vcpkg integrate install
 ```
 
 **Visual Studio Build Tools Missing**
@@ -525,6 +586,15 @@ for (const auto& ellipse : ellipses) {
 ```
 
 ## 🏗️ Build System
+
+### CI/CD Status
+This project uses GitHub Actions for continuous integration and testing across all platforms:
+
+- ✅ **Windows**: Built with CMake + MSVC + vcpkg + OpenCV4
+- ✅ **Linux**: Built with Make + GCC + system OpenCV
+- ✅ **macOS**: Built with Make + Clang + Homebrew OpenCV
+
+The build process is automatically tested on every commit and pull request. See [`.github/workflows/build-and-test.yml`](.github/workflows/build-and-test.yml) for the complete CI configuration.
 
 ### Make Targets
 ```bash
